@@ -1,6 +1,5 @@
-# Spike-Driven-Transformer-V3
-# Gated Attention Coding for Training High-performance and Efficient Spiking Neural Networks ([AAAI24](https://arxiv.org/abs/2308.06582))
-Man Yao*, Xuerui Qiu*
+# Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ()
+
 [Man Yao*](https://scholar.google.com/citations?user=eE4vvp0AAAAJ),[Xuerui Qiu*](https://scholar.google.com/citations?user=bMwW4e8AAAAJ&hl=zh-CN), [Jiakui Hu](https://github.com/jkhu29), [Tianxiang Hu](), [Guoqi Li](https://scholar.google.com/citations?user=qCfE--MAAAAJ&).
 
 * Equal contribution.
