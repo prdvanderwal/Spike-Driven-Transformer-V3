@@ -1,4 +1,7 @@
-![avatar](./images/logo.jpg)
+<div style="text-align: center;">
+  <img src="./images/logo.jpg" alt="avatar" width="250" height="250">
+</div>
+
 
 # Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ()
 
