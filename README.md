@@ -1,7 +1,6 @@
-<div style="text-align: center;">
-  <img src="./images/logo.jpg" alt="avatar" width="250" height="250">
-</div>
-
+<p align="center">
+<img src="./images/logo.jpg" alt="spikezip_logo" width="250" align="center">
+</p>
 
 # Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ()
 
