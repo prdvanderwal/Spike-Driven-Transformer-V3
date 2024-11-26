@@ -29,7 +29,7 @@ spikingjelly == 0.0.0.0.12
 
 ### Results on Imagenet-1K
 
-Pre-trained ckpts and training logs of 55M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
+Pre-trained ckpts and training logs of 84M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
 
 ### Train & Test
 
@@ -52,7 +52,7 @@ torchrun --standalone --nproc_per_node=8 \
   --dist_eval
 ```
 
-Finetune:
+Distillation:
 
 > Please download caformer_b36_in21_ft1k.pth first following [PoolFormer](https://github.com/sail-sg/poolformer).
 
@@ -101,6 +101,30 @@ ImageNet with the following folder structure, you can extract imagenet by this [
 │  │   ├── ......
 │  ├── ......
 ```
+
+### Results on ADE20K
+First download
+Pre-trained ckpts 10M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
+Pre-trained ckpts 19M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
+
+Train 10M on 4 GPUs:
+
+```shell
+bash ./dist_train_2.sh ../configs/EFSDTv2/fpn_sdtv3_512x512_10M_ade20k.py 4
+```
+
+
+### Results on COCO2017:
+First download
+Pre-trained ckpts 10M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
+Pre-trained ckpts 19M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
+
+Train 10M on 4 GPUs:
+
+```shell
+bash ./dist_train_2.sh ../configs/EFSDTv2/fpn_sdtv3_512x512_10M_ade20k.py 4
+```
+
 ## Contact Information
 
 ```
