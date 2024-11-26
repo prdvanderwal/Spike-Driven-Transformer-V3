@@ -1,4 +1,4 @@
-![avatar](./images/logo.png)
+![avatar](./images/logo.jpg)
 
 # Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ()
 
