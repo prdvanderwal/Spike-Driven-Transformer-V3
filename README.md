@@ -2,7 +2,7 @@
 <img src="./images/logo.jpg" alt="spikezip_logo" width="250" align="center">
 </p>
 
-# Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ()
+# Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training
 
 [Man Yao*](https://scholar.google.com/citations?user=eE4vvp0AAAAJ), [Xuerui Qiu*](https://scholar.google.com/citations?user=bMwW4e8AAAAJ&hl=zh-CN), [Tianxiang Hu](), [Jiakui Hu](https://github.com/jkhu29), [Yuhong Chou](https://scholar.google.com/citations?user=8CpWM4cAAAAJ&hl=zh-CN&oi=ao), [Keyu Tian](https://scholar.google.com/citations?user=6FdkbygAAAAJ&hl=zh-CN&oi=ao), [Jianxing Liao](), [Luziwei Leng](), [Bo Xu](), [Guoqi Li](https://scholar.google.com/citations?user=qCfE--MAAAAJ&)
 
@@ -11,6 +11,13 @@
 
 BICLab, Institute of Automation, Chinese Academy of Sciences
 
+
+This repo is the official implementation of [Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ](https://arxiv.org/pdf/2411.16061). It currently concludes codes and models for the following tasks:
+> **ImageNet Pretrain**: See [PRETRAIN.md](PRETRAIN.md).\
+> **ImageNet Finetune**: See [FINETUNE.md](FINETUNE.md).\
+> **Object Detection**: See [DETECTION.md](DET/DETECTION.md).\
+> **Semantic Segmentation**: See [SEGMENTATION.md](SEG/SEGMENTATION.md). \
+> **DVS**: See [DVS.md](https://github.com/Alpha-VL/VideoConvMAE).
 
 
 :rocket:  :rocket:  :rocket: **News**:
@@ -144,9 +151,7 @@ For help or issues using this git, please submit a GitHub issue.
 
 For other communications related to this git, please contact `manyao@ia.ac.cn` and `qiuxuerui2024@ia.ac.cn`.
 
-## Thanks
+## Acknowledgement
+The pretraining and finetuning of our project are based on [DeiT](https://github.com/facebookresearch/deit),[MCMAE](https://github.com/Alpha-VL/ConvMAE), [Spark](https://github.com/keyu-tian/SparK). and [MAE](https://github.com/facebookresearch/mae). The object detection and semantic segmentation parts are based on [MMDetection](https://github.com/open-mmlab/mmdetection) and [MMSegmentation](https://github.com/open-mmlab/mmsegmentation) respectively. Thanks for their wonderful work.
 
-Our implementation is mainly based on the following codebases. We gratefully thank the authors for their wonderful works.
-
-[Deit](https://github.com/facebookresearch/deit), [MCMAE](https://github.com/Alpha-VL/ConvMAE), [Spark](https://github.com/keyu-tian/SparK).
 
