@@ -16,7 +16,7 @@ This repo is the official implementation of [Scaling Spike-driven Transformer wi
 > **Base Model ImageNet From Scratch**: See [Train_Base.md](SDT_V3/Classification/Model_Base/Train_Base.md).\
 > **Large Model ImageNet Pretrain and Finetune**: See [Train_Large.md](SDT_V3/Classification/Model_Large/Model_Large.md).\
 > **Object Detection**: See [Detection.md](SDT_V3/Detection/Detection.md).\
-> **Semantic Segmentation**: See [Segementation.md](SDT_V3/Segmentation/Segmentation.md). \
+> **Semantic Segmentation**: See [Segementation.md](SDT_V3/Segmentation/Readme.md). \
 > **DVS**: See [DVS.md](SDT_V3/DVS/Hardvs/Hardvs.md).
 
 
