@@ -1,1 +1,74 @@
+### Results on Imagenet-1K
 
+Pre-trained ckpts and training logs of 84M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
+
+### Train & Test
+
+The hyper-parameters are in `./conf/`.
+
+Train:
+
+```shell
+torchrun --standalone --nproc_per_node=8 \
+  main_finetune.py \
+  --batch_size 128 \
+  --blr 6e-4 \
+  --warmup_epochs 10 \
+  --epochs 200 \
+  --model metaspikformer_8_512 \
+  --data_path /your/data/path \
+  --output_dir outputs/T1 \
+  --log_dir outputs/T1 \
+  --model_mode ms \
+  --dist_eval
+```
+
+Distillation:
+
+> Please download caformer_b36_in21_ft1k.pth first following [PoolFormer](https://github.com/sail-sg/poolformer).
+
+```shell
+torchrun --standalone --nproc_per_node=8 \
+  main_finetune.py \
+  --batch_size 24 \
+  --blr 2e-5 \
+  --warmup_epochs 5 \
+  --epochs 50 \
+  --model metaspikformer_8_512 \
+  --data_path /your/data/path \
+  --output_dir outputs/T4 \
+  --log_dir outputs/T4 \
+  --model_mode ms \
+  --dist_eval \
+  --finetune /your/ckpt/path \
+  --time_steps 4 \
+  --kd \
+  --teacher_model caformer_b36_in21ft1k \
+  --distillation_type hard
+```
+
+Test:
+
+```shell
+python main_finetune.py --batch_size 128 --model metaspikformer_8_512 --data_path /your/data/path --eval --resume /your/ckpt/path
+```
+
+### Data Prepare
+
+ImageNet with the following folder structure, you can extract imagenet by this [script](https://gist.github.com/BIGBALLON/8a71d225eff18d88e469e6ea9b39cef4).
+
+```shell
+│imagenet/
+├──train/
+│  ├── n01440764
+│  │   ├── n01440764_10026.JPEG
+│  │   ├── n01440764_10027.JPEG
+│  │   ├── ......
+│  ├── ......
+├──val/
+│  ├── n01440764
+│  │   ├── ILSVRC2012_val_00000293.JPEG
+│  │   ├── ILSVRC2012_val_00002138.JPEG
+│  │   ├── ......
+│  ├── ......
+```
