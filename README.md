@@ -13,11 +13,11 @@ BICLab, Institute of Automation, Chinese Academy of Sciences
 
 
 This repo is the official implementation of [Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ](https://arxiv.org/pdf/2411.16061). It currently concludes codes and models for the following tasks:
-> **Base Model ImageNet From Scratch**: See [Train_Base.md](SDT_V3/Classification/Model_Base.md).\
-> **Large Model ImageNet Pretrain and Finetune**: See [Train_Large.md](SDT_V3/Classification/Model_Large.md).\
-> **Object Detection**: See [Detection.md](SDT_V3/detecton.md).\
-> **Semantic Segmentation**: See [Segementation.md](SDT_V3/Segmentation.md). \
-> **DVS**: See [DVS.md](SDT_V3/DVS/Hardvs.md).
+> **Base Model ImageNet From Scratch**: See [Train_Base.md](SDT_V3/Classification/Model_Base/Train_Base.md).\
+> **Large Model ImageNet Pretrain and Finetune**: See [Train_Large.md](SDT_V3/Classification/Model_Large/Model_Large.md).\
+> **Object Detection**: See [Detection.md](SDT_V3/Detection/Detection.md).\
+> **Semantic Segmentation**: See [Segementation.md](SDT_V3/Segmentation/Segmentation.md). \
+> **DVS**: See [DVS.md](SDT_V3/DVS/Hardvs/Hardvs.md).
 
 
 :rocket:  :rocket:  :rocket: **News**:
