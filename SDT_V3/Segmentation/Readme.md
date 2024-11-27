@@ -23,6 +23,7 @@ Follow the guide in [mmseg](https://github.com/open-mmlab/mmsegmentation/blob/ma
 Download the pretrained model
 
 Pre-trained ckpts 10M: [here](https://drive.google.com/file/d/1pHrampLjyE1kLr-4DS1WgSdnCVPzL6Tq/view?usp=sharing).
+
 Pre-trained ckpts 19M: [here](https://drive.google.com/file/d/1pSGCOzrZNgHDxQXAp-Uelx61snIbQC1H/view?usp=drive_link).
 
 
