@@ -29,7 +29,7 @@ torchrun --standalone --nproc_per_node=8 \
 Test:
 
 ```shell
-python main_finetune.py --batch_size 128 --model metaspikformer_8_512 --data_path /your/data/path --eval --resume /your/ckpt/path
+python main_finetune.py --batch_size 128 --model Efficient_Spiking_Transformer_s --data_path /your/data/path --eval --resume /your/ckpt/path
 ```
 
 ### Data Prepare
