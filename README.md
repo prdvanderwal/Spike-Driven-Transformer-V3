@@ -33,39 +33,7 @@ The ambition of brain-inspired Spiking Neural Networks (SNNs) is to become a low
 We address the performance and training consumption gap between SNNs and ANNs. A key contribution is identifying the mechanistic flaw of binary spike firing in spiking neurons. To overcome these limitations, we propose a Spike Firing Approximation (SFA) method. This method is based on integer training and spike-driven inference, aiming to optimize the spike firing pattern of spiking neurons. Our results demonstrate that optimization the spike firing pattern leads to comprehensive improvements in SNNs, including enhanced training efficiency, reduced power consumption, improved performance, easier scalability, and better utilization of neuromorphic chips. Additionally, we develop an efficient spike-driven Transformer architecture and a spike masked autoencoder to prevent performance degradation during SNN scaling. By addressing the training and performance challenges of large-scale SNNs, we pave the way for a new era in neuromorphic computing.
 
 ![avatar](./images/fig.png)
-## Classification
 
-### Requirements
-
-```python3
-pytorch >= 2.0.0
-cupy
-spikingjelly == 0.0.0.0.12
-```
-
-
-### Results on ADE20K
-First download
-Pre-trained ckpts 10M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
-Pre-trained ckpts 19M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
-
-Train 10M on 4 GPUs:
-
-```shell
-bash ./dist_train_2.sh ../configs/EFSDTv2/fpn_sdtv3_512x512_10M_ade20k.py 4
-```
-
-
-### Results on COCO2017:
-First download
-Pre-trained ckpts 10M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
-Pre-trained ckpts 19M: [here](https://drive.google.com/drive/folders/12JcIRG8BF6JcgPsXIetSS14udtHXeSSx?usp=sharing).
-
-Train 10M on 4 GPUs:
-
-```shell
-bash ./dist_train_2.sh ../configs/EFSDTv2/fpn_sdtv3_512x512_10M_ade20k.py 4
-```
 
 ## Contact Information
 
