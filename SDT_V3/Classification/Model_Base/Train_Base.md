@@ -4,47 +4,21 @@ Pre-trained ckpts and training logs of 84M: [here](https://drive.google.com/driv
 
 ### Train & Test
 
-The hyper-parameters are in `./conf/`.
-
 Train:
 
 ```shell
 torchrun --standalone --nproc_per_node=8 \
   main_finetune.py \
-  --batch_size 128 \
+  --batch_size 256 \
   --blr 6e-4 \
-  --warmup_epochs 10 \
+  --warmup_epochs 5 \
   --epochs 200 \
-  --model metaspikformer_8_512 \
+  --model Efficient_Spiking_Transformer_s \
   --data_path /your/data/path \
   --output_dir outputs/T1 \
   --log_dir outputs/T1 \
   --model_mode ms \
   --dist_eval
-```
-
-Distillation:
-
-> Please download caformer_b36_in21_ft1k.pth first following [PoolFormer](https://github.com/sail-sg/poolformer).
-
-```shell
-torchrun --standalone --nproc_per_node=8 \
-  main_finetune.py \
-  --batch_size 24 \
-  --blr 2e-5 \
-  --warmup_epochs 5 \
-  --epochs 50 \
-  --model metaspikformer_8_512 \
-  --data_path /your/data/path \
-  --output_dir outputs/T4 \
-  --log_dir outputs/T4 \
-  --model_mode ms \
-  --dist_eval \
-  --finetune /your/ckpt/path \
-  --time_steps 4 \
-  --kd \
-  --teacher_model caformer_b36_in21ft1k \
-  --distillation_type hard
 ```
 
 Test:
