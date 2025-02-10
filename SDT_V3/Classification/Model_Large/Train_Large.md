@@ -1,15 +1,21 @@
 ### Results on Imagenet-1K
 
-Trained weights of 5.1M: [here](https://drive.google.com/file/d/1LMkOTPehDNpQE79bvB7jFTf6UzDjpAHQ/view?usp=drive_link).
+Trained weights of 171M_1x4: [here](https://drive.google.com/file/d/1sJAjirbjVaB7gLSybvy2Xz2wwQl6gZk7/view?usp=sharing).
 
-Trained weights of 10M: [here](https://drive.google.com/file/d/1pHrampLjyE1kLr-4DS1WgSdnCVPzL6Tq/view?usp=sharing).
+Trained weights of 171M_1x8: [here](https://drive.google.com/file/d/18bcS2jQD41JyoJAW9lhZOkTgUb79uShf/view?usp=sharing).
 
-Trained weights of  19M: [here](https://drive.google.com/file/d/1pSGCOzrZNgHDxQXAp-Uelx61snIbQC1H/view?usp=drive_link).
+Trained weights of  171M_1x8_384: [here](https://drive.google.com/file/d/1ooNGJRTi869e0ApZm8Oc84Mq02uXXyA8/view?usp=sharing).
 
-Others weights are coming soon.
-### Train & Test
 
-Train:
+Trained weights of 83M_1x4: [here]().
+
+Trained weights of 83M_1x8: [here]().
+
+Trained weights of  83M_1x8_384: [here]().
+
+### Pretrain & Finetune
+
+Pretrain:
 
 ```shell
 torchrun --standalone --nproc_per_node=8 \
@@ -26,11 +32,9 @@ torchrun --standalone --nproc_per_node=8 \
   --dist_eval
 ```
 
-Test:
+Finetune:
 
-```shell
-python main_finetune.py --batch_size 128 --model Efficient_Spiking_Transformer_s --data_path /your/data/path --eval --resume /your/ckpt/path
-```
+
 
 ### Data Prepare
 
