@@ -73,7 +73,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --standalone --nproc_per_node=8 \
 
 Distillation:
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup torchrun --standalone --nproc_per_node=8 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --standalone --nproc_per_node=8 \
   main_finetune.py \
   --batch_size 196 \
   --blr 1e-3 \
