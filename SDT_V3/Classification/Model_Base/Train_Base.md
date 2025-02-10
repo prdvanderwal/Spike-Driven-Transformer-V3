@@ -7,7 +7,7 @@ Trained weights of 10M: [here](https://drive.google.com/file/d/1pHrampLjyE1kLr-4
 Trained weights of  19M: [here](https://drive.google.com/file/d/1pSGCOzrZNgHDxQXAp-Uelx61snIbQC1H/view?usp=drive_link).
 
 Others weights are coming soon.
-### Train & Test
+### Train 
 
 Train:
 
@@ -26,11 +26,7 @@ torchrun --standalone --nproc_per_node=8 \
   --dist_eval
 ```
 
-Test:
 
-```shell
-python main_finetune.py --batch_size 128 --model Efficient_Spiking_Transformer_s --data_path /your/data/path --eval --resume /your/ckpt/path
-```
 
 ### Data Prepare
 

@@ -25,7 +25,7 @@ Pre-trained ckpts 10M: [here](https://drive.google.com/file/d/1pHrampLjyE1kLr-4D
 Pre-trained ckpts 19M: [here](https://drive.google.com/file/d/1pSGCOzrZNgHDxQXAp-Uelx61snIbQC1H/view?usp=drive_link).
 
 
-Train 19M on 1 GPUs:
+Train 19M on 2 GPUs:
 
 - `cd tools`
-- `CUDA_VISIBLE_DEVICES=0,1 ./dist_train.sh ../configs\sdeformer_mask_rcnn\mask-rcnn_sdeformer_fpn_1x_coco.py 1`
+- `CUDA_VISIBLE_DEVICES=0,1 ./dist_train.sh ../configs\sdeformer_mask_rcnn\mask-rcnn_sdeformer_fpn_1x_coco.py 2`

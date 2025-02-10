@@ -15,7 +15,7 @@ BICLab, Institute of Automation, Chinese Academy of Sciences
 This repo is the official implementation of [Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training ](https://arxiv.org/pdf/2411.16061). It currently concludes codes and models for the following tasks:
 > **Base Model ImageNet From Scratch**: See [Train_Base.md](SDT_V3/Classification/Model_Base/Train_Base.md).\
 > **Large Model ImageNet Pretrain and Finetune**: See [Train_Large.md](SDT_V3/Classification/Model_Large/Model_Large.md).\
-> **Object Detection**: See [Detection.md](SDT_V3/Detection/Detection.md).\
+> **Object Detection**: See [Detection.md](SDT_V3/Detection/Readme.md).\
 > **Semantic Segmentation**: See [Segementation.md](SDT_V3/Segmentation/Readme.md). \
 > **DVS**: See [DVS.md](SDT_V3/DVS/Hardvs/Readme.md).
 
@@ -38,7 +38,15 @@ We address the performance and training consumption gap between SNNs and ANNs. A
 ## Contact Information
 
 ```
-
+@article{yao2025scaling,
+  title={Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training},
+  author={Yao, Man and Qiu, Xuerui and Hu, Tianxiang and Hu, Jiakui and Chou, Yuhong and Tian, Keyu and Liao, Jianxing and Leng, Luziwei and Xu, Bo and Li, Guoqi},
+  journal={IEEE Transactions on Pattern Analysis \& Machine Intelligence},
+  number={01},
+  pages={1--18},
+  year={2025},
+  publisher={IEEE Computer Society}
+}
 ```
 
 For help or issues using this git, please submit a GitHub issue.

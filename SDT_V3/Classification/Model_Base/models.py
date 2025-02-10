@@ -277,12 +277,12 @@ class MS_ConvBlock_spike_SepConv(nn.Module):
         self.conv1 = nn.Conv2d(
             dim, dim * mlp_ratio, kernel_size=3, padding=1, groups=1, bias=False
         )
-        self.bn1 = nn.BatchNorm2d(dim * mlp_ratio)  # 这里可以进行改进
+        self.bn1 = nn.BatchNorm2d(dim * mlp_ratio) 
         self.spike2 = MultiSpike()
         self.conv2 = nn.Conv2d(
             dim * mlp_ratio, dim, kernel_size=3, padding=1, groups=1, bias=False
         )
-        self.bn2 = nn.BatchNorm2d(dim)  # 这里可以进行改进
+        self.bn2 = nn.BatchNorm2d(dim)  
 
     def forward(self, x):
         B, C, H, W = x.shape
