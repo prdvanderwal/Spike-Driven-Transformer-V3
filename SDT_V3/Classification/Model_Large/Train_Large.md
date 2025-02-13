@@ -7,7 +7,7 @@ Trained weights of 171M_1x8: [here](https://drive.google.com/file/d/18bcS2jQD41J
 Trained weights of  171M_1x8_384: [here](https://drive.google.com/file/d/1ooNGJRTi869e0ApZm8Oc84Mq02uXXyA8/view?usp=sharing).
 
 
-Trained weights of 83M_1x4: [here]().
+Trained weights of 83M_1x4: [here](https://drive.google.com/file/d/1f9pFflYcMacnYJc2u8cHcgMqdibv8wAO/view?usp=sharing).
 
 Trained weights of 83M_1x8: [here]().
 
