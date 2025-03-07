@@ -38,7 +38,7 @@ from util.datasets import build_dataset
 from util.misc import NativeScalerWithGradNormCount as NativeScaler
 from util.kd_loss import DistillationLoss
 
-import models
+import spikformer
 from engine_finetune import train_one_epoch, evaluate
 from timm.data import create_loader
 
@@ -63,7 +63,7 @@ def get_args_parser():
     )
     parser.add_argument("--finetune", default="", help="finetune from checkpoint")
     parser.add_argument(
-        "--data_path", default="/raid/ligq/imagenet1-k/", type=str, help="dataset path"
+        "--data_path", default="", type=str, help="dataset path"
     )
 
     # Model parameters
@@ -236,12 +236,12 @@ def get_args_parser():
 
     parser.add_argument(
         "--output_dir",
-        default="/raid/ligq/htx/spikemae/output_dir",
+        default="",
         help="path where to save, empty for no saving",
     )
     parser.add_argument(
         "--log_dir",
-        default="/raid/ligq/htx/spikemae/output_dir",
+        default="",
         help="path where to tensorboard log",
     )
     parser.add_argument(
@@ -399,7 +399,7 @@ def main(args):
         )
 
     
-    model = models.__dict__[args.model](kd=args.kd)
+    model = spikformer.__dict__[args.model](kd=args.kd)
     model.T = args.time_steps
     model_ema = None
     if args.finetune:
