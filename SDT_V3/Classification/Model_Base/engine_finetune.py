@@ -44,6 +44,7 @@ def train_one_epoch(
 
     optimizer.zero_grad()
 
+
     if log_writer is not None:
         print("log_dir: {}".format(log_writer.log_dir))
 
