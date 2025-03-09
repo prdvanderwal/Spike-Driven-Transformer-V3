@@ -22,18 +22,6 @@ def build_dataset(is_train, args):
     dataset = datasets.ImageFolder(root, transform=transform)
     return dataset
 
-def build_dataset_full(is_train,args):
-    transform = build_transform(is_train, args)
-    
-    train_set = datasets.ImageFolder(root=os.path.join(args.data_path, 'train'),
-                                     transform=transform) 
-    valid_set = datasets.ImageFolder(root=os.path.join(args.data_path, 'val'),
-                                     transform=transform)
-                                     
-    full_set = torch.utils.data.ConcatDataset([train_set, valid_set])
-    print(full_set)
-    return full_set
-
 def build_transform(is_train, args):
     mean = IMAGENET_DEFAULT_MEAN
     std = IMAGENET_DEFAULT_STD
