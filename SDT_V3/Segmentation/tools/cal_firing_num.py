@@ -13,6 +13,7 @@ from mmengine.registry import MODELS
 import json
 from torchvision.transforms import CenterCrop
 import torchinfo
+
 BASE_PATH = './work_dirs'
 ADE20K='/raid/ligq/lzx/data/ADE20k/ADEChallengeData2016/images/validation'
 VOC2012='/raid/ligq/lzx/data/VOCdevkit/VOC2012'
