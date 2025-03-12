@@ -130,7 +130,7 @@ class RepConv2(nn.Module):
     ):
         super().__init__()
         # TODO in_channel-> 2*in_channel->in_channel
-        self.conv1 = nn.Sequential(nn.Conv1d(in_channel, int(in_channel), kernel_size=1, stride=1,bias=False), nn.BatchNorm1d(int(in_channel*1.5)))
+        self.conv1 = nn.Sequential(nn.Conv1d(in_channel, int(in_channel), kernel_size=1, stride=1,bias=False), nn.BatchNorm1d(int(in_channel)))
         self.conv2 = nn.Sequential(nn.Conv1d(int(in_channel), out_channel, kernel_size=1, stride=1,bias=False), nn.BatchNorm1d(out_channel))
     def forward(self, x):
         return self.conv2(self.conv1(x))
