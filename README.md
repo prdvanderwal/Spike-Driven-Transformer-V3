@@ -38,15 +38,15 @@ We address the performance and training consumption gap between SNNs and ANNs. A
 ## Contact Information
 
 ```
-@article{yao2025scaling,
-  title={Scaling Spike-driven Transformer with Efficient Spike Firing Approximation Training},
+@ARTICLE{10848017,
   author={Yao, Man and Qiu, Xuerui and Hu, Tianxiang and Hu, Jiakui and Chou, Yuhong and Tian, Keyu and Liao, Jianxing and Leng, Luziwei and Xu, Bo and Li, Guoqi},
-  journal={IEEE Transactions on Pattern Analysis \& Machine Intelligence},
-  number={01},
-  pages={1--18},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Scaling Spike-Driven Transformer With Efficient Spike Firing Approximation Training}, 
   year={2025},
-  publisher={IEEE Computer Society}
-}
+  volume={47},
+  number={4},
+  pages={2973-2990},
+  doi={10.1109/TPAMI.2025.3530246}}
 ```
 
 For help or issues using this git, please submit a GitHub issue.
