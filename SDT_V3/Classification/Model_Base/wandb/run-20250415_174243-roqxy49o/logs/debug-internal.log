@@ -1,0 +1,15 @@
+{"time":"2025-04-15T17:42:43.600124148+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250415_174243-roqxy49o/logs/debug-core.log"}
+{"time":"2025-04-15T17:42:44.003145301+02:00","level":"INFO","msg":"created new stream","id":"roqxy49o"}
+{"time":"2025-04-15T17:42:44.003209136+02:00","level":"INFO","msg":"stream: started","id":"roqxy49o"}
+{"time":"2025-04-15T17:42:44.003336429+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"roqxy49o"}
+{"time":"2025-04-15T17:42:44.00344156+02:00","level":"INFO","msg":"sender: started","stream_id":"roqxy49o"}
+{"time":"2025-04-15T17:42:44.003534617+02:00","level":"INFO","msg":"handler: started","stream_id":"roqxy49o"}
+{"time":"2025-04-15T17:42:44.527362899+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-15T17:42:53.217411828+02:00","level":"INFO","msg":"stream: closing","id":"roqxy49o"}
+{"time":"2025-04-15T17:42:53.217629987+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-15T17:42:53.219035202+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-15T17:42:53.785835487+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-15T17:42:53.98316378+02:00","level":"INFO","msg":"handler: closed","stream_id":"roqxy49o"}
+{"time":"2025-04-15T17:42:53.983221444+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"roqxy49o"}
+{"time":"2025-04-15T17:42:53.983261979+02:00","level":"INFO","msg":"sender: closed","stream_id":"roqxy49o"}
+{"time":"2025-04-15T17:42:53.990519736+02:00","level":"INFO","msg":"stream: closed","id":"roqxy49o"}

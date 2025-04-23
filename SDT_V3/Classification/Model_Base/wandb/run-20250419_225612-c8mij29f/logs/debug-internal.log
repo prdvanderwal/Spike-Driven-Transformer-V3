@@ -1,0 +1,6 @@
+{"time":"2025-04-19T22:56:13.065291837+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250419_225612-c8mij29f/logs/debug-core.log"}
+{"time":"2025-04-19T22:56:13.544456425+02:00","level":"INFO","msg":"created new stream","id":"c8mij29f"}
+{"time":"2025-04-19T22:56:13.544541212+02:00","level":"INFO","msg":"stream: started","id":"c8mij29f"}
+{"time":"2025-04-19T22:56:13.544671403+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"c8mij29f"}
+{"time":"2025-04-19T22:56:13.544869842+02:00","level":"INFO","msg":"sender: started","stream_id":"c8mij29f"}
+{"time":"2025-04-19T22:56:13.544910257+02:00","level":"INFO","msg":"handler: started","stream_id":"c8mij29f"}

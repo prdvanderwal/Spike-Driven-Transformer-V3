@@ -15,6 +15,7 @@ import os
 import time
 from collections import defaultdict, deque
 from pathlib import Path
+import wandb
 
 import torch
 import torch.distributed as dist
@@ -223,9 +224,10 @@ def is_main_process():
     return get_rank() == 0
 
 
-def save_on_master(*args, **kwargs):
+def save_on_master(to_save, checkpoint_path, *args, **kwargs):
     if is_main_process():
-        torch.save(*args, **kwargs)
+        torch.save(to_save, checkpoint_path, *args, **kwargs)
+        wandb.save(checkpoint_path)
 
 
 def init_distributed_mode(args):
@@ -278,7 +280,7 @@ class NativeScalerWithGradNormCount:
     state_dict_key = "amp_scaler"
 
     def __init__(self):
-        self._scaler = torch.cuda.amp.GradScaler()
+        self._scaler = torch.amp.GradScaler('cuda')
 
     def __call__(
         self,
@@ -333,12 +335,14 @@ def get_grad_norm_(parameters, norm_type: float = 2.0) -> torch.Tensor:
     return total_norm
 
 
-def save_model(args, epoch, model, model_without_ddp, optimizer, loss_scaler):
+def save_model(args, epoch, model, model_without_ddp, optimizer, loss_scaler, is_best, filename='checkpoint.pth.tar'):
     output_dir = Path(args.output_dir)
     epoch_name = str(epoch)
     if loss_scaler is not None:
-        checkpoint_paths = [output_dir / ("checkpoint-%s.pth" % epoch_name)]
-        for checkpoint_path in checkpoint_paths:
+        if is_best:
+            filename = 'model_best.pth.tar'
+        if is_main_process():
+            checkpoint_path = os.path.join(wandb.run.dir, filename)
             to_save = {
                 "model": model_without_ddp.state_dict(),
                 "optimizer": optimizer.state_dict(),
@@ -349,12 +353,13 @@ def save_model(args, epoch, model, model_without_ddp, optimizer, loss_scaler):
 
             save_on_master(to_save, checkpoint_path)
     else:
-        client_state = {"epoch": epoch}
-        model.save_checkpoint(
-            save_dir=args.output_dir,
-            tag="checkpoint-%s" % epoch_name,
-            client_state=client_state,
-        )
+        if is_main_process():
+            client_state = {"epoch": epoch}
+            model.save_checkpoint(
+                save_dir=wandb.run.dir,
+                tag="checkpoint-%s" % epoch_name,
+                client_state=client_state,
+            )
 
 
 def load_model(args, model_without_ddp, optimizer, loss_scaler):
@@ -401,3 +406,17 @@ def accuracy(output, target, topk=(1,)):
         correct[: min(k, maxk)].reshape(-1).float().sum(0) * 100.0 / batch_size
         for k in topk
     ]
+
+
+def save_checkpoint(state, is_best, path, filename='checkpoint.pth.tar'):
+    filename = os.path.join(path, filename)
+    torch.save(state, filename)
+
+    wandb.save(filename)
+
+    # if is_best:
+    #     shutil.copyfile(filename, os.path.join(path, 'model_best.pth.tar'))
+    if is_best:
+        best_filepath = os.path.join(path, 'model_best.pth.tar')
+        torch.save(state, best_filepath)
+        wandb.save(best_filepath)  # Log the best model separately if needed

@@ -1,0 +1,6 @@
+{"time":"2025-04-15T13:56:25.696559722+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250415_135625-aews2l1w/logs/debug-core.log"}
+{"time":"2025-04-15T13:56:25.970752897+02:00","level":"INFO","msg":"created new stream","id":"aews2l1w"}
+{"time":"2025-04-15T13:56:25.97084429+02:00","level":"INFO","msg":"stream: started","id":"aews2l1w"}
+{"time":"2025-04-15T13:56:25.97095475+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"aews2l1w"}
+{"time":"2025-04-15T13:56:25.971069933+02:00","level":"INFO","msg":"handler: started","stream_id":"aews2l1w"}
+{"time":"2025-04-15T13:56:25.971181451+02:00","level":"INFO","msg":"sender: started","stream_id":"aews2l1w"}

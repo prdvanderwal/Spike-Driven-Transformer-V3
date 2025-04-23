@@ -2,7 +2,7 @@ import torch
 import torchinfo
 import torch.nn as nn
 from timm.models.layers import to_2tuple, trunc_normal_, DropPath
-from timm.models.registry import register_model
+from timm.models import register_model
 from timm.models.vision_transformer import _cfg
 from einops.layers.torch import Rearrange
 import torch.nn.functional as F
@@ -12,7 +12,7 @@ import os
 
 class Quant(torch.autograd.Function):
     @staticmethod
-    @torch.cuda.amp.custom_fwd
+    @torch.amp.custom_fwd(device_type='cuda')
     def forward(ctx, i, min_value, max_value):
         ctx.min = min_value
         ctx.max = max_value
@@ -20,7 +20,7 @@ class Quant(torch.autograd.Function):
         return torch.round(torch.clamp(i, min=min_value, max=max_value))
 
     @staticmethod
-    @torch.cuda.amp.custom_fwd
+    @torch.amp.custom_fwd(device_type='cuda')
     def backward(ctx, grad_output):
         grad_input = grad_output.clone()
         i, = ctx.saved_tensors
@@ -28,30 +28,64 @@ class Quant(torch.autograd.Function):
         grad_input[i > ctx.max] = 0
         return grad_input, None, None
     
+# class MultiSpike(nn.Module):
+#     def __init__(
+#         self,
+#         min_value=0,
+#         max_value=4,
+#         Norm=None,
+#         ):
+#         super().__init__()
+#         if Norm == None:
+#             self.Norm = max_value
+#         else:
+#             self.Norm = Norm
+#         self.min_value = min_value
+#         self.max_value = max_value
+    
+#     @staticmethod
+#     def spike_function(x, min_value, max_value):
+#         return Quant.apply(x, min_value, max_value)
+        
+#     def __repr__(self):
+#         return f"MultiSpike(Max_Value={self.max_value}, Min_Value={self.min_value}, Norm={self.Norm})"     
+
+#     def forward(self, x): # B C H W
+#         return self.spike_function(x, min_value=self.min_value, max_value=self.max_value) / (self.Norm)
+
 class MultiSpike(nn.Module):
     def __init__(
         self,
         min_value=0,
         max_value=4,
         Norm=None,
-        ):
+        trainable_threshold=False,
+        initial_threshold=0.5,
+    ):
         super().__init__()
-        if Norm == None:
+        self.min_value = min_value
+        self.max_value = max_value
+
+        if Norm is None:
             self.Norm = max_value
         else:
             self.Norm = Norm
-        self.min_value = min_value
-        self.max_value = max_value
-    
+
+        if trainable_threshold:
+            self.threshold = nn.Parameter(torch.tensor(initial_threshold))
+        else:
+            self.register_buffer("threshold", torch.tensor(initial_threshold))
+
     @staticmethod
     def spike_function(x, min_value, max_value):
         return Quant.apply(x, min_value, max_value)
         
     def __repr__(self):
-        return f"MultiSpike(Max_Value={self.max_value}, Min_Value={self.min_value}, Norm={self.Norm})"     
+        return f"MultiSpike(Max_Value={self.max_value}, Min_Value={self.min_value}, Norm={self.Norm}, Threshold={self.threshold.item():.4f})"     
 
-    def forward(self, x): # B C H W
-        return self.spike_function(x, min_value=self.min_value, max_value=self.max_value) / (self.Norm)
+    def forward(self, x):  # B C H W
+        x = x - self.threshold  # shift by threshold
+        return self.spike_function(x, min_value=self.min_value, max_value=self.max_value) / self.Norm
 
 class BNAndPadLayer(nn.Module):
     def __init__(
@@ -425,6 +459,211 @@ class MS_Attention_RepConv_qkv_id(nn.Module):
 
         return x
 
+class MS_Attention_linear_with_LateralInhibition(nn.Module):
+    def __init__(
+        self,
+        dim,
+        num_heads=8,
+        qkv_bias=False,
+        qk_scale=None,
+        attn_drop=0.0,
+        proj_drop=0.0,
+        sr_ratio=1,
+        lamda_ratio=1,
+        lateral_inhibition=True,
+        inhibition_strength=1,
+        trainable_threshold=False,
+    ):
+        super().__init__()
+        assert (
+            dim % num_heads == 0
+        ), f"dim {dim} should be divided by num_heads {num_heads}."
+        self.dim = dim
+        self.num_heads = num_heads
+        self.scale = (dim//num_heads) ** -0.5
+        self.lamda_ratio = lamda_ratio
+        self.lateral_inhibition = lateral_inhibition
+        self.inhibition_strength = inhibition_strength
+        self.use_trainable_threshold = trainable_threshold
+
+        self.head_spike = MultiSpike()
+
+        # Split query into excitatory and inhibitory pathways
+        if lateral_inhibition:
+
+            # Excitatory pathway
+            self.qe_conv = nn.Sequential(nn.Conv2d(dim, dim, 1, 1, bias=False), nn.BatchNorm2d(dim))
+            self.qe_spike = MultiSpike()
+            
+            # Inhibitory pathway
+            self.qi_conv = nn.Sequential(nn.Conv2d(dim, dim, 1, 1, bias=False), nn.BatchNorm2d(dim))
+            self.qi_spike = MultiSpike()
+        else:
+            self.q_conv = nn.Sequential(nn.Conv2d(dim, dim, 1, 1, bias=False), nn.BatchNorm2d(dim))
+            self.q_spike = MultiSpike()
+
+        self.k_conv = nn.Sequential(nn.Conv2d(dim, dim, 1, 1, bias=False), nn.BatchNorm2d(dim))
+        self.k_spike = MultiSpike()
+
+        self.v_conv = nn.Sequential(nn.Conv2d(dim, int(dim*lamda_ratio), 1, 1, bias=False), nn.BatchNorm2d(int(dim*lamda_ratio)))
+        self.v_spike = MultiSpike()
+
+        self.attn_spike = MultiSpike()
+        
+        # For lateral inhibition, add additional spiking layers
+        if lateral_inhibition:
+            
+            # Trainable thresholds if enabled
+            if self.use_trainable_threshold:
+                # Initialize trainable threshold parameters
+                # self.excitatory_threshold = nn.Parameter(torch.ones(1) * 0.5)
+                # self.inhibitory_threshold = nn.Parameter(torch.ones(1) * 0.5)
+                # self.combined_threshold = nn.Parameter(torch.ones(1) * 0.5)
+                self.excitatory_spike = MultiSpike(trainable_threshold=True)
+                self.inhibitory_spike = MultiSpike(trainable_threshold=True)
+                self.combined_spike = MultiSpike(trainable_threshold=True)
+            else:
+                self.excitatory_spike = MultiSpike()
+                self.inhibitory_spike = MultiSpike()
+                self.combined_spike = MultiSpike()
+
+        self.proj_conv = nn.Sequential(
+            nn.Conv2d(dim*lamda_ratio, dim, 1, 1, bias=False), nn.BatchNorm2d(dim)
+        )
+
+    def forward(self, x):
+        B, C, H, W = x.shape
+        N = H * W
+        C_v = int(C*self.lamda_ratio)
+
+        x = self.head_spike(x)
+
+        if self.lateral_inhibition:
+            # Split processing into excitatory and inhibitory pathways
+            qe = self.qe_conv(x)
+            qi = self.qi_conv(x)
+            
+            k = self.k_conv(x)
+            v = self.v_conv(x)
+
+            # Apply spiking activation
+            qe = self.qe_spike(qe)
+            qi = self.qi_spike(qi)
+            
+            # Reshape excitatory query
+            qe = qe.flatten(2)
+            qe = (
+                qe.transpose(-1, -2)
+                .reshape(B, N, self.num_heads, C // self.num_heads)
+                .permute(0, 2, 1, 3)
+                .contiguous()
+            )
+            
+            # Reshape inhibitory query
+            qi = qi.flatten(2)
+            qi = (
+                qi.transpose(-1, -2)
+                .reshape(B, N, self.num_heads, C //self.num_heads)
+                .permute(0, 2, 1, 3)
+                .contiguous()
+            )
+            
+            k = self.k_spike(k)
+            k = k.flatten(2)
+            k = (
+                k.transpose(-1, -2)
+                .reshape(B, N, self.num_heads, C // self.num_heads)
+                .permute(0, 2, 1, 3)
+                .contiguous()
+            )
+
+            v = self.v_spike(v)
+            v = v.flatten(2)
+            v = (
+                v.transpose(-1, -2)
+                .reshape(B, N, self.num_heads, C_v // self.num_heads)
+                .permute(0, 2, 1, 3)
+                .contiguous()
+            )
+
+            # Compute excitatory and inhibitory attention separately
+            # Approach 1: Apply LIF before merging (as recommended)
+            
+            # Compute excitatory attention
+            xe = qe @ k.transpose(-2, -1)
+            # xe = xe @ v
+            
+            # Compute inhibitory attention
+            xi = qi @ k.transpose(-2, -1)
+            # xi = xi @ v
+            
+            # # Apply spiking activation to both pathways
+            # if self.use_trainable_threshold:
+            #     # Custom spiking with trainable thresholds
+            #     xe = (xe > self.excitatory_threshold).float()
+            #     xi = (xi > self.inhibitory_threshold).float()
+            # else:
+            #     # Use standard spiking activation
+            xe = self.excitatory_spike(xe)
+            xi = self.inhibitory_spike(xi)
+            
+            # Combine excitatory and inhibitory signals
+            x_combined = xe * (1-xi)
+            
+            # Apply final spiking activation to combined result
+            # if self.use_trainable_threshold:
+            #     x = (x_combined > self.combined_threshold).float()
+            # else:
+            x_combined = self.combined_spike(x_combined)
+            
+            # Apply scaling
+            x = (x_combined @ v) * (self.scale*2)
+            
+        else:
+            # Original implementation without lateral inhibition
+            q = self.q_conv(x)
+            k = self.k_conv(x)
+            v = self.v_conv(x)
+
+            q = self.q_spike(q)
+            q = q.flatten(2)
+            q = (
+                q.transpose(-1, -2)
+                .reshape(B, N, self.num_heads, C // self.num_heads)
+                .permute(0, 2, 1, 3)
+                .contiguous()
+            )
+          
+            k = self.k_spike(k)
+            k = k.flatten(2)
+            k = (
+                k.transpose(-1, -2)
+                .reshape(B, N, self.num_heads, C // self.num_heads)
+                .permute(0, 2, 1, 3)
+                .contiguous()
+            )
+
+            v = self.v_spike(v)
+            v = v.flatten(2)
+            v = (
+                v.transpose(-1, -2)
+                .reshape(B, N, self.num_heads, C_v // self.num_heads)
+                .permute(0, 2, 1, 3)
+                .contiguous()
+            )
+
+            x = q @ k.transpose(-2, -1)
+            x = (x @ v) * (self.scale*2)
+
+        # Reshape and apply final processing
+        x = x.transpose(2, 3).reshape(B, C_v, N).contiguous()
+        x = self.attn_spike(x)
+        x = x.reshape(B, C_v, H, W)
+        x = self.proj_conv(x).reshape(B, C, H, W)
+
+        return x
+
+
 class MS_Attention_linear(nn.Module):
     def __init__(
         self,
@@ -568,13 +807,16 @@ class MS_Block_Spike_SepConv(nn.Module):
         drop_path=0.0,
         norm_layer=nn.LayerNorm,
         sr_ratio=1,
-        init_values = 1e-6
+        init_values = 1e-6,
+        lateral_inhibition=False,
+        trainable_threshold=False,
     ):
         super().__init__()
 
         self.conv = SepConv_Spike(dim=dim, kernel_size=3, padding=1)
 
-        self.attn = MS_Attention_linear(
+        if lateral_inhibition:
+            self.attn = MS_Attention_linear_with_LateralInhibition(
             dim,
             num_heads=num_heads,
             qkv_bias=qkv_bias,
@@ -583,7 +825,20 @@ class MS_Block_Spike_SepConv(nn.Module):
             proj_drop=drop,
             sr_ratio=sr_ratio,
             lamda_ratio=4,
-        )
+            lateral_inhibition=True,
+            trainable_threshold=trainable_threshold
+            )
+        else:
+            self.attn = MS_Attention_linear(
+                dim,
+                num_heads=num_heads,
+                qkv_bias=qkv_bias,
+                qk_scale=qk_scale,
+                attn_drop=attn_drop,
+                proj_drop=drop,
+                sr_ratio=sr_ratio,
+                lamda_ratio=4,
+            )
 
         self.drop_path = DropPath(drop_path) if drop_path > 0.0 else nn.Identity()
         mlp_hidden_dim = int(dim * mlp_ratio)
@@ -654,6 +909,8 @@ class Spiking_vit_MetaFormer_Spike_SepConv(nn.Module):
         norm_layer=nn.LayerNorm,
         depths=[6, 8, 6],
         sr_ratios=[8, 4, 2],
+        lateral_inhibition=False,
+        trainable_threshold=False,
     ):
         super().__init__()
         self.num_classes = num_classes
@@ -729,6 +986,8 @@ class Spiking_vit_MetaFormer_Spike_SepConv(nn.Module):
                     drop_path=dpr[j],
                     norm_layer=norm_layer,
                     sr_ratio=sr_ratios,
+                    lateral_inhibition=lateral_inhibition,
+                    trainable_threshold=trainable_threshold,
                     
                 )
                 for j in range(6)
@@ -758,7 +1017,9 @@ class Spiking_vit_MetaFormer_Spike_SepConv(nn.Module):
                     drop_path=dpr[j],
                     norm_layer=norm_layer,
                     sr_ratio=sr_ratios,
-                    
+                    lateral_inhibition=lateral_inhibition,
+                    trainable_threshold=trainable_threshold,
+
                 )
                 for j in range(2)
             ]

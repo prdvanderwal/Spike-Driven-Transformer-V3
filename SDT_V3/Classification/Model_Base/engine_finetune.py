@@ -12,6 +12,7 @@
 import math
 import sys
 from typing import Iterable, Optional
+import wandb
 
 import torch
 
@@ -31,7 +32,6 @@ def train_one_epoch(
     loss_scaler,
     max_norm,
     mixup_fn,
-    log_writer,
     args,
 ):
     model.train()
@@ -43,10 +43,6 @@ def train_one_epoch(
     accum_iter = args.accum_iter
 
     optimizer.zero_grad()
-
-
-    if log_writer is not None:
-        print("log_dir: {}".format(log_writer.log_dir))
 
     for data_iter_step, (samples, targets) in enumerate(
         metric_logger.log_every(data_loader, print_freq, header)
@@ -63,14 +59,14 @@ def train_one_epoch(
         if mixup_fn is not None:
             samples, targets = mixup_fn(samples, targets)
 
-        with torch.cuda.amp.autocast():
+        with torch.amp.autocast('cuda'):
             outputs = model(samples)
-            if args.kd:
-                loss = criterion(samples, outputs, targets)
-                outputs_acc, _ = outputs
-            else:
-                loss = criterion(outputs, targets)
-                outputs_acc = outputs
+            # if args.kd:
+            #     loss = criterion(samples, outputs, targets)
+            #     outputs_acc, _ = outputs
+            # else:
+            loss = criterion(outputs, targets)
+            outputs_acc = outputs
         loss_value = loss.item()
 
         if not math.isfinite(loss_value):
@@ -86,6 +82,12 @@ def train_one_epoch(
             create_graph=False,
             update_grad=(data_iter_step + 1) % accum_iter == 0,
         )
+
+        if torch.distributed.get_rank() == 0:
+            for name, param in model.named_parameters():
+                if param.grad is None:
+                    print(f"[Unused] {name}")
+
         if (data_iter_step + 1) % accum_iter == 0:
             optimizer.zero_grad()
         torch.cuda.synchronize()
@@ -103,13 +105,12 @@ def train_one_epoch(
         loss_value_reduce = misc.all_reduce_mean(loss_value)
         metric_logger.meters["acc1"].update(acc1.item(), n=batch_size)
         metric_logger.meters["acc5"].update(acc5.item(), n=batch_size)
-        if log_writer is not None and (data_iter_step + 1) % accum_iter == 0:
-            """We use epoch_1000x as the x-axis in tensorboard.
-            This calibrates different curves when batch size changes.
-            """
-            epoch_1000x = int((data_iter_step / len(data_loader) + epoch) * 1000)
-            log_writer.add_scalar("loss", loss_value_reduce, epoch_1000x)
-            log_writer.add_scalar("lr", max_lr, epoch_1000x)
+        if (data_iter_step + 1) % accum_iter == 0 and misc.get_rank() == 0:
+            wandb.log({
+                'train/loss': loss_value_reduce,
+                'train/lr': max_lr
+            })
+            
     # gather the stats from all processes
     metric_logger.synchronize_between_processes()
     print("Averaged stats:", metric_logger)
@@ -118,6 +119,7 @@ def train_one_epoch(
             top1=metric_logger.acc1, top5=metric_logger.acc5, losses=metric_logger.loss
         )
     )
+    
     return {k: meter.global_avg for k, meter in metric_logger.meters.items()}
 
 def cal_acc(metric_logger,output,target):
@@ -143,7 +145,7 @@ def evaluate(data_loader, model, device):
         target = target.to(device, non_blocking=True)
 
         # compute output
-        with torch.cuda.amp.autocast():
+        with torch.amp.autocast('cuda'):
             output = model(images)
             loss = criterion(output, target)
 

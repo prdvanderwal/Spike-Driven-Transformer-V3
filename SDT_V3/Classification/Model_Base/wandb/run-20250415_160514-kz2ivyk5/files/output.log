@@ -1,0 +1,358 @@
+/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 10 worker processes in total. Our suggested max number of worker in current system is 8, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+[16:05:15.452855] Model = Spiking_vit_MetaFormer_Spike_SepConv(
+  (downsample1_1): MS_DownSampling(
+    (encode_conv): Conv2d(3, 16, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3))
+    (encode_bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (ConvBlock1_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(32, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=32, bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(64, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample1_2): MS_DownSampling(
+    (encode_conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (ConvBlock1_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=64, bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample2): MS_DownSampling(
+    (encode_conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (ConvBlock2_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (ConvBlock2_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample3): MS_DownSampling(
+    (encode_conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (block3): ModuleList(
+    (0-5): 6 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qe_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qi_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (k_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (v_conv): Sequential(
+          (0): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (proj_conv): Sequential(
+          (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(128, 512, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (fc2_conv): Conv1d(512, 128, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      )
+    )
+  )
+  (downsample4): MS_DownSampling(
+    (encode_conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (encode_bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (block4): ModuleList(
+    (0-1): 2 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(192, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(384, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qe_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qi_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (k_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (v_conv): Sequential(
+          (0): Conv2d(192, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (proj_conv): Sequential(
+          (0): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(192, 768, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (fc2_conv): Conv1d(768, 192, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      )
+    )
+  )
+  (head): Linear(in_features=192, out_features=1000, bias=True)
+  (spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=1)
+)
+[16:05:15.453073] number of params (M): 5.28
+[16:05:15.453193] base lr: 6.00e-04
+[16:05:15.453283] actual lr: 6.00e-04
+[16:05:15.453364] accumulate grad iterations: 1
+[16:05:15.453444] effective batch size: 256
+[16:05:15.509399] criterion = LabelSmoothingCrossEntropy()
+[16:05:15.509565] Start training for 20 epochs
+[16:05:24.950592] Epoch: [0]  [   0/1011]  eta: 2:39:01  lr: 0.000000  loss: 6.9087 (6.9087)  acc1: 0.3906 (0.3906)  acc5: 1.5625 (1.5625)  time: 9.4373  data: 3.2359  max mem: 17734
+[16:06:05.644271] Epoch: [0]  [ 100/1011]  eta: 0:07:32  lr: 0.000012  loss: 6.9076 (6.9078)  acc1: 0.0000 (0.3017)  acc5: 1.5625 (1.6166)  time: 0.4071  data: 0.0005  max mem: 17734
+[16:06:46.444327] Epoch: [0]  [ 200/1011]  eta: 0:06:06  lr: 0.000024  loss: 6.9047 (6.9071)  acc1: 0.0000 (0.3207)  acc5: 1.1719 (1.5664)  time: 0.4082  data: 0.0004  max mem: 17734
+[16:07:27.286212] Epoch: [0]  [ 300/1011]  eta: 0:05:11  lr: 0.000036  loss: 6.9022 (6.9058)  acc1: 0.3906 (0.3426)  acc5: 1.1719 (1.6287)  time: 0.4085  data: 0.0004  max mem: 17734
+[16:08:08.195390] Epoch: [0]  [ 400/1011]  eta: 0:04:23  lr: 0.000047  loss: 6.8965 (6.9041)  acc1: 0.3906 (0.3682)  acc5: 2.3438 (1.7057)  time: 0.4094  data: 0.0005  max mem: 17734
+[16:08:49.276640] Epoch: [0]  [ 500/1011]  eta: 0:03:38  lr: 0.000059  loss: 6.8900 (6.9019)  acc1: 0.3906 (0.3953)  acc5: 1.9531 (1.7925)  time: 0.4101  data: 0.0004  max mem: 17734
+[16:09:30.291075] Epoch: [0]  [ 600/1011]  eta: 0:02:54  lr: 0.000071  loss: 6.8806 (6.8990)  acc1: 0.7812 (0.4160)  acc5: 2.3438 (1.8855)  time: 0.4102  data: 0.0004  max mem: 17734
+[16:10:11.346679] Epoch: [0]  [ 700/1011]  eta: 0:02:11  lr: 0.000083  loss: 6.8662 (6.8952)  acc1: 0.3906 (0.4385)  acc5: 2.3438 (1.9442)  time: 0.4105  data: 0.0004  max mem: 17734
+[16:10:52.385089] Epoch: [0]  [ 800/1011]  eta: 0:01:28  lr: 0.000095  loss: 6.8419 (6.8900)  acc1: 0.3906 (0.4540)  acc5: 2.3438 (2.0243)  time: 0.4107  data: 0.0005  max mem: 17734
+[16:11:33.432149] Epoch: [0]  [ 900/1011]  eta: 0:00:46  lr: 0.000107  loss: 6.7942 (6.8818)  acc1: 0.3906 (0.4604)  acc5: 2.7344 (2.1023)  time: 0.4105  data: 0.0004  max mem: 17734
+[16:12:14.472697] Epoch: [0]  [1000/1011]  eta: 0:00:04  lr: 0.000119  loss: 6.7090 (6.8682)  acc1: 0.7812 (0.4855)  acc5: 3.1250 (2.2037)  time: 0.4099  data: 0.0005  max mem: 17734
+[16:12:18.549523] Epoch: [0]  [1010/1011]  eta: 0:00:00  lr: 0.000120  loss: 6.6974 (6.8665)  acc1: 0.3906 (0.4876)  acc5: 3.1250 (2.2116)  time: 0.4084  data: 0.0003  max mem: 17734
+[16:12:18.629425] Epoch: [0] Total time: 0:07:03 (0.4185 s / it)
+[16:12:18.632984] Averaged stats: lr: 0.000120  loss: 6.6974 (6.8665)  acc1: 0.3906 (0.4876)  acc5: 3.1250 (2.2116)
+[16:12:18.634597] * Train_Acc@1 0.488 Acc@5 2.212 loss 6.866
+[16:12:18.636719] Saving model at epoch: 0
+wandb: WARNING Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+[16:12:20.800583] Test:  [ 0/40]  eta: 0:01:15  loss: 6.6765 (6.6765)  acc1: 0.0000 (0.0000)  acc5: 1.5625 (1.5625)  time: 1.8929  data: 1.7006  max mem: 17734
+[16:12:29.457036] Test:  [39/40]  eta: 0:00:00  loss: 6.6506 (6.6540)  acc1: 0.7812 (0.8600)  acc5: 3.9062 (3.6100)  time: 0.1948  data: 0.0686  max mem: 37267
+[16:12:29.531779] Test: Total time: 0:00:10 (0.2656 s / it)
+[16:12:29.534277] * Acc@1 0.860 Acc@5 3.610 loss 6.654
+[16:12:29.534944] Accuracy of the network on the 10000 test images: 0.9%
+[16:12:29.535326] Max accuracy: 0.86%
+[16:12:29.535652] Saving model at epoch: 0
+[16:12:33.609853] Epoch: [1]  [   0/1011]  eta: 1:04:03  lr: 0.000120  loss: 6.6885 (6.6885)  acc1: 0.3906 (0.3906)  acc5: 2.3438 (2.3438)  time: 3.8018  data: 3.3157  max mem: 37267
+[16:13:14.560695] Epoch: [1]  [ 100/1011]  eta: 0:06:43  lr: 0.000132  loss: 6.5981 (6.6395)  acc1: 0.7812 (0.6498)  acc5: 3.1250 (2.9510)  time: 0.4096  data: 0.0004  max mem: 37267
+[16:13:55.554197] Epoch: [1]  [ 200/1011]  eta: 0:05:45  lr: 0.000144  loss: 6.4919 (6.5880)  acc1: 0.7812 (0.6724)  acc5: 2.7344 (2.9715)  time: 0.4101  data: 0.0004  max mem: 37267
+[16:14:36.592367] Epoch: [1]  [ 300/1011]  eta: 0:04:59  lr: 0.000156  loss: 6.3817 (6.5352)  acc1: 0.7812 (0.6683)  acc5: 3.5156 (3.0108)  time: 0.4104  data: 0.0004  max mem: 37267
+[16:15:17.646669] Epoch: [1]  [ 400/1011]  eta: 0:04:15  lr: 0.000167  loss: 6.2896 (6.4842)  acc1: 0.3906 (0.6907)  acc5: 3.1250 (3.0802)  time: 0.4105  data: 0.0004  max mem: 37267
+[16:15:58.662557] Epoch: [1]  [ 500/1011]  eta: 0:03:33  lr: 0.000179  loss: 6.1961 (6.4356)  acc1: 0.3906 (0.7033)  acc5: 3.1250 (3.1312)  time: 0.4106  data: 0.0004  max mem: 37267
+[16:16:39.683869] Epoch: [1]  [ 600/1011]  eta: 0:02:50  lr: 0.000191  loss: 6.1089 (6.3889)  acc1: 0.7812 (0.7104)  acc5: 3.5156 (3.1490)  time: 0.4104  data: 0.0005  max mem: 37267
+[16:17:20.666192] Epoch: [1]  [ 700/1011]  eta: 0:02:09  lr: 0.000203  loss: 6.0232 (6.3443)  acc1: 0.3906 (0.7161)  acc5: 3.5156 (3.2331)  time: 0.4062  data: 0.0005  max mem: 37267
+[16:18:01.619931] Epoch: [1]  [ 800/1011]  eta: 0:01:27  lr: 0.000215  loss: 5.9856 (6.3025)  acc1: 0.7812 (0.7203)  acc5: 3.9062 (3.2845)  time: 0.4079  data: 0.0004  max mem: 37267
+[16:18:42.499808] Epoch: [1]  [ 900/1011]  eta: 0:00:45  lr: 0.000227  loss: 5.9573 (6.2658)  acc1: 0.3906 (0.7136)  acc5: 3.5156 (3.3522)  time: 0.4094  data: 0.0004  max mem: 37267
+[16:19:23.376308] Epoch: [1]  [1000/1011]  eta: 0:00:04  lr: 0.000239  loss: 5.9542 (6.2362)  acc1: 0.7812 (0.7188)  acc5: 3.5156 (3.3779)  time: 0.4085  data: 0.0005  max mem: 37267
+[16:19:27.441627] Epoch: [1]  [1010/1011]  eta: 0:00:00  lr: 0.000240  loss: 5.9514 (6.2335)  acc1: 0.3906 (0.7160)  acc5: 3.5156 (3.3761)  time: 0.4071  data: 0.0003  max mem: 37267
+[16:19:27.539233] Epoch: [1] Total time: 0:06:57 (0.4132 s / it)
+[16:19:27.541559] Averaged stats: lr: 0.000240  loss: 5.9514 (6.2335)  acc1: 0.3906 (0.7160)  acc5: 3.5156 (3.3761)
+[16:19:27.542682] * Train_Acc@1 0.716 Acc@5 3.376 loss 6.233
+[16:19:29.507881] Test:  [ 0/40]  eta: 0:01:18  loss: 5.7810 (5.7810)  acc1: 0.3906 (0.3906)  acc5: 3.5156 (3.5156)  time: 1.9593  data: 1.8210  max mem: 37267
+[16:19:37.234140] Test:  [39/40]  eta: 0:00:00  loss: 5.7249 (5.7221)  acc1: 1.1719 (0.9500)  acc5: 4.6875 (4.7800)  time: 0.1753  data: 0.0843  max mem: 37267
+[16:19:37.306536] Test: Total time: 0:00:09 (0.2440 s / it)
+[16:19:37.308424] * Acc@1 0.950 Acc@5 4.780 loss 5.722
+[16:19:37.308911] Accuracy of the network on the 10000 test images: 0.9%
+[16:19:37.309179] Max accuracy: 0.95%
+[16:19:37.309404] Saving model at epoch: 1
+[16:19:40.413546] Epoch: [2]  [   0/1011]  eta: 0:47:38  lr: 0.000240  loss: 5.9223 (5.9223)  acc1: 0.7812 (0.7812)  acc5: 3.9062 (3.9062)  time: 2.8273  data: 2.2767  max mem: 37267
+[16:20:21.836560] Epoch: [2]  [ 100/1011]  eta: 0:06:38  lr: 0.000252  loss: 5.9570 (5.9533)  acc1: 0.3906 (0.7000)  acc5: 3.5156 (3.7361)  time: 0.4080  data: 0.0004  max mem: 37267
+[16:21:02.627070] Epoch: [2]  [ 200/1011]  eta: 0:05:43  lr: 0.000264  loss: 5.9330 (5.9480)  acc1: 0.7812 (0.7812)  acc5: 3.9062 (3.8946)  time: 0.4084  data: 0.0004  max mem: 37267
+[16:21:43.487205] Epoch: [2]  [ 300/1011]  eta: 0:04:57  lr: 0.000276  loss: 5.9444 (5.9444)  acc1: 0.3906 (0.7722)  acc5: 3.5156 (3.8790)  time: 0.4089  data: 0.0004  max mem: 37267
+[16:22:24.368513] Epoch: [2]  [ 400/1011]  eta: 0:04:14  lr: 0.000287  loss: 5.9594 (5.9461)  acc1: 0.7812 (0.7520)  acc5: 2.7344 (3.8010)  time: 0.4088  data: 0.0005  max mem: 37267
+[16:23:05.197468] Epoch: [2]  [ 500/1011]  eta: 0:03:31  lr: 0.000299  loss: 5.9418 (5.9476)  acc1: 0.7812 (0.7610)  acc5: 3.9062 (3.7417)  time: 0.4084  data: 0.0004  max mem: 37267
+[16:23:46.057826] Epoch: [2]  [ 600/1011]  eta: 0:02:49  lr: 0.000311  loss: 5.9320 (5.9450)  acc1: 0.3906 (0.7527)  acc5: 3.9062 (3.7620)  time: 0.4087  data: 0.0005  max mem: 37267
+[16:24:26.898187] Epoch: [2]  [ 700/1011]  eta: 0:02:08  lr: 0.000323  loss: 5.9411 (5.9442)  acc1: 0.7812 (0.7651)  acc5: 3.9062 (3.7580)  time: 0.4084  data: 0.0005  max mem: 37267
+[16:25:07.743799] Epoch: [2]  [ 800/1011]  eta: 0:01:26  lr: 0.000335  loss: 5.9200 (5.9425)  acc1: 0.3906 (0.7647)  acc5: 3.9062 (3.7868)  time: 0.4085  data: 0.0004  max mem: 37267
+[16:25:48.707758] Epoch: [2]  [ 900/1011]  eta: 0:00:45  lr: 0.000347  loss: 5.9396 (5.9415)  acc1: 0.3906 (0.7622)  acc5: 3.5156 (3.7775)  time: 0.4083  data: 0.0004  max mem: 37267
+[16:26:29.489580] Epoch: [2]  [1000/1011]  eta: 0:00:04  lr: 0.000359  loss: 5.9167 (5.9411)  acc1: 0.7812 (0.7606)  acc5: 3.5156 (3.7626)  time: 0.4074  data: 0.0005  max mem: 37267
+[16:26:33.543370] Epoch: [2]  [1010/1011]  eta: 0:00:00  lr: 0.000360  loss: 5.9497 (5.9413)  acc1: 0.3906 (0.7569)  acc5: 3.1250 (3.7552)  time: 0.4058  data: 0.0003  max mem: 37267
+[16:26:33.632651] Epoch: [2] Total time: 0:06:56 (0.4115 s / it)
+[16:26:33.634346] Averaged stats: lr: 0.000360  loss: 5.9497 (5.9413)  acc1: 0.3906 (0.7569)  acc5: 3.1250 (3.7552)
+[16:26:33.635107] * Train_Acc@1 0.757 Acc@5 3.755 loss 5.941
+[16:26:35.501532] Test:  [ 0/40]  eta: 0:01:14  loss: 5.8397 (5.8397)  acc1: 0.3906 (0.3906)  acc5: 3.1250 (3.1250)  time: 1.8617  data: 1.7597  max mem: 37267
+[16:26:42.965050] Test:  [39/40]  eta: 0:00:00  loss: 5.7813 (5.7715)  acc1: 0.3906 (0.6500)  acc5: 3.1250 (3.7900)  time: 0.1462  data: 0.0553  max mem: 37267
+[16:26:43.044707] Test: Total time: 0:00:09 (0.2351 s / it)
+[16:26:43.047600] * Acc@1 0.650 Acc@5 3.790 loss 5.771
+[16:26:43.048369] Accuracy of the network on the 10000 test images: 0.7%
+[16:26:43.048722] Max accuracy: 0.95%
+[16:26:43.049005] Saving model at epoch: 2
+[16:26:47.370279] Epoch: [3]  [   0/1011]  eta: 1:08:08  lr: 0.000360  loss: 5.9542 (5.9542)  acc1: 0.7812 (0.7812)  acc5: 2.3438 (2.3438)  time: 4.0445  data: 3.5537  max mem: 37267
+[16:27:28.131185] Epoch: [3]  [ 100/1011]  eta: 0:06:44  lr: 0.000372  loss: 5.9349 (5.9470)  acc1: 0.3906 (0.6420)  acc5: 3.1250 (3.5466)  time: 0.4079  data: 0.0004  max mem: 37267
+[16:28:08.925230] Epoch: [3]  [ 200/1011]  eta: 0:05:45  lr: 0.000384  loss: 5.9170 (5.9387)  acc1: 0.3906 (0.6452)  acc5: 3.5156 (3.6789)  time: 0.4078  data: 0.0004  max mem: 37267
+[16:28:49.706933] Epoch: [3]  [ 300/1011]  eta: 0:04:58  lr: 0.000396  loss: 5.9270 (5.9318)  acc1: 0.7812 (0.6774)  acc5: 3.9062 (3.8037)  time: 0.4083  data: 0.0005  max mem: 37267
+[16:29:30.504165] Epoch: [3]  [ 400/1011]  eta: 0:04:14  lr: 0.000407  loss: 5.9139 (5.9268)  acc1: 0.7812 (0.6858)  acc5: 3.9062 (3.8381)  time: 0.4076  data: 0.0004  max mem: 37267
+[16:30:11.287512] Epoch: [3]  [ 500/1011]  eta: 0:03:32  lr: 0.000419  loss: 5.9084 (5.9244)  acc1: 1.1719 (0.7048)  acc5: 4.2969 (3.8673)  time: 0.4078  data: 0.0004  max mem: 37267
+[16:30:52.069015] Epoch: [3]  [ 600/1011]  eta: 0:02:50  lr: 0.000431  loss: 5.9025 (5.9225)  acc1: 0.7812 (0.7046)  acc5: 3.5156 (3.8770)  time: 0.4079  data: 0.0004  max mem: 37267
+[16:31:32.864335] Epoch: [3]  [ 700/1011]  eta: 0:02:08  lr: 0.000443  loss: 5.8989 (5.9205)  acc1: 0.3906 (0.6938)  acc5: 3.9062 (3.8734)  time: 0.4081  data: 0.0004  max mem: 37267
+[16:32:13.648513] Epoch: [3]  [ 800/1011]  eta: 0:01:27  lr: 0.000455  loss: 5.8971 (5.9184)  acc1: 0.7812 (0.7008)  acc5: 3.9062 (3.8853)  time: 0.4076  data: 0.0004  max mem: 37267
+[16:32:54.407769] Epoch: [3]  [ 900/1011]  eta: 0:00:45  lr: 0.000467  loss: 5.8994 (5.9168)  acc1: 0.7812 (0.7088)  acc5: 4.2969 (3.9154)  time: 0.4078  data: 0.0005  max mem: 37267
+[16:33:35.171948] Epoch: [3]  [1000/1011]  eta: 0:00:04  lr: 0.000479  loss: 5.8952 (5.9151)  acc1: 0.3906 (0.7087)  acc5: 4.2969 (3.9230)  time: 0.4069  data: 0.0005  max mem: 37267
+[16:33:39.222857] Epoch: [3]  [1010/1011]  eta: 0:00:00  lr: 0.000480  loss: 5.9028 (5.9149)  acc1: 0.3906 (0.7078)  acc5: 4.2969 (3.9213)  time: 0.4055  data: 0.0003  max mem: 37267
+[16:33:39.326586] Epoch: [3] Total time: 0:06:56 (0.4115 s / it)
+[16:33:39.329798] Averaged stats: lr: 0.000480  loss: 5.9028 (5.9149)  acc1: 0.3906 (0.7078)  acc5: 4.2969 (3.9213)
+[16:33:39.331379] * Train_Acc@1 0.708 Acc@5 3.921 loss 5.915
+[16:33:42.515481] Test:  [ 0/40]  eta: 0:02:07  loss: 5.7523 (5.7523)  acc1: 0.3906 (0.3906)  acc5: 3.5156 (3.5156)  time: 3.1787  data: 3.0328  max mem: 37267
+[16:33:49.016448] Test:  [39/40]  eta: 0:00:00  loss: 5.6999 (5.7020)  acc1: 0.7812 (0.8400)  acc5: 4.2969 (4.5100)  time: 0.1788  data: 0.0879  max mem: 37267
+[16:33:49.095778] Test: Total time: 0:00:09 (0.2440 s / it)
+[16:33:49.097712] * Acc@1 0.840 Acc@5 4.510 loss 5.702
+[16:33:49.098209] Accuracy of the network on the 10000 test images: 0.8%
+[16:33:49.098474] Max accuracy: 0.95%
+[16:33:49.098706] Saving model at epoch: 3
+[16:33:51.885402] Epoch: [4]  [   0/1011]  eta: 0:41:45  lr: 0.000480  loss: 5.9113 (5.9113)  acc1: 1.5625 (1.5625)  acc5: 3.1250 (3.1250)  time: 2.4786  data: 1.9674  max mem: 37267

@@ -1,0 +1,144 @@
+_wandb:
+    value:
+        cli_version: 0.19.9
+        m: []
+        python_version: 3.11.5
+        t:
+            "1":
+                - 1
+                - 41
+                - 49
+                - 55
+                - 63
+            "2":
+                - 1
+                - 41
+                - 49
+                - 55
+                - 63
+            "3":
+                - 13
+                - 14
+                - 15
+                - 16
+                - 23
+                - 55
+            "4": 3.11.5
+            "5": 0.19.9
+            "8":
+                - 2
+                - 5
+            "12": 0.19.9
+            "13": linux-x86_64
+aa:
+    value: rand-m9-mstd0.5-inc1
+accum_iter:
+    value: 1
+batch_size:
+    value: 256
+blr:
+    value: 0.0006
+clip_grad:
+    value: null
+color_jitter:
+    value: null
+cutmix:
+    value: 0
+cutmix_minmax:
+    value: null
+data_path:
+    value: /tmp/dataset/ImageNet-200
+device:
+    value: cuda
+dist_backend:
+    value: nccl
+dist_eval:
+    value: true
+dist_on_itp:
+    value: false
+dist_url:
+    value: env://
+distributed:
+    value: true
+drop_path:
+    value: 0.1
+epochs:
+    value: 20
+eval:
+    value: false
+finetune:
+    value: ""
+global_pool:
+    value: true
+gpu:
+    value: 0
+input_size:
+    value: 224
+lateral_inhibition:
+    value: true
+layer_decay:
+    value: 1
+local_rank:
+    value: -1
+log_dir:
+    value: outputs/T1
+lr:
+    value: null
+min_lr:
+    value: 1e-06
+mixup:
+    value: 0
+mixup_mode:
+    value: batch
+mixup_prob:
+    value: 1
+mixup_switch_prob:
+    value: 0.5
+model:
+    value: Efficient_Spiking_Transformer_s
+model_mode:
+    value: ms
+name:
+    value: ImageNet-200_20250415_174132_s32-lr_None-b_256
+nb_classes:
+    value: 1000
+num_workers:
+    value: 10
+output_dir:
+    value: outputs/T1
+pin_mem:
+    value: true
+rank:
+    value: 0
+recount:
+    value: 1
+remode:
+    value: pixel
+repeated_aug:
+    value: false
+reprob:
+    value: 0.25
+resplit:
+    value: false
+resume:
+    value: null
+seed:
+    value: 0
+smoothing:
+    value: 0.1
+start_epoch:
+    value: 0
+time_steps:
+    value: 1
+wandb:
+    value: true
+wandb_tags:
+    value:
+        - li
+        - binary_only
+warmup_epochs:
+    value: 5
+weight_decay:
+    value: 0.05
+world_size:
+    value: 1

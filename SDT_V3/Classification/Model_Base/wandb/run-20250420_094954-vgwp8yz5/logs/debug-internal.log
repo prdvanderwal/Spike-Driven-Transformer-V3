@@ -1,0 +1,7 @@
+{"time":"2025-04-20T09:49:54.177677561+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250420_094954-vgwp8yz5/logs/debug-core.log"}
+{"time":"2025-04-20T09:49:54.457116395+02:00","level":"INFO","msg":"created new stream","id":"vgwp8yz5"}
+{"time":"2025-04-20T09:49:54.457207164+02:00","level":"INFO","msg":"stream: started","id":"vgwp8yz5"}
+{"time":"2025-04-20T09:49:54.457335921+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"vgwp8yz5"}
+{"time":"2025-04-20T09:49:54.457462628+02:00","level":"INFO","msg":"handler: started","stream_id":"vgwp8yz5"}
+{"time":"2025-04-20T09:49:54.45756603+02:00","level":"INFO","msg":"sender: started","stream_id":"vgwp8yz5"}
+{"time":"2025-04-20T09:49:54.788569527+02:00","level":"INFO","msg":"Starting system monitor"}

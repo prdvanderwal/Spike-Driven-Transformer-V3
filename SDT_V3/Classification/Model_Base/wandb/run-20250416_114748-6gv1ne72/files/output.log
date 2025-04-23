@@ -1,0 +1,609 @@
+[11:47:49.781778] Model = Spiking_vit_MetaFormer_Spike_SepConv(
+  (downsample1_1): MS_DownSampling(
+    (encode_conv): Conv2d(3, 16, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3))
+    (encode_bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (ConvBlock1_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(32, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=32, bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(64, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample1_2): MS_DownSampling(
+    (encode_conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (ConvBlock1_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=64, bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample2): MS_DownSampling(
+    (encode_conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (ConvBlock2_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (ConvBlock2_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample3): MS_DownSampling(
+    (encode_conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (block3): ModuleList(
+    (0-5): 6 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qe_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qi_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (k_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (v_conv): Sequential(
+          (0): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (proj_conv): Sequential(
+          (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(128, 512, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (fc2_conv): Conv1d(512, 128, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      )
+    )
+  )
+  (downsample4): MS_DownSampling(
+    (encode_conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (encode_bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (block4): ModuleList(
+    (0-1): 2 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(192, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(384, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qe_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qi_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (k_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (v_conv): Sequential(
+          (0): Conv2d(192, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (proj_conv): Sequential(
+          (0): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(192, 768, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (fc2_conv): Conv1d(768, 192, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      )
+    )
+  )
+  (head): Linear(in_features=192, out_features=1000, bias=True)
+  (spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=1)
+)
+[11:47:49.782030] number of params (M): 5.28
+[11:47:49.782155] base lr: 6.00e-04
+[11:47:49.782255] actual lr: 1.20e-03
+[11:47:49.782343] accumulate grad iterations: 1
+[11:47:49.782427] effective batch size: 512
+[11:47:49.832241] criterion = LabelSmoothingCrossEntropy()
+[11:47:49.832455] Start training for 20 epochs
+[11:47:59.299260] Epoch: [0]  [  0/505]  eta: 1:19:39  lr: 0.000000  loss: 6.9225 (6.9225)  acc1: 0.3906 (0.3906)  acc5: 0.7812 (0.7812)  time: 9.4644  data: 3.7721  max mem: 19954
+[11:48:41.813929] Epoch: [0]  [100/505]  eta: 0:03:28  lr: 0.000048  loss: 6.9055 (6.9126)  acc1: 0.0000 (0.1044)  acc5: 0.3906 (0.5376)  time: 0.4242  data: 0.0005  max mem: 19954
+[11:49:24.306235] Epoch: [0]  [200/505]  eta: 0:02:23  lr: 0.000095  loss: 6.8801 (6.9023)  acc1: 0.0000 (0.1380)  acc5: 1.1719 (0.7599)  time: 0.4259  data: 0.0005  max mem: 19954
+[11:50:06.937941] Epoch: [0]  [300/505]  eta: 0:01:33  lr: 0.000143  loss: 6.8146 (6.8833)  acc1: 0.3906 (0.2401)  acc5: 2.3438 (1.2420)  time: 0.4263  data: 0.0005  max mem: 19954
+[11:50:49.584300] Epoch: [0]  [400/505]  eta: 0:00:47  lr: 0.000190  loss: 6.6575 (6.8439)  acc1: 0.7812 (0.3224)  acc5: 3.1250 (1.6531)  time: 0.4266  data: 0.0005  max mem: 19954
+[11:51:32.296410] Epoch: [0]  [500/505]  eta: 0:00:02  lr: 0.000238  loss: 6.4566 (6.7825)  acc1: 0.3906 (0.3641)  acc5: 2.7344 (1.8931)  time: 0.4270  data: 0.0003  max mem: 19954
+[11:51:33.986657] Epoch: [0]  [504/505]  eta: 0:00:00  lr: 0.000240  loss: 6.4591 (6.7800)  acc1: 0.7812 (0.3690)  acc5: 3.1250 (1.8998)  time: 0.4262  data: 0.0002  max mem: 19954
+[11:51:34.113676] Epoch: [0] Total time: 0:03:44 (0.4441 s / it)
+[11:51:34.116707] Averaged stats: lr: 0.000240  loss: 6.4591 (6.7800)  acc1: 0.7812 (0.3937)  acc5: 3.1250 (1.9291)
+[11:51:34.117949] * Train_Acc@1 0.394 Acc@5 1.929 loss 6.780
+[11:51:34.119016] Saving model at epoch: 0
+wandb: WARNING Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+[11:51:38.162774] Test:  [ 0/20]  eta: 0:01:15  loss: 6.2796 (6.2796)  acc1: 0.7812 (0.7812)  acc5: 3.9062 (3.9062)  time: 3.7771  data: 3.6257  max mem: 19954
+[11:51:40.980212] Test:  [19/20]  eta: 0:00:00  loss: 6.3099 (6.3214)  acc1: 0.7812 (0.9400)  acc5: 3.1250 (3.5800)  time: 0.3297  data: 0.2016  max mem: 19954
+[11:51:41.067083] Test: Total time: 0:00:06 (0.3341 s / it)
+[11:51:41.070629] * Acc@1 0.820 Acc@5 3.570 loss 6.322
+[11:51:41.071437] Accuracy of the network on the 10000 test images: 0.8%
+[11:51:41.071949] Max accuracy: 0.82%
+[11:51:41.072199] Saving model at epoch: 0
+[11:51:44.805387] Epoch: [1]  [  0/505]  eta: 0:28:55  lr: 0.000240  loss: 6.4237 (6.4237)  acc1: 0.3906 (0.3906)  acc5: 2.7344 (2.7344)  time: 3.4359  data: 2.7744  max mem: 19954
+[11:52:27.455991] Epoch: [1]  [100/505]  eta: 0:03:04  lr: 0.000288  loss: 6.2387 (6.3226)  acc1: 0.7812 (0.7232)  acc5: 3.5156 (3.2797)  time: 0.4264  data: 0.0005  max mem: 19954
+[11:53:10.040765] Epoch: [1]  [200/505]  eta: 0:02:14  lr: 0.000335  loss: 6.0285 (6.2198)  acc1: 0.7812 (0.7599)  acc5: 3.5156 (3.4768)  time: 0.4265  data: 0.0005  max mem: 19954
+[11:53:52.664092] Epoch: [1]  [300/505]  eta: 0:01:29  lr: 0.000383  loss: 5.8678 (6.1239)  acc1: 0.7812 (0.8604)  acc5: 4.2969 (3.7142)  time: 0.4262  data: 0.0005  max mem: 19954
+[11:54:35.305468] Epoch: [1]  [400/505]  eta: 0:00:45  lr: 0.000430  loss: 5.7417 (6.0400)  acc1: 1.5625 (0.9478)  acc5: 5.0781 (4.0767)  time: 0.4260  data: 0.0005  max mem: 19954
+[11:55:17.884363] Epoch: [1]  [500/505]  eta: 0:00:02  lr: 0.000478  loss: 5.6551 (5.9697)  acc1: 1.1719 (1.0643)  acc5: 5.8594 (4.4053)  time: 0.4233  data: 0.0003  max mem: 19954
+[11:55:19.571253] Epoch: [1]  [504/505]  eta: 0:00:00  lr: 0.000480  loss: 5.6551 (5.9672)  acc1: 1.1719 (1.0659)  acc5: 5.8594 (4.4206)  time: 0.4223  data: 0.0002  max mem: 19954
+[11:55:19.711645] Epoch: [1] Total time: 0:03:38 (0.4324 s / it)
+[11:55:19.713079] Averaged stats: lr: 0.000480  loss: 5.6551 (5.9671)  acc1: 1.1719 (1.1297)  acc5: 5.8594 (4.4767)
+[11:55:19.713566] * Train_Acc@1 1.130 Acc@5 4.477 loss 5.967
+[11:55:22.732452] Test:  [ 0/20]  eta: 0:01:00  loss: 5.3342 (5.3342)  acc1: 0.7812 (0.7812)  acc5: 5.0781 (5.0781)  time: 3.0157  data: 2.8689  max mem: 19954
+[11:55:25.570568] Test:  [19/20]  eta: 0:00:00  loss: 5.3102 (5.3081)  acc1: 1.5625 (1.9000)  acc5: 8.2031 (7.8400)  time: 0.2926  data: 0.1874  max mem: 19954
+[11:55:25.652194] Test: Total time: 0:00:05 (0.2968 s / it)
+[11:55:25.655562] * Acc@1 2.100 Acc@5 8.280 loss 5.304
+[11:55:25.656400] Accuracy of the network on the 10000 test images: 2.1%
+[11:55:25.656917] Max accuracy: 2.10%
+[11:55:25.657334] Saving model at epoch: 1
+[11:55:29.332145] Epoch: [2]  [  0/505]  eta: 0:28:38  lr: 0.000480  loss: 5.6029 (5.6029)  acc1: 1.9531 (1.9531)  acc5: 10.1562 (10.1562)  time: 3.4035  data: 2.8716  max mem: 19954
+[11:56:11.890143] Epoch: [2]  [100/505]  eta: 0:03:04  lr: 0.000528  loss: 5.5827 (5.6084)  acc1: 1.9531 (1.9106)  acc5: 8.2031 (7.3948)  time: 0.4257  data: 0.0005  max mem: 19954
+[11:56:54.466373] Epoch: [2]  [200/505]  eta: 0:02:14  lr: 0.000575  loss: 5.5476 (5.5848)  acc1: 1.9531 (2.0406)  acc5: 8.9844 (7.9252)  time: 0.4255  data: 0.0005  max mem: 19954
+[11:57:37.078008] Epoch: [2]  [300/505]  eta: 0:01:29  lr: 0.000623  loss: 5.4894 (5.5579)  acc1: 3.1250 (2.2983)  acc5: 10.5469 (8.6963)  time: 0.4265  data: 0.0005  max mem: 19954
+[11:58:19.678074] Epoch: [2]  [400/505]  eta: 0:00:45  lr: 0.000670  loss: 5.4214 (5.5318)  acc1: 3.1250 (2.4977)  acc5: 12.1094 (9.3078)  time: 0.4256  data: 0.0005  max mem: 19954
+[11:59:02.201510] Epoch: [2]  [500/505]  eta: 0:00:02  lr: 0.000718  loss: 5.3544 (5.5053)  acc1: 3.9062 (2.7157)  acc5: 13.6719 (9.9988)  time: 0.4233  data: 0.0003  max mem: 19954
+[11:59:03.889098] Epoch: [2]  [504/505]  eta: 0:00:00  lr: 0.000720  loss: 5.3720 (5.5044)  acc1: 3.5156 (2.7166)  acc5: 12.8906 (10.0178)  time: 0.4225  data: 0.0003  max mem: 19954
+[11:59:04.034653] Epoch: [2] Total time: 0:03:38 (0.4319 s / it)
+[11:59:04.037784] Averaged stats: lr: 0.000720  loss: 5.3720 (5.5039)  acc1: 3.5156 (2.7556)  acc5: 12.8906 (10.1141)
+[11:59:04.039270] * Train_Acc@1 2.756 Acc@5 10.114 loss 5.504
+[11:59:07.001526] Test:  [ 0/20]  eta: 0:00:59  loss: 4.8297 (4.8297)  acc1: 3.5156 (3.5156)  acc5: 16.4062 (16.4062)  time: 2.9573  data: 2.8134  max mem: 19954
+[11:59:09.924756] Test:  [19/20]  eta: 0:00:00  loss: 4.8219 (4.8272)  acc1: 5.0781 (5.2000)  acc5: 17.9688 (17.5000)  time: 0.2940  data: 0.1884  max mem: 19954
+[11:59:09.989864] Test: Total time: 0:00:05 (0.2973 s / it)
+[11:59:09.991292] * Acc@1 5.380 Acc@5 18.110 loss 4.828
+[11:59:09.991623] Accuracy of the network on the 10000 test images: 5.4%
+[11:59:09.991779] Max accuracy: 5.38%
+[11:59:09.991906] Saving model at epoch: 2
+[11:59:13.353428] Epoch: [3]  [  0/505]  eta: 0:26:04  lr: 0.000720  loss: 5.3882 (5.3882)  acc1: 3.1250 (3.1250)  acc5: 12.8906 (12.8906)  time: 3.0971  data: 2.5740  max mem: 19954
+[11:59:56.055516] Epoch: [3]  [100/505]  eta: 0:03:03  lr: 0.000768  loss: 5.2924 (5.3328)  acc1: 4.6875 (4.1615)  acc5: 16.0156 (14.3216)  time: 0.4255  data: 0.0006  max mem: 19954
+[12:00:38.603037] Epoch: [3]  [200/505]  eta: 0:02:14  lr: 0.000815  loss: 5.2082 (5.2962)  acc1: 4.2969 (4.3202)  acc5: 16.4062 (15.1236)  time: 0.4259  data: 0.0005  max mem: 19954
+[12:01:21.289739] Epoch: [3]  [300/505]  eta: 0:01:29  lr: 0.000863  loss: 5.1699 (5.2675)  acc1: 5.4688 (4.6992)  acc5: 18.3594 (15.8041)  time: 0.4261  data: 0.0005  max mem: 19954
+[12:02:03.917445] Epoch: [3]  [400/505]  eta: 0:00:45  lr: 0.000910  loss: 5.1056 (5.2361)  acc1: 6.2500 (5.0450)  acc5: 19.5312 (16.6381)  time: 0.4265  data: 0.0005  max mem: 19954
+[12:02:46.481923] Epoch: [3]  [500/505]  eta: 0:00:02  lr: 0.000958  loss: 5.0970 (5.2073)  acc1: 6.6406 (5.4111)  acc5: 19.9219 (17.3824)  time: 0.4240  data: 0.0004  max mem: 19954
+[12:02:48.171188] Epoch: [3]  [504/505]  eta: 0:00:00  lr: 0.000960  loss: 5.0724 (5.2059)  acc1: 6.6406 (5.4177)  acc5: 19.9219 (17.4188)  time: 0.4230  data: 0.0003  max mem: 19954
+[12:02:48.313274] Epoch: [3] Total time: 0:03:38 (0.4318 s / it)
+[12:02:48.323642] Averaged stats: lr: 0.000960  loss: 5.0724 (5.2055)  acc1: 6.6406 (5.4065)  acc5: 19.9219 (17.4992)
+[12:02:48.324324] * Train_Acc@1 5.406 Acc@5 17.499 loss 5.206
+[12:02:51.191612] Test:  [ 0/20]  eta: 0:00:57  loss: 4.4129 (4.4129)  acc1: 9.3750 (9.3750)  acc5: 29.2969 (29.2969)  time: 2.8640  data: 2.7159  max mem: 19954
+[12:02:54.058905] Test:  [19/20]  eta: 0:00:00  loss: 4.3432 (4.3501)  acc1: 9.7656 (10.0400)  acc5: 29.2969 (29.4600)  time: 0.2865  data: 0.1809  max mem: 19954
+[12:02:54.126956] Test: Total time: 0:00:05 (0.2900 s / it)
+[12:02:54.130106] * Acc@1 10.720 Acc@5 29.950 loss 4.334
+[12:02:54.130886] Accuracy of the network on the 10000 test images: 10.7%
+[12:02:54.131331] Max accuracy: 10.72%
+[12:02:54.131732] Saving model at epoch: 3
+[12:02:58.122340] Epoch: [4]  [  0/505]  eta: 0:31:05  lr: 0.000960  loss: 5.1068 (5.1068)  acc1: 4.6875 (4.6875)  acc5: 22.2656 (22.2656)  time: 3.6939  data: 3.1425  max mem: 19954
+[12:03:40.686236] Epoch: [4]  [100/505]  eta: 0:03:05  lr: 0.001008  loss: 5.0077 (5.0354)  acc1: 7.0312 (7.4296)  acc5: 21.8750 (22.1341)  time: 0.4257  data: 0.0005  max mem: 19954
+[12:04:23.329224] Epoch: [4]  [200/505]  eta: 0:02:14  lr: 0.001055  loss: 4.9346 (5.0022)  acc1: 8.2031 (7.7814)  acc5: 25.0000 (22.9089)  time: 0.4266  data: 0.0005  max mem: 19954
+[12:05:05.983431] Epoch: [4]  [300/505]  eta: 0:01:29  lr: 0.001103  loss: 4.8895 (4.9750)  acc1: 8.5938 (8.0721)  acc5: 26.1719 (23.6218)  time: 0.4264  data: 0.0005  max mem: 19954
+[12:05:48.591037] Epoch: [4]  [400/505]  eta: 0:00:45  lr: 0.001150  loss: 4.8538 (4.9514)  acc1: 9.7656 (8.4204)  acc5: 26.1719 (24.2996)  time: 0.4259  data: 0.0005  max mem: 19954
+[12:06:31.149925] Epoch: [4]  [500/505]  eta: 0:00:02  lr: 0.001198  loss: 4.8093 (4.9257)  acc1: 11.3281 (8.7614)  acc5: 28.1250 (24.9072)  time: 0.4235  data: 0.0003  max mem: 19954
+[12:06:32.839483] Epoch: [4]  [504/505]  eta: 0:00:00  lr: 0.001200  loss: 4.8050 (4.9248)  acc1: 11.3281 (8.7871)  acc5: 26.9531 (24.9350)  time: 0.4228  data: 0.0002  max mem: 19954
+[12:06:32.974463] Epoch: [4] Total time: 0:03:38 (0.4328 s / it)
+[12:06:32.977326] Averaged stats: lr: 0.001200  loss: 4.8050 (4.9243)  acc1: 11.3281 (8.7693)  acc5: 26.9531 (24.8766)
+[12:06:32.978317] * Train_Acc@1 8.769 Acc@5 24.877 loss 4.924
+[12:06:35.984325] Test:  [ 0/20]  eta: 0:01:00  loss: 4.0826 (4.0826)  acc1: 13.6719 (13.6719)  acc5: 32.4219 (32.4219)  time: 3.0009  data: 2.8531  max mem: 19954
+[12:06:38.786732] Test:  [19/20]  eta: 0:00:00  loss: 3.9302 (3.9416)  acc1: 14.8438 (15.2600)  acc5: 38.2353 (38.4200)  time: 0.2901  data: 0.1839  max mem: 19954
+[12:06:38.858844] Test: Total time: 0:00:05 (0.2938 s / it)
+[12:06:38.862202] * Acc@1 16.090 Acc@5 39.180 loss 3.925
+[12:06:38.863035] Accuracy of the network on the 10000 test images: 16.1%
+[12:06:38.863537] Max accuracy: 16.09%
+[12:06:38.863962] Saving model at epoch: 4
+[12:06:42.482122] Epoch: [5]  [  0/505]  eta: 0:28:08  lr: 0.001200  loss: 4.8835 (4.8835)  acc1: 10.9375 (10.9375)  acc5: 27.3438 (27.3438)  time: 3.3441  data: 2.7768  max mem: 19954
+[12:07:25.048820] Epoch: [5]  [100/505]  eta: 0:03:04  lr: 0.001199  loss: 4.7298 (4.7624)  acc1: 11.7188 (11.0265)  acc5: 30.0781 (29.1460)  time: 0.4262  data: 0.0006  max mem: 19954
+[12:08:07.591247] Epoch: [5]  [200/505]  eta: 0:02:14  lr: 0.001198  loss: 4.6919 (4.7406)  acc1: 12.1094 (11.3612)  acc5: 30.4688 (29.8702)  time: 0.4254  data: 0.0005  max mem: 19954
+[12:08:50.310212] Epoch: [5]  [300/505]  eta: 0:01:29  lr: 0.001195  loss: 4.6120 (4.7125)  acc1: 12.1094 (11.7694)  acc5: 32.8125 (30.6089)  time: 0.4263  data: 0.0005  max mem: 19954
+[12:09:32.898081] Epoch: [5]  [400/505]  eta: 0:00:45  lr: 0.001192  loss: 4.5926 (4.6897)  acc1: 12.8906 (12.1230)  acc5: 32.8125 (31.2412)  time: 0.4260  data: 0.0005  max mem: 19954
+[12:10:15.451599] Epoch: [5]  [500/505]  eta: 0:00:02  lr: 0.001187  loss: 4.5329 (4.6652)  acc1: 14.0625 (12.5912)  acc5: 35.1562 (32.0118)  time: 0.4236  data: 0.0004  max mem: 19954
+[12:10:17.144335] Epoch: [5]  [504/505]  eta: 0:00:00  lr: 0.001187  loss: 4.5284 (4.6641)  acc1: 13.6719 (12.6021)  acc5: 35.5469 (32.0614)  time: 0.4228  data: 0.0003  max mem: 19954
+[12:10:17.284162] Epoch: [5] Total time: 0:03:38 (0.4320 s / it)
+[12:10:17.286480] Averaged stats: lr: 0.001187  loss: 4.5284 (4.6651)  acc1: 13.6719 (12.5294)  acc5: 35.5469 (31.9775)
+[12:10:17.286997] * Train_Acc@1 12.529 Acc@5 31.977 loss 4.665
+[12:10:20.332910] Test:  [ 0/20]  eta: 0:01:00  loss: 3.8691 (3.8691)  acc1: 15.6250 (15.6250)  acc5: 43.3594 (43.3594)  time: 3.0424  data: 2.8996  max mem: 19954
+[12:10:23.144602] Test:  [19/20]  eta: 0:00:00  loss: 3.6740 (3.6813)  acc1: 19.1406 (19.5800)  acc5: 44.5312 (44.7600)  time: 0.2927  data: 0.1866  max mem: 19954
+[12:10:23.213093] Test: Total time: 0:00:05 (0.2962 s / it)
+[12:10:23.216413] * Acc@1 19.970 Acc@5 45.090 loss 3.668
+[12:10:23.217271] Accuracy of the network on the 10000 test images: 20.0%
+[12:10:23.217784] Max accuracy: 19.97%
+[12:10:23.218207] Saving model at epoch: 5
+[12:10:26.269039] Epoch: [6]  [  0/505]  eta: 0:23:18  lr: 0.001187  loss: 4.6165 (4.6165)  acc1: 10.5469 (10.5469)  acc5: 32.0312 (32.0312)  time: 2.7700  data: 2.1439  max mem: 19954
+[12:11:08.996643] Epoch: [6]  [100/505]  eta: 0:03:02  lr: 0.001181  loss: 4.5343 (4.5201)  acc1: 14.8438 (14.9675)  acc5: 34.7656 (35.7209)  time: 0.4258  data: 0.0005  max mem: 19954
+[12:11:51.542373] Epoch: [6]  [200/505]  eta: 0:02:13  lr: 0.001175  loss: 4.4313 (4.4961)  acc1: 16.0156 (15.4987)  acc5: 37.5000 (36.4506)  time: 0.4258  data: 0.0005  max mem: 19954
+[12:12:34.156501] Epoch: [6]  [300/505]  eta: 0:01:28  lr: 0.001167  loss: 4.4119 (4.4775)  acc1: 16.4062 (15.9066)  acc5: 38.6719 (36.9342)  time: 0.4264  data: 0.0005  max mem: 19954
+[12:13:16.767067] Epoch: [6]  [400/505]  eta: 0:00:45  lr: 0.001158  loss: 4.3294 (4.4585)  acc1: 17.1875 (16.2270)  acc5: 39.0625 (37.4834)  time: 0.4256  data: 0.0005  max mem: 19954
+[12:13:59.308344] Epoch: [6]  [500/505]  eta: 0:00:02  lr: 0.001149  loss: 4.3487 (4.4378)  acc1: 16.7969 (16.5466)  acc5: 40.2344 (38.0801)  time: 0.4234  data: 0.0003  max mem: 19954
+[12:14:01.005485] Epoch: [6]  [504/505]  eta: 0:00:00  lr: 0.001148  loss: 4.3487 (4.4371)  acc1: 17.1875 (16.5509)  acc5: 39.4531 (38.0863)  time: 0.4230  data: 0.0003  max mem: 19954
+[12:14:01.154542] Epoch: [6] Total time: 0:03:37 (0.4310 s / it)
+[12:14:01.157217] Averaged stats: lr: 0.001148  loss: 4.3487 (4.4398)  acc1: 17.1875 (16.4867)  acc5: 39.4531 (38.0384)
+[12:14:01.157879] * Train_Acc@1 16.487 Acc@5 38.038 loss 4.440
+[12:14:04.152985] Test:  [ 0/20]  eta: 0:00:59  loss: 3.5825 (3.5825)  acc1: 19.9219 (19.9219)  acc5: 44.9219 (44.9219)  time: 2.9919  data: 2.8439  max mem: 19954
+[12:14:06.922692] Test:  [19/20]  eta: 0:00:00  loss: 3.3423 (3.3582)  acc1: 25.3906 (24.7800)  acc5: 52.3438 (52.1800)  time: 0.2880  data: 0.1827  max mem: 19954
+[12:14:06.999275] Test: Total time: 0:00:05 (0.2919 s / it)
+[12:14:07.002610] * Acc@1 24.960 Acc@5 51.950 loss 3.349
+[12:14:07.003424] Accuracy of the network on the 10000 test images: 25.0%
+[12:14:07.003939] Max accuracy: 24.96%
+[12:14:07.004352] Saving model at epoch: 6
+[12:14:10.312184] Epoch: [7]  [  0/505]  eta: 0:25:53  lr: 0.001148  loss: 4.2732 (4.2732)  acc1: 20.7031 (20.7031)  acc5: 42.9688 (42.9688)  time: 3.0770  data: 2.5327  max mem: 19954
+[12:14:52.926596] Epoch: [7]  [100/505]  eta: 0:03:03  lr: 0.001138  loss: 4.3046 (4.3176)  acc1: 17.5781 (18.4561)  acc5: 41.4062 (40.9847)  time: 0.4255  data: 0.0005  max mem: 19954
+[12:15:35.454213] Epoch: [7]  [200/505]  eta: 0:02:13  lr: 0.001126  loss: 4.2667 (4.2988)  acc1: 19.1406 (18.8996)  acc5: 43.7500 (41.5948)  time: 0.4252  data: 0.0005  max mem: 19954
+[12:16:18.026363] Epoch: [7]  [300/505]  eta: 0:01:29  lr: 0.001114  loss: 4.2705 (4.2881)  acc1: 20.3125 (19.0952)  acc5: 42.1875 (41.8734)  time: 0.4255  data: 0.0005  max mem: 19954
+[12:17:00.608354] Epoch: [7]  [400/505]  eta: 0:00:45  lr: 0.001100  loss: 4.2010 (4.2732)  acc1: 19.9219 (19.3647)  acc5: 43.3594 (42.3404)  time: 0.4261  data: 0.0005  max mem: 19954
+[12:17:43.210482] Epoch: [7]  [500/505]  eta: 0:00:02  lr: 0.001086  loss: 4.1561 (4.2557)  acc1: 20.7031 (19.6763)  acc5: 44.9219 (42.7949)  time: 0.4232  data: 0.0003  max mem: 19954
+[12:17:44.897614] Epoch: [7]  [504/505]  eta: 0:00:00  lr: 0.001086  loss: 4.1716 (4.2550)  acc1: 20.3125 (19.6674)  acc5: 44.9219 (42.8071)  time: 0.4224  data: 0.0002  max mem: 19954
+[12:17:45.037578] Epoch: [7] Total time: 0:03:37 (0.4313 s / it)
+[12:17:45.040576] Averaged stats: lr: 0.001086  loss: 4.1716 (4.2561)  acc1: 20.3125 (19.5436)  acc5: 44.9219 (42.7672)
+[12:17:45.041817] * Train_Acc@1 19.544 Acc@5 42.767 loss 4.256
+[12:17:47.986654] Test:  [ 0/20]  eta: 0:00:58  loss: 3.2024 (3.2024)  acc1: 28.5156 (28.5156)  acc5: 57.8125 (57.8125)  time: 2.9398  data: 2.7968  max mem: 19954
+[12:17:50.753414] Test:  [19/20]  eta: 0:00:00  loss: 3.1568 (3.1519)  acc1: 28.1250 (28.6200)  acc5: 56.6406 (56.6600)  time: 0.2853  data: 0.1795  max mem: 19954
+[12:17:50.842735] Test: Total time: 0:00:05 (0.2898 s / it)
+[12:17:50.863744] * Acc@1 29.170 Acc@5 57.270 loss 3.133
+[12:17:50.864074] Accuracy of the network on the 10000 test images: 29.2%
+[12:17:50.864210] Max accuracy: 29.17%
+[12:17:50.864323] Saving model at epoch: 7
+[12:17:54.183021] Epoch: [8]  [  0/505]  eta: 0:25:43  lr: 0.001086  loss: 4.2742 (4.2742)  acc1: 17.5781 (17.5781)  acc5: 44.1406 (44.1406)  time: 3.0560  data: 2.5250  max mem: 19954
+[12:18:36.764035] Epoch: [8]  [100/505]  eta: 0:03:02  lr: 0.001070  loss: 4.1542 (4.1684)  acc1: 20.3125 (21.2601)  acc5: 45.3125 (45.2622)  time: 0.4255  data: 0.0005  max mem: 19954
+[12:19:19.365061] Epoch: [8]  [200/505]  eta: 0:02:13  lr: 0.001055  loss: 4.1183 (4.1441)  acc1: 22.2656 (21.7079)  acc5: 45.3125 (45.9052)  time: 0.4262  data: 0.0005  max mem: 19954
+[12:20:01.988641] Epoch: [8]  [300/505]  eta: 0:01:29  lr: 0.001038  loss: 4.0934 (4.1240)  acc1: 22.6562 (22.1930)  acc5: 46.8750 (46.4377)  time: 0.4265  data: 0.0005  max mem: 19954
+[12:20:44.695601] Epoch: [8]  [400/505]  eta: 0:00:45  lr: 0.001021  loss: 4.0266 (4.1111)  acc1: 23.4375 (22.4731)  acc5: 48.8281 (46.7620)  time: 0.4266  data: 0.0005  max mem: 19954
+[12:21:27.284978] Epoch: [8]  [500/505]  eta: 0:00:02  lr: 0.001003  loss: 3.9783 (4.0944)  acc1: 24.6094 (22.8293)  acc5: 48.0469 (47.1105)  time: 0.4237  data: 0.0003  max mem: 19954
+[12:21:28.974613] Epoch: [8]  [504/505]  eta: 0:00:00  lr: 0.001002  loss: 3.9783 (4.0941)  acc1: 24.6094 (22.8272)  acc5: 48.4375 (47.1140)  time: 0.4229  data: 0.0003  max mem: 19954
+[12:21:29.108676] Epoch: [8] Total time: 0:03:37 (0.4316 s / it)
+[12:21:29.116016] Averaged stats: lr: 0.001002  loss: 3.9783 (4.0926)  acc1: 24.6094 (22.8813)  acc5: 48.4375 (47.1078)
+[12:21:29.117233] * Train_Acc@1 22.881 Acc@5 47.108 loss 4.093
+[12:21:32.100370] Test:  [ 0/20]  eta: 0:00:59  loss: 3.0958 (3.0958)  acc1: 30.8594 (30.8594)  acc5: 57.8125 (57.8125)  time: 2.9793  data: 2.8315  max mem: 19954
+[12:21:34.956236] Test:  [19/20]  eta: 0:00:00  loss: 2.8314 (2.8623)  acc1: 35.1562 (34.5800)  acc5: 63.2812 (63.2200)  time: 0.2917  data: 0.1849  max mem: 19954
+[12:21:35.056213] Test: Total time: 0:00:05 (0.2968 s / it)
+[12:21:35.064015] * Acc@1 34.650 Acc@5 63.220 loss 2.853
+[12:21:35.064259] Accuracy of the network on the 10000 test images: 34.6%
+[12:21:35.064366] Max accuracy: 34.65%
+[12:21:35.064461] Saving model at epoch: 8
+[12:21:38.067374] Epoch: [9]  [  0/505]  eta: 0:22:58  lr: 0.001002  loss: 3.9612 (3.9612)  acc1: 25.3906 (25.3906)  acc5: 51.5625 (51.5625)  time: 2.7295  data: 2.2118  max mem: 19954
+[12:22:20.860944] Epoch: [9]  [100/505]  eta: 0:03:02  lr: 0.000983  loss: 4.0258 (4.0016)  acc1: 24.2188 (24.7447)  acc5: 48.4375 (49.2536)  time: 0.4261  data: 0.0005  max mem: 19954
+[12:23:03.446787] Epoch: [9]  [200/505]  eta: 0:02:13  lr: 0.000963  loss: 3.9302 (3.9772)  acc1: 25.0000 (25.3595)  acc5: 50.3906 (49.8290)  time: 0.4258  data: 0.0005  max mem: 19954
+[12:23:46.062143] Epoch: [9]  [300/505]  eta: 0:01:29  lr: 0.000943  loss: 3.9504 (3.9694)  acc1: 26.1719 (25.4438)  acc5: 50.0000 (49.9585)  time: 0.4261  data: 0.0005  max mem: 19954
+[12:24:28.683470] Epoch: [9]  [400/505]  eta: 0:00:45  lr: 0.000923  loss: 3.8440 (3.9581)  acc1: 25.3906 (25.6644)  acc5: 52.3438 (50.2708)  time: 0.4262  data: 0.0006  max mem: 19954
+[12:25:11.236409] Epoch: [9]  [500/505]  eta: 0:00:02  lr: 0.000901  loss: 3.8936 (3.9471)  acc1: 26.9531 (25.8467)  acc5: 52.3438 (50.5785)  time: 0.4234  data: 0.0003  max mem: 19954
+[12:25:12.924615] Epoch: [9]  [504/505]  eta: 0:00:00  lr: 0.000900  loss: 3.8902 (3.9461)  acc1: 26.9531 (25.8648)  acc5: 52.3438 (50.6126)  time: 0.4226  data: 0.0002  max mem: 19954
+[12:25:13.063761] Epoch: [9] Total time: 0:03:37 (0.4311 s / it)
+[12:25:13.066220] Averaged stats: lr: 0.000900  loss: 3.8902 (3.9483)  acc1: 26.9531 (25.7573)  acc5: 52.3438 (50.6517)
+[12:25:13.066731] * Train_Acc@1 25.757 Acc@5 50.652 loss 3.948
+[12:25:16.021833] Test:  [ 0/20]  eta: 0:00:59  loss: 2.9022 (2.9022)  acc1: 34.7656 (34.7656)  acc5: 63.2812 (63.2812)  time: 2.9519  data: 2.8042  max mem: 19954
+[12:25:18.719669] Test:  [19/20]  eta: 0:00:00  loss: 2.7040 (2.7179)  acc1: 35.5469 (36.3400)  acc5: 64.4531 (64.8400)  time: 0.2824  data: 0.1768  max mem: 19954
+[12:25:18.805822] Test: Total time: 0:00:05 (0.2868 s / it)
+[12:25:18.809979] * Acc@1 36.940 Acc@5 65.380 loss 2.707
+[12:25:18.810877] Accuracy of the network on the 10000 test images: 36.9%
+[12:25:18.811364] Max accuracy: 36.94%
+[12:25:18.811806] Saving model at epoch: 9
+[12:25:22.017783] Epoch: [10]  [  0/505]  eta: 0:24:40  lr: 0.000900  loss: 3.8989 (3.8989)  acc1: 21.8750 (21.8750)  acc5: 51.9531 (51.9531)  time: 2.9319  data: 2.4480  max mem: 19954
+[12:26:04.663126] Epoch: [10]  [100/505]  eta: 0:03:02  lr: 0.000878  loss: 3.8861 (3.8866)  acc1: 26.5625 (26.9144)  acc5: 51.9531 (52.4443)  time: 0.4257  data: 0.0005  max mem: 19954
+[12:26:47.243213] Epoch: [10]  [200/505]  eta: 0:02:13  lr: 0.000856  loss: 3.8027 (3.8673)  acc1: 28.5156 (27.2407)  acc5: 52.7344 (52.7849)  time: 0.4260  data: 0.0005  max mem: 19954
+[12:27:29.933903] Epoch: [10]  [300/505]  eta: 0:01:29  lr: 0.000834  loss: 3.7727 (3.8455)  acc1: 28.5156 (27.7019)  acc5: 55.8594 (53.2729)  time: 0.4257  data: 0.0005  max mem: 19954
+[12:28:12.574274] Epoch: [10]  [400/505]  eta: 0:00:45  lr: 0.000810  loss: 3.7880 (3.8363)  acc1: 28.1250 (27.9555)  acc5: 54.2969 (53.4874)  time: 0.4263  data: 0.0005  max mem: 19954
+[12:28:55.136861] Epoch: [10]  [500/505]  eta: 0:00:02  lr: 0.000787  loss: 3.7421 (3.8208)  acc1: 29.6875 (28.3293)  acc5: 55.0781 (53.9016)  time: 0.4237  data: 0.0003  max mem: 19954
+[12:28:56.826209] Epoch: [10]  [504/505]  eta: 0:00:00  lr: 0.000786  loss: 3.7031 (3.8191)  acc1: 30.8594 (28.3694)  acc5: 55.0781 (53.9449)  time: 0.4228  data: 0.0003  max mem: 19954
+[12:28:56.969302] Epoch: [10] Total time: 0:03:37 (0.4315 s / it)
+[12:28:56.974168] Averaged stats: lr: 0.000786  loss: 3.7031 (3.8245)  acc1: 30.8594 (28.2437)  acc5: 55.0781 (53.7419)
+[12:28:56.975864] * Train_Acc@1 28.244 Acc@5 53.742 loss 3.824
+[12:29:00.023811] Test:  [ 0/20]  eta: 0:01:00  loss: 2.7874 (2.7874)  acc1: 36.3281 (36.3281)  acc5: 66.0156 (66.0156)  time: 3.0432  data: 2.8954  max mem: 19954
+[12:29:02.828801] Test:  [19/20]  eta: 0:00:00  loss: 2.5779 (2.5929)  acc1: 40.2344 (40.1400)  acc5: 66.7969 (67.5000)  time: 0.2924  data: 0.1861  max mem: 19954
+[12:29:02.923922] Test: Total time: 0:00:05 (0.2972 s / it)
+[12:29:02.935514] * Acc@1 40.570 Acc@5 67.830 loss 2.578
+[12:29:02.935868] Accuracy of the network on the 10000 test images: 40.6%
+[12:29:02.936033] Max accuracy: 40.57%
+[12:29:02.936169] Saving model at epoch: 10
+[12:29:06.155274] Epoch: [11]  [  0/505]  eta: 0:24:49  lr: 0.000786  loss: 3.7102 (3.7102)  acc1: 34.3750 (34.3750)  acc5: 57.4219 (57.4219)  time: 2.9498  data: 2.1476  max mem: 19954
+[12:29:48.753481] Epoch: [11]  [100/505]  eta: 0:03:02  lr: 0.000762  loss: 3.7699 (3.7578)  acc1: 28.9062 (29.9080)  acc5: 55.0781 (55.3875)  time: 0.4259  data: 0.0005  max mem: 19954
+[12:30:31.445800] Epoch: [11]  [200/505]  eta: 0:02:13  lr: 0.000738  loss: 3.7433 (3.7402)  acc1: 30.8594 (30.0023)  acc5: 56.2500 (55.8399)  time: 0.4256  data: 0.0005  max mem: 19954
+[12:31:14.054073] Epoch: [11]  [300/505]  eta: 0:01:29  lr: 0.000714  loss: 3.7018 (3.7315)  acc1: 30.8594 (30.2209)  acc5: 56.2500 (56.0501)  time: 0.4259  data: 0.0005  max mem: 19954
+[12:31:56.680496] Epoch: [11]  [400/505]  eta: 0:00:45  lr: 0.000689  loss: 3.6490 (3.7237)  acc1: 30.8594 (30.4941)  acc5: 57.8125 (56.2744)  time: 0.4261  data: 0.0005  max mem: 19954
+[12:32:39.240192] Epoch: [11]  [500/505]  eta: 0:00:02  lr: 0.000664  loss: 3.7074 (3.7168)  acc1: 29.6875 (30.6769)  acc5: 57.0312 (56.4722)  time: 0.4233  data: 0.0003  max mem: 19954
+[12:32:40.930182] Epoch: [11]  [504/505]  eta: 0:00:00  lr: 0.000663  loss: 3.6842 (3.7168)  acc1: 29.6875 (30.6799)  acc5: 57.0312 (56.4751)  time: 0.4227  data: 0.0002  max mem: 19954
+[12:32:41.066632] Epoch: [11] Total time: 0:03:37 (0.4314 s / it)
+[12:32:41.076280] Averaged stats: lr: 0.000663  loss: 3.6842 (3.7208)  acc1: 29.6875 (30.6033)  acc5: 57.0312 (56.2763)
+[12:32:41.077080] * Train_Acc@1 30.603 Acc@5 56.276 loss 3.721
+[12:32:44.168992] Test:  [ 0/20]  eta: 0:01:01  loss: 2.5511 (2.5511)  acc1: 43.3594 (43.3594)  acc5: 66.7969 (66.7969)  time: 3.0874  data: 2.9453  max mem: 19954
+[12:32:46.889859] Test:  [19/20]  eta: 0:00:00  loss: 2.4088 (2.4301)  acc1: 41.7969 (43.2800)  acc5: 72.2656 (71.5600)  time: 0.2903  data: 0.1842  max mem: 19954
+[12:32:46.954275] Test: Total time: 0:00:05 (0.2937 s / it)
+[12:32:46.957593] * Acc@1 43.490 Acc@5 71.480 loss 2.410
+[12:32:46.958420] Accuracy of the network on the 10000 test images: 43.5%
+[12:32:46.958926] Max accuracy: 43.49%
+[12:32:46.959328] Saving model at epoch: 11
+[12:32:50.326051] Epoch: [12]  [  0/505]  eta: 0:25:58  lr: 0.000663  loss: 3.7239 (3.7239)  acc1: 26.9531 (26.9531)  acc5: 58.2031 (58.2031)  time: 3.0856  data: 2.5331  max mem: 19954
+[12:33:33.316167] Epoch: [12]  [100/505]  eta: 0:03:04  lr: 0.000638  loss: 3.6082 (3.6510)  acc1: 32.0312 (32.0429)  acc5: 57.8125 (57.9169)  time: 0.4255  data: 0.0005  max mem: 19954
+[12:34:15.836805] Epoch: [12]  [200/505]  eta: 0:02:14  lr: 0.000614  loss: 3.6107 (3.6416)  acc1: 32.0312 (32.2217)  acc5: 58.9844 (58.3411)  time: 0.4250  data: 0.0005  max mem: 19954
+[12:34:58.445959] Epoch: [12]  [300/505]  eta: 0:01:29  lr: 0.000589  loss: 3.6565 (3.6384)  acc1: 32.0312 (32.3245)  acc5: 57.4219 (58.3407)  time: 0.4261  data: 0.0005  max mem: 19954
+[12:35:41.071130] Epoch: [12]  [400/505]  eta: 0:00:45  lr: 0.000564  loss: 3.6098 (3.6366)  acc1: 31.2500 (32.3293)  acc5: 58.2031 (58.3882)  time: 0.4260  data: 0.0005  max mem: 19954
+[12:36:23.734118] Epoch: [12]  [500/505]  eta: 0:00:02  lr: 0.000539  loss: 3.6050 (3.6317)  acc1: 33.2031 (32.4273)  acc5: 57.8125 (58.5197)  time: 0.4232  data: 0.0003  max mem: 19954
+[12:36:25.422606] Epoch: [12]  [504/505]  eta: 0:00:00  lr: 0.000538  loss: 3.5520 (3.6306)  acc1: 33.5938 (32.4335)  acc5: 59.7656 (58.5458)  time: 0.4225  data: 0.0002  max mem: 19954
+[12:36:25.563887] Epoch: [12] Total time: 0:03:38 (0.4323 s / it)
+[12:36:25.567356] Averaged stats: lr: 0.000538  loss: 3.5520 (3.6314)  acc1: 33.5938 (32.5035)  acc5: 59.7656 (58.4356)
+[12:36:25.568556] * Train_Acc@1 32.503 Acc@5 58.436 loss 3.631
+[12:36:28.505021] Test:  [ 0/20]  eta: 0:00:58  loss: 2.4040 (2.4040)  acc1: 44.5312 (44.5312)  acc5: 70.3125 (70.3125)  time: 2.9306  data: 2.7834  max mem: 19954
+[12:36:31.344435] Test:  [19/20]  eta: 0:00:00  loss: 2.2682 (2.2933)  acc1: 45.7031 (45.9000)  acc5: 74.2188 (73.9800)  time: 0.2884  data: 0.1823  max mem: 19954
+[12:36:31.419000] Test: Total time: 0:00:05 (0.2923 s / it)
+[12:36:31.422351] * Acc@1 46.380 Acc@5 74.100 loss 2.275
+[12:36:31.423195] Accuracy of the network on the 10000 test images: 46.4%
+[12:36:31.423701] Max accuracy: 46.38%
+[12:36:31.424123] Saving model at epoch: 12
+[12:36:34.873089] Epoch: [13]  [  0/505]  eta: 0:26:42  lr: 0.000538  loss: 3.5976 (3.5976)  acc1: 32.8125 (32.8125)  acc5: 57.8125 (57.8125)  time: 3.1727  data: 2.1734  max mem: 19954
+[12:37:17.465427] Epoch: [13]  [100/505]  eta: 0:03:03  lr: 0.000513  loss: 3.5352 (3.5740)  acc1: 33.5938 (34.0192)  acc5: 59.7656 (59.6767)  time: 0.4250  data: 0.0005  max mem: 19954
+[12:38:00.009472] Epoch: [13]  [200/505]  eta: 0:02:13  lr: 0.000489  loss: 3.5453 (3.5724)  acc1: 33.9844 (34.0815)  acc5: 60.1562 (59.7773)  time: 0.4252  data: 0.0005  max mem: 19954
+[12:38:42.570315] Epoch: [13]  [300/505]  eta: 0:01:29  lr: 0.000464  loss: 3.5246 (3.5605)  acc1: 35.5469 (34.2855)  acc5: 60.9375 (60.0953)  time: 0.4261  data: 0.0006  max mem: 19954
+[12:39:25.141064] Epoch: [13]  [400/505]  eta: 0:00:45  lr: 0.000440  loss: 3.5401 (3.5549)  acc1: 35.1562 (34.2815)  acc5: 61.3281 (60.2917)  time: 0.4256  data: 0.0005  max mem: 19954
+[12:40:07.782136] Epoch: [13]  [500/505]  eta: 0:00:02  lr: 0.000416  loss: 3.4839 (3.5488)  acc1: 35.9375 (34.4202)  acc5: 60.9375 (60.4424)  time: 0.4231  data: 0.0003  max mem: 19954
+[12:40:09.469170] Epoch: [13]  [504/505]  eta: 0:00:00  lr: 0.000415  loss: 3.4839 (3.5482)  acc1: 35.9375 (34.4338)  acc5: 61.7188 (60.4610)  time: 0.4224  data: 0.0003  max mem: 19954
+[12:40:09.606926] Epoch: [13] Total time: 0:03:37 (0.4315 s / it)
+[12:40:09.610231] Averaged stats: lr: 0.000415  loss: 3.4839 (3.5521)  acc1: 35.9375 (34.2126)  acc5: 61.7188 (60.3303)
+[12:40:09.611302] * Train_Acc@1 34.213 Acc@5 60.330 loss 3.552
+[12:40:12.315807] Test:  [ 0/20]  eta: 0:00:53  loss: 2.4068 (2.4068)  acc1: 46.0938 (46.0938)  acc5: 70.7031 (70.7031)  time: 2.6990  data: 2.5517  max mem: 19954
+[12:40:15.205995] Test:  [19/20]  eta: 0:00:00  loss: 2.2167 (2.2433)  acc1: 46.4844 (47.1600)  acc5: 74.6094 (74.7200)  time: 0.2794  data: 0.1734  max mem: 19954
+[12:40:15.287422] Test: Total time: 0:00:05 (0.2836 s / it)
+[12:40:15.290622] * Acc@1 47.710 Acc@5 74.940 loss 2.231
+[12:40:15.291209] Accuracy of the network on the 10000 test images: 47.7%
+[12:40:15.291551] Max accuracy: 47.71%
+[12:40:15.291824] Saving model at epoch: 13
+[12:40:18.725835] Epoch: [14]  [  0/505]  eta: 0:26:33  lr: 0.000415  loss: 3.6042 (3.6042)  acc1: 32.8125 (32.8125)  acc5: 57.0312 (57.0312)  time: 3.1561  data: 2.6080  max mem: 19954
+[12:41:01.362821] Epoch: [14]  [100/505]  eta: 0:03:03  lr: 0.000392  loss: 3.4419 (3.4859)  acc1: 35.1562 (35.4463)  acc5: 62.5000 (61.6182)  time: 0.4256  data: 0.0005  max mem: 19954
+[12:41:44.012206] Epoch: [14]  [200/505]  eta: 0:02:14  lr: 0.000369  loss: 3.5165 (3.5002)  acc1: 35.9375 (35.3972)  acc5: 60.9375 (61.4836)  time: 0.4265  data: 0.0005  max mem: 19954
+[12:42:26.686113] Epoch: [14]  [300/505]  eta: 0:01:29  lr: 0.000346  loss: 3.5021 (3.4967)  acc1: 34.7656 (35.5235)  acc5: 61.3281 (61.5734)  time: 0.4264  data: 0.0005  max mem: 19954
+[12:43:09.351249] Epoch: [14]  [400/505]  eta: 0:00:45  lr: 0.000324  loss: 3.4546 (3.4933)  acc1: 34.3750 (35.5099)  acc5: 62.1094 (61.6038)  time: 0.4266  data: 0.0005  max mem: 19954
+[12:43:51.966573] Epoch: [14]  [500/505]  eta: 0:00:02  lr: 0.000302  loss: 3.4907 (3.4948)  acc1: 35.5469 (35.5851)  acc5: 60.5469 (61.5597)  time: 0.4241  data: 0.0003  max mem: 19954
+[12:43:53.660307] Epoch: [14]  [504/505]  eta: 0:00:00  lr: 0.000301  loss: 3.5035 (3.4949)  acc1: 35.5469 (35.5840)  acc5: 60.5469 (61.5726)  time: 0.4235  data: 0.0003  max mem: 19954
+[12:43:53.800956] Epoch: [14] Total time: 0:03:38 (0.4321 s / it)
+[12:43:53.803932] Averaged stats: lr: 0.000301  loss: 3.5035 (3.4942)  acc1: 35.5469 (35.5117)  acc5: 60.5469 (61.5347)
+[12:43:53.804925] * Train_Acc@1 35.512 Acc@5 61.535 loss 3.494
+[12:43:56.924925] Test:  [ 0/20]  eta: 0:01:02  loss: 2.3213 (2.3213)  acc1: 47.2656 (47.2656)  acc5: 73.4375 (73.4375)  time: 3.1150  data: 2.9680  max mem: 19954
+[12:43:59.727657] Test:  [19/20]  eta: 0:00:00  loss: 2.1714 (2.1503)  acc1: 49.2188 (49.7200)  acc5: 76.5625 (76.7400)  time: 0.2958  data: 0.1895  max mem: 19954
+[12:43:59.806535] Test: Total time: 0:00:05 (0.2999 s / it)
+[12:43:59.809771] * Acc@1 49.790 Acc@5 76.930 loss 2.130
+[12:43:59.810476] Accuracy of the network on the 10000 test images: 49.8%
+[12:43:59.810915] Max accuracy: 49.79%
+[12:43:59.811266] Saving model at epoch: 14
+[12:44:03.556723] Epoch: [15]  [  0/505]  eta: 0:29:36  lr: 0.000301  loss: 3.4727 (3.4727)  acc1: 33.9844 (33.9844)  acc5: 60.9375 (60.9375)  time: 3.5183  data: 3.0273  max mem: 19954
+[12:44:46.241975] Epoch: [15]  [100/505]  eta: 0:03:05  lr: 0.000279  loss: 3.5033 (3.4651)  acc1: 35.1562 (36.0458)  acc5: 60.9375 (62.1248)  time: 0.4310  data: 0.0005  max mem: 19954
+[12:45:28.841562] Epoch: [15]  [200/505]  eta: 0:02:14  lr: 0.000259  loss: 3.4063 (3.4565)  acc1: 37.1094 (36.4059)  acc5: 63.2812 (62.3290)  time: 0.4258  data: 0.0005  max mem: 19954
+[12:46:11.461500] Epoch: [15]  [300/505]  eta: 0:01:29  lr: 0.000239  loss: 3.4525 (3.4561)  acc1: 36.7188 (36.3969)  acc5: 61.7188 (62.3092)  time: 0.4265  data: 0.0005  max mem: 19954
+[12:46:54.077881] Epoch: [15]  [400/505]  eta: 0:00:45  lr: 0.000219  loss: 3.4381 (3.4528)  acc1: 37.1094 (36.4440)  acc5: 63.2812 (62.3451)  time: 0.4265  data: 0.0005  max mem: 19954
+[12:47:36.667219] Epoch: [15]  [500/505]  eta: 0:00:02  lr: 0.000200  loss: 3.4513 (3.4458)  acc1: 37.5000 (36.5885)  acc5: 61.7188 (62.5156)  time: 0.4236  data: 0.0003  max mem: 19954
+[12:47:38.355358] Epoch: [15]  [504/505]  eta: 0:00:00  lr: 0.000200  loss: 3.4544 (3.4454)  acc1: 37.1094 (36.6089)  acc5: 62.1094 (62.5302)  time: 0.4228  data: 0.0003  max mem: 19954
+[12:47:38.504171] Epoch: [15] Total time: 0:03:38 (0.4326 s / it)
+[12:47:38.507707] Averaged stats: lr: 0.000200  loss: 3.4544 (3.4432)  acc1: 37.1094 (36.6101)  acc5: 62.1094 (62.6593)
+[12:47:38.509340] * Train_Acc@1 36.610 Acc@5 62.659 loss 3.443
+[12:47:41.505144] Test:  [ 0/20]  eta: 0:00:59  loss: 2.2379 (2.2379)  acc1: 48.8281 (48.8281)  acc5: 75.3906 (75.3906)  time: 2.9906  data: 2.8475  max mem: 19954
+[12:47:44.367387] Test:  [19/20]  eta: 0:00:00  loss: 2.1101 (2.1040)  acc1: 50.3906 (50.6200)  acc5: 77.7344 (77.1000)  time: 0.2926  data: 0.1861  max mem: 19954
+[12:47:44.431737] Test: Total time: 0:00:05 (0.2959 s / it)
+[12:47:44.435112] * Acc@1 51.030 Acc@5 77.300 loss 2.085
+[12:47:44.435979] Accuracy of the network on the 10000 test images: 51.0%
+[12:47:44.436473] Max accuracy: 51.03%
+[12:47:44.436900] Saving model at epoch: 15
+[12:47:48.292972] Epoch: [16]  [  0/505]  eta: 0:30:21  lr: 0.000199  loss: 3.5041 (3.5041)  acc1: 36.7188 (36.7188)  acc5: 58.9844 (58.9844)  time: 3.6076  data: 3.0855  max mem: 19954
+[12:48:30.837164] Epoch: [16]  [100/505]  eta: 0:03:05  lr: 0.000181  loss: 3.4492 (3.4261)  acc1: 35.5469 (37.0398)  acc5: 62.1094 (63.1459)  time: 0.4254  data: 0.0005  max mem: 19954
+[12:49:13.530006] Epoch: [16]  [200/505]  eta: 0:02:14  lr: 0.000164  loss: 3.4182 (3.4205)  acc1: 37.5000 (37.0297)  acc5: 62.8906 (63.2812)  time: 0.4313  data: 0.0005  max mem: 19954
+[12:49:56.141562] Epoch: [16]  [300/505]  eta: 0:01:29  lr: 0.000147  loss: 3.3773 (3.4151)  acc1: 38.2812 (37.2145)  acc5: 62.5000 (63.3293)  time: 0.4260  data: 0.0005  max mem: 19954
+[12:50:38.803688] Epoch: [16]  [400/505]  eta: 0:00:45  lr: 0.000131  loss: 3.3847 (3.4118)  acc1: 37.8906 (37.3315)  acc5: 64.0625 (63.4069)  time: 0.4270  data: 0.0006  max mem: 19954
+[12:51:21.388202] Epoch: [16]  [500/505]  eta: 0:00:02  lr: 0.000116  loss: 3.3627 (3.4105)  acc1: 38.2812 (37.3534)  acc5: 63.2812 (63.4083)  time: 0.4236  data: 0.0003  max mem: 19954
+[12:51:23.078773] Epoch: [16]  [504/505]  eta: 0:00:00  lr: 0.000116  loss: 3.3627 (3.4103)  acc1: 38.2812 (37.3700)  acc5: 63.2812 (63.3988)  time: 0.4228  data: 0.0002  max mem: 19954
+[12:51:23.217465] Epoch: [16] Total time: 0:03:38 (0.4327 s / it)
+[12:51:23.221311] Averaged stats: lr: 0.000116  loss: 3.3627 (3.4066)  acc1: 38.2812 (37.4787)  acc5: 63.2812 (63.5125)
+[12:51:23.222673] * Train_Acc@1 37.479 Acc@5 63.513 loss 3.407
+[12:51:26.193502] Test:  [ 0/20]  eta: 0:00:59  loss: 2.2467 (2.2467)  acc1: 48.0469 (48.0469)  acc5: 74.2188 (74.2188)  time: 2.9667  data: 2.8195  max mem: 19954
+[12:51:28.972240] Test:  [19/20]  eta: 0:00:00  loss: 2.0988 (2.0829)  acc1: 50.0000 (50.7200)  acc5: 76.4706 (77.4200)  time: 0.2872  data: 0.1807  max mem: 19954
+[12:51:29.036895] Test: Total time: 0:00:05 (0.2905 s / it)
+[12:51:29.040006] * Acc@1 50.830 Acc@5 77.450 loss 2.063
+[12:51:29.040716] Accuracy of the network on the 10000 test images: 50.8%
+[12:51:29.041120] Max accuracy: 51.03%
+[12:51:29.041449] Saving model at epoch: 16
+[12:51:33.203206] Epoch: [17]  [  0/505]  eta: 0:32:38  lr: 0.000115  loss: 3.4718 (3.4718)  acc1: 37.8906 (37.8906)  acc5: 61.7188 (61.7188)  time: 3.8788  data: 3.3503  max mem: 19954
+[12:52:15.780568] Epoch: [17]  [100/505]  eta: 0:03:06  lr: 0.000101  loss: 3.3774 (3.3948)  acc1: 36.7188 (37.8210)  acc5: 63.2812 (63.6603)  time: 0.4262  data: 0.0005  max mem: 19954
+[12:52:58.432657] Epoch: [17]  [200/505]  eta: 0:02:15  lr: 0.000088  loss: 3.3711 (3.3885)  acc1: 36.7188 (37.8692)  acc5: 64.4531 (63.8954)  time: 0.4265  data: 0.0005  max mem: 19954
+[12:53:41.214943] Epoch: [17]  [300/505]  eta: 0:01:29  lr: 0.000076  loss: 3.3719 (3.3864)  acc1: 38.2812 (37.9205)  acc5: 64.0625 (63.8847)  time: 0.4321  data: 0.0005  max mem: 19954
+[12:54:23.879255] Epoch: [17]  [400/505]  eta: 0:00:45  lr: 0.000064  loss: 3.3597 (3.3832)  acc1: 37.8906 (38.0026)  acc5: 64.8438 (63.9456)  time: 0.4270  data: 0.0006  max mem: 19954
+[12:55:06.485041] Epoch: [17]  [500/505]  eta: 0:00:02  lr: 0.000053  loss: 3.2949 (3.3779)  acc1: 39.0625 (38.1175)  acc5: 66.0156 (64.0750)  time: 0.4238  data: 0.0003  max mem: 19954
+[12:55:08.176908] Epoch: [17]  [504/505]  eta: 0:00:00  lr: 0.000053  loss: 3.2991 (3.3778)  acc1: 39.4531 (38.1196)  acc5: 64.8438 (64.0679)  time: 0.4232  data: 0.0003  max mem: 19954
+[12:55:08.328413] Epoch: [17] Total time: 0:03:39 (0.4337 s / it)
+[12:55:08.331897] Averaged stats: lr: 0.000053  loss: 3.2991 (3.3806)  acc1: 39.4531 (38.0225)  acc5: 64.8438 (64.0138)
+[12:55:08.333307] * Train_Acc@1 38.023 Acc@5 64.014 loss 3.381
+[12:55:11.130196] Test:  [ 0/20]  eta: 0:00:55  loss: 2.1966 (2.1966)  acc1: 48.8281 (48.8281)  acc5: 75.3906 (75.3906)  time: 2.7911  data: 2.6433  max mem: 19954
+[12:55:13.974532] Test:  [19/20]  eta: 0:00:00  loss: 2.0575 (2.0505)  acc1: 50.3906 (51.1800)  acc5: 77.7344 (78.0400)  time: 0.2817  data: 0.1765  max mem: 19954
+[12:55:14.044747] Test: Total time: 0:00:05 (0.2853 s / it)
+[12:55:14.046411] * Acc@1 51.870 Acc@5 77.870 loss 2.033
+[12:55:14.046789] Accuracy of the network on the 10000 test images: 51.9%
+[12:55:14.046948] Max accuracy: 51.87%
+[12:55:14.047082] Saving model at epoch: 17
+[12:55:17.598968] Epoch: [18]  [  0/505]  eta: 0:27:40  lr: 0.000053  loss: 3.2466 (3.2466)  acc1: 41.7969 (41.7969)  acc5: 70.3125 (70.3125)  time: 3.2884  data: 2.7646  max mem: 19954
+[12:56:00.272091] Epoch: [18]  [100/505]  eta: 0:03:04  lr: 0.000043  loss: 3.3399 (3.3650)  acc1: 40.2344 (38.7686)  acc5: 65.2344 (64.4338)  time: 0.4250  data: 0.0005  max mem: 19954
+[12:56:42.850665] Epoch: [18]  [200/505]  eta: 0:02:14  lr: 0.000035  loss: 3.3886 (3.3626)  acc1: 37.8906 (38.6952)  acc5: 62.8906 (64.5095)  time: 0.4262  data: 0.0005  max mem: 19954
+[12:57:25.508904] Epoch: [18]  [300/505]  eta: 0:01:29  lr: 0.000027  loss: 3.3516 (3.3631)  acc1: 38.2812 (38.6952)  acc5: 64.8438 (64.3779)  time: 0.4266  data: 0.0005  max mem: 19954
+[12:58:08.176298] Epoch: [18]  [400/505]  eta: 0:00:45  lr: 0.000020  loss: 3.3810 (3.3645)  acc1: 38.2812 (38.4975)  acc5: 64.4531 (64.3284)  time: 0.4269  data: 0.0005  max mem: 19954
+[12:58:50.865070] Epoch: [18]  [500/505]  eta: 0:00:02  lr: 0.000014  loss: 3.3299 (3.3655)  acc1: 38.6719 (38.4754)  acc5: 63.6719 (64.2871)  time: 0.4280  data: 0.0003  max mem: 19954
+[12:58:52.555791] Epoch: [18]  [504/505]  eta: 0:00:00  lr: 0.000014  loss: 3.3290 (3.3649)  acc1: 38.6719 (38.4893)  acc5: 65.2344 (64.3007)  time: 0.4270  data: 0.0002  max mem: 19954
+[12:58:52.700858] Epoch: [18] Total time: 0:03:38 (0.4325 s / it)
+[12:58:52.710342] Averaged stats: lr: 0.000014  loss: 3.3290 (3.3660)  acc1: 38.6719 (38.4874)  acc5: 65.2344 (64.2942)
+[12:58:52.710876] * Train_Acc@1 38.487 Acc@5 64.294 loss 3.366
+[12:58:55.695285] Test:  [ 0/20]  eta: 0:00:59  loss: 2.2021 (2.2021)  acc1: 50.3906 (50.3906)  acc5: 75.3906 (75.3906)  time: 2.9812  data: 2.8341  max mem: 19954
+[12:58:58.568898] Test:  [19/20]  eta: 0:00:00  loss: 2.0369 (2.0483)  acc1: 50.3906 (51.1200)  acc5: 78.6765 (78.1000)  time: 0.2927  data: 0.1862  max mem: 19954
+[12:58:58.633070] Test: Total time: 0:00:05 (0.2960 s / it)
+[12:58:58.636436] * Acc@1 51.540 Acc@5 78.170 loss 2.027
+[12:58:58.637257] Accuracy of the network on the 10000 test images: 51.5%
+[12:58:58.637751] Max accuracy: 51.87%
+[12:58:58.638154] Saving model at epoch: 18
+[12:59:02.233315] Epoch: [19]  [  0/505]  eta: 0:27:55  lr: 0.000014  loss: 3.2860 (3.2860)  acc1: 39.4531 (39.4531)  acc5: 67.5781 (67.5781)  time: 3.3176  data: 2.8232  max mem: 19954
+[12:59:44.821903] Epoch: [19]  [100/505]  eta: 0:03:04  lr: 0.000009  loss: 3.3583 (3.3587)  acc1: 38.6719 (38.3895)  acc5: 64.8438 (64.4377)  time: 0.4255  data: 0.0005  max mem: 19954
+[13:00:27.408225] Epoch: [19]  [200/505]  eta: 0:02:14  lr: 0.000006  loss: 3.3638 (3.3525)  acc1: 37.8906 (38.7069)  acc5: 64.8438 (64.6475)  time: 0.4258  data: 0.0005  max mem: 19954
+[13:01:09.974796] Epoch: [19]  [300/505]  eta: 0:01:29  lr: 0.000003  loss: 3.3806 (3.3586)  acc1: 37.8906 (38.5499)  acc5: 63.2812 (64.4687)  time: 0.4256  data: 0.0005  max mem: 19954
+[13:01:52.606989] Epoch: [19]  [400/505]  eta: 0:00:45  lr: 0.000002  loss: 3.3360 (3.3556)  acc1: 40.6250 (38.6670)  acc5: 64.0625 (64.5106)  time: 0.4270  data: 0.0005  max mem: 19954
+[13:02:35.164945] Epoch: [19]  [500/505]  eta: 0:00:02  lr: 0.000001  loss: 3.3636 (3.3569)  acc1: 37.1094 (38.6337)  acc5: 64.4531 (64.5303)  time: 0.4232  data: 0.0003  max mem: 19954
+[13:02:36.855047] Epoch: [19]  [504/505]  eta: 0:00:00  lr: 0.000001  loss: 3.3465 (3.3564)  acc1: 37.1094 (38.6363)  acc5: 64.8438 (64.5413)  time: 0.4226  data: 0.0003  max mem: 19954
+[13:02:36.989377] Epoch: [19] Total time: 0:03:38 (0.4318 s / it)
+[13:02:36.991761] Averaged stats: lr: 0.000001  loss: 3.3465 (3.3594)  acc1: 37.1094 (38.6030)  acc5: 64.8438 (64.5181)
+[13:02:36.992275] * Train_Acc@1 38.603 Acc@5 64.518 loss 3.359
+[13:02:36.993180] Saving model at epoch: 19
+[13:02:40.596004] Test:  [ 0/20]  eta: 0:01:03  loss: 2.2020 (2.2020)  acc1: 48.4375 (48.4375)  acc5: 75.0000 (75.0000)  time: 3.1531  data: 3.0053  max mem: 19954
+[13:02:43.215485] Test:  [19/20]  eta: 0:00:00  loss: 2.0648 (2.0499)  acc1: 51.5625 (50.9800)  acc5: 78.5156 (78.6600)  time: 0.2886  data: 0.1830  max mem: 19954
+[13:02:43.284060] Test: Total time: 0:00:05 (0.2921 s / it)
+[13:02:43.285513] * Acc@1 51.640 Acc@5 78.660 loss 2.033
+[13:02:43.285829] Accuracy of the network on the 10000 test images: 51.6%
+[13:02:43.285982] Max accuracy: 51.87%
+[13:02:43.286118] Saving model at epoch: 19
+[13:02:43.548964] Training time 1:14:53

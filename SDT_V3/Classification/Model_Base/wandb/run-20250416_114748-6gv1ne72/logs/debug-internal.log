@@ -1,0 +1,15 @@
+{"time":"2025-04-16T11:47:48.733166669+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250416_114748-6gv1ne72/logs/debug-core.log"}
+{"time":"2025-04-16T11:47:49.025973575+02:00","level":"INFO","msg":"created new stream","id":"6gv1ne72"}
+{"time":"2025-04-16T11:47:49.026052281+02:00","level":"INFO","msg":"stream: started","id":"6gv1ne72"}
+{"time":"2025-04-16T11:47:49.026168435+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"6gv1ne72"}
+{"time":"2025-04-16T11:47:49.026266084+02:00","level":"INFO","msg":"sender: started","stream_id":"6gv1ne72"}
+{"time":"2025-04-16T11:47:49.026389001+02:00","level":"INFO","msg":"handler: started","stream_id":"6gv1ne72"}
+{"time":"2025-04-16T11:47:49.44292964+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-16T13:02:43.843053394+02:00","level":"INFO","msg":"stream: closing","id":"6gv1ne72"}
+{"time":"2025-04-16T13:02:43.843258088+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-16T13:02:43.84345109+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-16T13:02:49.19648054+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-16T13:02:49.406294337+02:00","level":"INFO","msg":"handler: closed","stream_id":"6gv1ne72"}
+{"time":"2025-04-16T13:02:49.406353211+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"6gv1ne72"}
+{"time":"2025-04-16T13:02:49.406429735+02:00","level":"INFO","msg":"sender: closed","stream_id":"6gv1ne72"}
+{"time":"2025-04-16T13:02:49.409997058+02:00","level":"INFO","msg":"stream: closed","id":"6gv1ne72"}

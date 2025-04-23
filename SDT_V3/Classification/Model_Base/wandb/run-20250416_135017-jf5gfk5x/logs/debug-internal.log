@@ -1,0 +1,21 @@
+{"time":"2025-04-16T13:50:17.99217137+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250416_135017-jf5gfk5x/logs/debug-core.log"}
+{"time":"2025-04-16T13:50:18.40331571+02:00","level":"INFO","msg":"created new stream","id":"jf5gfk5x"}
+{"time":"2025-04-16T13:50:18.40337427+02:00","level":"INFO","msg":"stream: started","id":"jf5gfk5x"}
+{"time":"2025-04-16T13:50:18.403483146+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"jf5gfk5x"}
+{"time":"2025-04-16T13:50:18.403611439+02:00","level":"INFO","msg":"handler: started","stream_id":"jf5gfk5x"}
+{"time":"2025-04-16T13:50:18.403682411+02:00","level":"INFO","msg":"sender: started","stream_id":"jf5gfk5x"}
+{"time":"2025-04-16T13:50:18.882946865+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-16T20:45:08.979850271+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/prdvanderwal/LIT/jf5gfk5x/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-04-16T23:27:05.178213274+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-04-16T23:28:07.636587116+02:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/prdvanderwal/LIT/jf5gfk5x/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-04-17T01:04:20.461426994+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-04-17T01:11:20.457934905+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-04-17T01:29:05.468603024+02:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-04-17T02:22:14.050375879+02:00","level":"INFO","msg":"stream: closing","id":"jf5gfk5x"}
+{"time":"2025-04-17T02:22:14.050522366+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-17T02:22:14.064612886+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-17T02:22:19.843826663+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-17T02:22:20.048612352+02:00","level":"INFO","msg":"handler: closed","stream_id":"jf5gfk5x"}
+{"time":"2025-04-17T02:22:20.048677309+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"jf5gfk5x"}
+{"time":"2025-04-17T02:22:20.057937267+02:00","level":"INFO","msg":"sender: closed","stream_id":"jf5gfk5x"}
+{"time":"2025-04-17T02:22:20.058011576+02:00","level":"INFO","msg":"stream: closed","id":"jf5gfk5x"}

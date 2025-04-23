@@ -1,0 +1,370 @@
+[14:26:04.019311] Model = Spiking_vit_MetaFormer_Spike_SepConv(
+  (downsample1_1): MS_DownSampling(
+    (encode_conv): Conv2d(3, 16, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3))
+    (encode_bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (ConvBlock1_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(32, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=32, bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(64, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample1_2): MS_DownSampling(
+    (encode_conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (ConvBlock1_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=64, bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample2): MS_DownSampling(
+    (encode_conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (ConvBlock2_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (ConvBlock2_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample3): MS_DownSampling(
+    (encode_conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (block3): ModuleList(
+    (0-5): 6 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qe_conv): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qi_conv): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (k_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (v_conv): Sequential(
+          (0): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (proj_conv): Sequential(
+          (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(128, 512, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (fc2_conv): Conv1d(512, 128, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      )
+    )
+  )
+  (downsample4): MS_DownSampling(
+    (encode_conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (encode_bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+  )
+  (block4): ModuleList(
+    (0-1): 2 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv1): Sequential(
+          (0): Conv2d(192, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (dwconv): Sequential(
+          (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (pwconv2): Sequential(
+          (0): Conv2d(384, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qe_conv): Sequential(
+          (0): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (qi_conv): Sequential(
+          (0): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (k_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (v_conv): Sequential(
+          (0): Conv2d(192, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (proj_conv): Sequential(
+          (0): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(192, 768, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+        (fc2_conv): Conv1d(768, 192, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4)
+      )
+    )
+  )
+  (head): Linear(in_features=192, out_features=1000, bias=True)
+  (spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=1)
+)
+[14:26:04.019592] number of params (M): 5.11
+[14:26:04.019712] base lr: 6.00e-04
+[14:26:04.019802] actual lr: 1.20e-03
+[14:26:04.019881] accumulate grad iterations: 1
+[14:26:04.019958] effective batch size: 512
+[14:26:04.038083] criterion = LabelSmoothingCrossEntropy()
+[14:26:04.038266] Start training for 20 epochs
+[14:26:09.776262] [14:26:09.777242] [14:26:09.777428] [14:26:09.777582] [14:26:09.777721] [14:26:09.777848] [14:26:09.777965] [14:26:09.778095] [14:26:09.778222] [14:26:09.778348] [14:26:09.778466] [14:26:09.778591]
+Traceback (most recent call last):
+  File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 379, in <module>
+    main(args)
+  File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 309, in main
+    train_stats = train_one_epoch(
+                  ^^^^^^^^^^^^^^^^
+  File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/engine_finetune.py", line 63, in train_one_epoch
+    outputs = model(samples)
+              ^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 1025, in forward
+    x = self.forward_features(x) # B,C,H,W
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 1016, in forward_features
+    x = blk(x)
+        ^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 810, in forward
+    x = x + self.attn(x)
+           ^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 554, in forward
+    xe = qe @ k.transpose(-2, -1)
+         ~~~^~~~~~~~~~~~~~~~~~~~~
+RuntimeError: Expected size for first two dimensions of batch2 tensor to be: [2048, 8] but got: [2048, 16].
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 379, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 309, in main
+[rank0]:     train_stats = train_one_epoch(
+[rank0]:                   ^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/engine_finetune.py", line 63, in train_one_epoch
+[rank0]:     outputs = model(samples)
+[rank0]:               ^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 1025, in forward
+[rank0]:     x = self.forward_features(x) # B,C,H,W
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 1016, in forward_features
+[rank0]:     x = blk(x)
+[rank0]:         ^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 810, in forward
+[rank0]:     x = x + self.attn(x)
+[rank0]:             ^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/models.py", line 554, in forward
+[rank0]:     xe = qe @ k.transpose(-2, -1)
+[rank0]:          ~~~^~~~~~~~~~~~~~~~~~~~~
+[rank0]: RuntimeError: Expected size for first two dimensions of batch2 tensor to be: [2048, 8] but got: [2048, 16].

@@ -22,15 +22,16 @@ import torch
 from util.samplers import RASampler
 # import torchinfo
 import torch.backends.cudnn as cudnn
-from torch.utils.tensorboard import SummaryWriter
+import wandb
 
 import timm
 from timm.utils import accuracy, AverageMeter, ModelEma
-# assert timm.__version__ == "0.5.4"  # version check
-from timm.models.layers import trunc_normal_
-import timm.optim.optim_factory as optim_factory
+from timm.layers import trunc_normal_
+# import timm.optim.optim_factory as optim_factory
 from timm.data.mixup import Mixup
+from timm.data import create_loader
 from timm.loss import LabelSmoothingCrossEntropy, SoftTargetCrossEntropy
+from timm.optim import Lamb
 
 import util.lr_decay_spikformer as lrd
 import util.misc as misc
@@ -39,248 +40,91 @@ from util.misc import NativeScalerWithGradNormCount as NativeScaler
 
 import models
 from engine_finetune import train_one_epoch, evaluate
-from timm.data import create_loader
 
+
+
+import argparse
 
 def get_args_parser():
-    # important params
-    parser = argparse.ArgumentParser(
-        "MAE fine-tuning for image classification", add_help=False
-    )
-    parser.add_argument(
-        "--batch_size",
-        default=64,
-        type=int,
-        help="Batch size per GPU (effective batch size is batch_size * accum_iter * # gpus",
-    )
-    parser.add_argument("--epochs", default=200, type=int)  # 20/30(T=4)
-    parser.add_argument(
-        "--accum_iter",
-        default=1,
-        type=int,
-        help="Accumulate gradient iterations (for increasing the effective batch size under memory constraints)",
-    )
-    parser.add_argument("--finetune", default="", help="finetune from checkpoint")
-    parser.add_argument(
-        "--data_path", default="./data", type=str, help="dataset path"
-    )
+    parser = argparse.ArgumentParser("MAE fine-tuning for image classification", add_help=False)
 
-    # Model parameters
-    parser.add_argument(
-        "--model",
-        default="spikformer",
-        type=str,
-        metavar="MODEL",
-        help="Name of model to train",
-    )
-    parser.add_argument(
-        "--model_mode",
-        default="ms",
-        type=str,
-        help="Mode of model to train",
-    )
+    # Basic training params
+    parser.add_argument("--batch_size", default=64, type=int)
+    parser.add_argument("--epochs", default=200, type=int)
+    parser.add_argument("--accum_iter", default=1, type=int)
+    parser.add_argument("--finetune", default="", type=str)
+    parser.add_argument("--data_path", default="./data", type=str)
 
-    parser.add_argument("--input_size", default=224, type=int, help="images input size")
+    # Model params
+    parser.add_argument("--model", default="spikformer", type=str)
+    parser.add_argument("--model_mode", default="ms", type=str)
+    parser.add_argument("--input_size", default=224, type=int)
+    parser.add_argument("--drop_path", type=float, default=0.1)
 
-    parser.add_argument(
-        "--drop_path",
-        type=float,
-        default=0.1,
-        metavar="PCT",
-        help="Drop path rate (default: 0.1)",
-    )
-    # Optimizer parameters
-    parser.add_argument(
-        "--clip_grad",
-        type=float,
-        default=None,
-        metavar="NORM",
-        help="Clip gradient norm (default: None, no clipping)",
-    )
-    parser.add_argument(
-        "--weight_decay", type=float, default=0.05, help="weight decay (default: 0.05)"
-    )
+    # Optimizer params
+    parser.add_argument("--clip_grad", type=float, default=None)
+    parser.add_argument("--weight_decay", type=float, default=0.05)
+    parser.add_argument("--lr", type=float, default=None)
+    parser.add_argument("--blr", type=float, default=6e-4)
+    parser.add_argument("--layer_decay", type=float, default=1.0)
+    parser.add_argument("--min_lr", type=float, default=1e-6)
+    parser.add_argument("--warmup_epochs", type=int, default=10)
 
-    parser.add_argument(
-        "--lr",
-        type=float,
-        default=None,
-        metavar="LR",
-        help="learning rate (absolute lr)",
-    )
-    parser.add_argument(
-        "--blr",
-        type=float,
-        default=6e-4,
-        metavar="LR",  # 1e-5,2e-5(T=4)
-        help="base learning rate: absolute_lr = base_lr * total_batch_size / 256",
-    )
-    parser.add_argument(
-        "--layer_decay",
-        type=float,
-        default=1.0,
-        help="layer-wise lr decay from ELECTRA/BEiT",
-    )
+    # Augmentation params
+    parser.add_argument("--color_jitter", type=float, default=None)
+    parser.add_argument("--aa", type=str, default="rand-m9-mstd0.5-inc1")
+    parser.add_argument("--smoothing", type=float, default=0.1)
+    parser.add_argument("--reprob", type=float, default=0.25)
+    parser.add_argument("--remode", type=str, default="pixel")
+    parser.add_argument("--recount", type=int, default=1)
+    parser.add_argument("--resplit", action="store_true", default=False)
 
-    parser.add_argument(
-        "--min_lr",
-        type=float,
-        default=1e-6,
-        metavar="LR",
-        help="lower lr bound for cyclic schedulers that hit 0",
-    )
+    # Mixup params
+    parser.add_argument("--mixup", type=float, default=0)
+    parser.add_argument("--cutmix", type=float, default=0)
+    parser.add_argument("--cutmix_minmax", type=float, nargs="+", default=None)
+    parser.add_argument("--mixup_prob", type=float, default=1.0)
+    parser.add_argument("--mixup_switch_prob", type=float, default=0.5)
+    parser.add_argument("--mixup_mode", type=str, default="batch")
 
-    parser.add_argument(
-        "--warmup_epochs", type=int, default=10, metavar="N", help="epochs to warmup LR"
-    )
-
-    # Augmentation parameters
-    parser.add_argument(
-        "--color_jitter",
-        type=float,
-        default=None,
-        metavar="PCT",
-        help="Color jitter factor (enabled only when not using Auto/RandAug)",
-    )
-    parser.add_argument(
-        "--aa",
-        type=str,
-        default="rand-m9-mstd0.5-inc1",
-        metavar="NAME",
-        help='Use AutoAugment policy. "v0" or "original". " + "(default: rand-m9-mstd0.5-inc1)',
-    ),
-    parser.add_argument(
-        "--smoothing", type=float, default=0.1, help="Label smoothing (default: 0.1)"
-    )
-
-    # * Random Erase params
-    parser.add_argument(
-        "--reprob",
-        type=float,
-        default=0.25,
-        metavar="PCT",
-        help="Random erase prob (default: 0.25)",
-    )
-    parser.add_argument(
-        "--remode",
-        type=str,
-        default="pixel",
-        help='Random erase mode (default: "pixel")',
-    )
-    parser.add_argument(
-        "--recount", type=int, default=1, help="Random erase count (default: 1)"
-    )
-    parser.add_argument(
-        "--resplit",
-        action="store_true",
-        default=False,
-        help="Do not random erase first (clean) augmentation split",
-    )
-
-    # * Mixup params
-    parser.add_argument(
-        "--mixup", type=float, default=0, help="mixup alpha, mixup enabled if > 0."
-    )
-    parser.add_argument(
-        "--cutmix", type=float, default=0, help="cutmix alpha, cutmix enabled if > 0."
-    )
-    parser.add_argument(
-        "--cutmix_minmax",
-        type=float,
-        nargs="+",
-        default=None,
-        help="cutmix min/max ratio, overrides alpha and enables cutmix if set (default: None)",
-    )
-    parser.add_argument(
-        "--mixup_prob",
-        type=float,
-        default=1.0,
-        help="Probability of performing mixup or cutmix when either/both is enabled",
-    )
-    parser.add_argument(
-        "--mixup_switch_prob",
-        type=float,
-        default=0.5,
-        help="Probability of switching to cutmix when both mixup and cutmix enabled",
-    )
-    parser.add_argument(
-        "--mixup_mode",
-        type=str,
-        default="batch",
-        help='How to apply mixup/cutmix params. Per "batch", "pair", or "elem"',
-    )
-
-    # * Finetuning params
-
+    # Classification & model inference params
     parser.add_argument("--global_pool", action="store_true")
     parser.set_defaults(global_pool=True)
-    parser.add_argument(
-        "--cls_token",
-        action="store_false",
-        dest="global_pool",
-        help="Use class token instead of global pool for classification",
-    )
+    parser.add_argument("--cls_token", action="store_false", dest="global_pool")
     parser.add_argument("--time_steps", default=1, type=int)
+    parser.add_argument("--nb_classes", default=1000, type=int)
 
-    # Dataset parameters
+    # Output & logging
+    parser.add_argument("--output_dir", default="./output_dir")
+    parser.add_argument("--log_dir", default="./output_dir")
 
-    parser.add_argument(
-        "--nb_classes",
-        default=1000,
-        type=int,
-        help="number of the classification types",
-    )
-
-    parser.add_argument(
-        "--output_dir",
-        default="./output_dir",
-        help="path where to save, empty for no saving",
-    )
-    parser.add_argument(
-        "--log_dir",
-        default="./output_dir",
-        help="path where to tensorboard log",
-    )
-    parser.add_argument(
-        "--device", default="cuda", help="device to use for training / testing"
-    )
+    # Runtime
+    parser.add_argument("--device", default="cuda")
     parser.add_argument("--seed", default=0, type=int)
-    parser.add_argument("--resume", default=None, help="resume from checkpoint")
-
-    parser.add_argument(
-        "--start_epoch", default=0, type=int, metavar="N", help="start epoch"
-    )
-    parser.add_argument("--eval", action="store_true",default=True, help="Perform evaluation only")
-    parser.add_argument(
-        "--repeated_aug",
-        action="store_true",
-        default=False,
-        help="Three aug",
-    )
-    parser.add_argument(
-        "--dist_eval",
-        action="store_true",
-        default=False,
-        help="Enabling distributed evaluation (recommended during training for faster monitor",
-    )
+    parser.add_argument("--resume", default=None)
+    parser.add_argument("--start_epoch", default=0, type=int)
+    parser.add_argument("--eval", action="store_true", default=False)
+    parser.add_argument("--repeated_aug", action="store_true", default=False)
+    parser.add_argument("--dist_eval", action="store_true", default=False)
     parser.add_argument("--num_workers", default=10, type=int)
-    parser.add_argument(
-        "--pin_mem",
-        action="store_true",
-        help="Pin CPU memory in DataLoader for more efficient (sometimes) transfer to GPU.",
-    )
+    parser.add_argument("--pin_mem", action="store_true")
     parser.add_argument("--no_pin_mem", action="store_false", dest="pin_mem")
     parser.set_defaults(pin_mem=True)
 
-    # distributed training parameters
-    parser.add_argument(
-        "--world_size", default=1, type=int, help="number of distributed processes"
-    )
+    # Distributed training
+    parser.add_argument("--world_size", default=1, type=int)
     parser.add_argument("--local-rank", default=-1, type=int)
     parser.add_argument("--dist_on_itp", action="store_true")
-    parser.add_argument(
-        "--dist_url", default="env://", help="url used to set up distributed training"
-    )
+    parser.add_argument("--dist_url", default="env://")
+
+    # WandB 
+    parser.add_argument('--wandb', action='store_false', help='USe wandb by default. Trigger to disable wandb')
+    parser.add_argument('--name', type=str, default='')
+    parser.add_argument('--wandb_tags', type=str, nargs='+', default=None)
+
+    # Lateral Inhibition
+    parser.add_argument('--lateral_inhibition', action='store_true')
+    parser.add_argument('--trainable_threshold', action='store_true')
 
     return parser
 
@@ -293,12 +137,20 @@ def main(args):
 
     device = torch.device(args.device)
 
+    date_str = args.name
+    args.name = '-'.join([
+        f"li_{args.lateral_inhibition}",
+        f"blr_{args.blr}",
+        f"b_{args.batch_size}",
+    ])
+
     # fix the seed for reproducibility
     seed = args.seed + misc.get_rank()
     torch.manual_seed(seed)
     np.random.seed(seed)
 
     cudnn.benchmark = True
+    cudnn.deterministic = True
 
     dataset_train = build_dataset(is_train=True, args=args)
     dataset_val = build_dataset(is_train=False, args=args)
@@ -330,10 +182,19 @@ def main(args):
     else:
         sampler_train = torch.utils.data.RandomSampler(dataset_train)
         sampler_val = torch.utils.data.SequentialSampler(dataset_val)
-
-    if global_rank == 0 and args.log_dir is not None and not args.eval:
-        os.makedirs(args.log_dir, exist_ok=True)
-        log_writer = SummaryWriter(log_dir=args.log_dir)
+    
+    wandb_log = misc.is_main_process()
+    if global_rank == 0 and not args.eval:
+        wandb.login(key="27656ca0b0297d3f09e317d7a47bd97275cc33a1")
+        wandb.init(
+            project="LIT",
+            name=args.name,
+            id=wandb.util.generate_id(),
+            tags=args.wandb_tags,
+            resume='auto',
+            config=vars(args),
+        )
+        
     else:
         log_writer = None
 
@@ -371,7 +232,7 @@ def main(args):
         )
 
 
-    model = models.__dict__[args.model]()
+    model = models.__dict__[args.model](lateral_inhibition=args.lateral_inhibition, trainable_threshold=args.trainable_threshold)
 
     model.T = args.time_steps
     if args.finetune:
@@ -399,7 +260,7 @@ def main(args):
 
     if args.distributed:
         model = torch.nn.parallel.DistributedDataParallel(
-            model, device_ids=[args.gpu], find_unused_parameters=True
+            model, device_ids=[args.gpu], find_unused_parameters=False
         )
         model_without_ddp = model.module
 
@@ -411,7 +272,7 @@ def main(args):
         layer_decay=args.layer_decay,
     )
 
-    optimizer = optim_factory.Lamb(param_groups, trust_clip=True, lr=args.lr)
+    optimizer = Lamb(param_groups, trust_clip=True, lr=args.lr)
     loss_scaler = NativeScaler()
 
     if mixup_fn is not None:
@@ -457,7 +318,6 @@ def main(args):
             loss_scaler,
             args.clip_grad,
             mixup_fn,
-            log_writer=log_writer,
             args=args,
         )
         if args.output_dir and (epoch % 50 == 0 or epoch + 1 == args.epochs):
@@ -469,6 +329,7 @@ def main(args):
                 optimizer=optimizer,
                 loss_scaler=loss_scaler,
                 epoch=epoch,
+                is_best=False,
             )
 
         test_stats = evaluate(data_loader_val, model, device)
@@ -486,12 +347,16 @@ def main(args):
                 optimizer=optimizer,
                 loss_scaler=loss_scaler,
                 epoch=epoch,
+                is_best=True,
             )
 
-        if log_writer is not None:
-            log_writer.add_scalar("perf/test_acc1", test_stats["acc1"], epoch)
-            log_writer.add_scalar("perf/test_acc5", test_stats["acc5"], epoch)
-            log_writer.add_scalar("perf/test_loss", test_stats["loss"], epoch)
+        if wandb_log:
+            wandb.log({
+                "test/acc1": test_stats["acc1"],
+                "test/acc5": test_stats["acc5"],
+                "test/loss": test_stats["loss"],
+                "epoch": epoch,
+            })
 
         log_stats = {
             **{f"train_{k}": v for k, v in train_stats.items()},
@@ -500,13 +365,8 @@ def main(args):
             "n_parameters": n_parameters,
         }
 
-        if args.output_dir and misc.is_main_process():
-            if log_writer is not None:
-                log_writer.flush()
-            with open(
-                os.path.join(args.output_dir, "log.txt"), mode="a", encoding="utf-8"
-            ) as f:
-                f.write(json.dumps(log_stats) + "\n")
+        if misc.is_main_process():
+            wandb.log(log_stats)
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
@@ -516,6 +376,6 @@ def main(args):
 if __name__ == "__main__":
     args = get_args_parser()
     args = args.parse_args()
-    if args.output_dir:
-        Path(args.output_dir).mkdir(parents=True, exist_ok=True)
+    # if args.output_dir:
+    #     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
     main(args)

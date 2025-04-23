@@ -1,0 +1,287 @@
+[09:41:48.645253] Model = Spiking_vit_MetaFormer_Spike_SepConv(
+  (downsample1_1): MS_DownSampling(
+    (encode_conv): Conv2d(3, 16, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3))
+    (encode_bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (ConvBlock1_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(32, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=32, bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(64, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample1_2): MS_DownSampling(
+    (encode_conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (ConvBlock1_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=64, bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample2): MS_DownSampling(
+    (encode_conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (ConvBlock2_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (ConvBlock2_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample3): MS_DownSampling(
+    (encode_conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (block3): ModuleList(
+    (0-5): 6 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qe_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qi_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (k_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (v_conv): Sequential(
+          (0): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (proj_conv): Sequential(
+          (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(128, 512, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (fc2_conv): Conv1d(512, 128, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      )
+    )
+  )
+  (downsample4): MS_DownSampling(
+    (encode_conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (encode_bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (block4): ModuleList(
+    (0-1): 2 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(192, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(384, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qe_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qi_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (k_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (v_conv): Sequential(
+          (0): Conv2d(192, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (proj_conv): Sequential(
+          (0): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(192, 768, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (fc2_conv): Conv1d(768, 192, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      )
+    )
+  )
+  (head): Linear(in_features=192, out_features=1000, bias=True)
+  (spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=1, Threshold=0.5000)
+)
+[09:41:48.645609] number of params (M): 5.28
+[09:41:48.645752] base lr: 6.00e-04
+[09:41:48.645848] actual lr: 1.20e-03
+[09:41:48.645930] accumulate grad iterations: 1
+[09:41:48.646013] effective batch size: 512
+[09:41:48.711144] criterion = LabelSmoothingCrossEntropy()
+[09:41:48.711425] Start training for 20 epochs
+[09:42:01.148561] Epoch: [0]  [  0/505]  eta: 1:44:37  lr: 0.000000  loss: 6.9106 (6.9106)  acc1: 0.3906 (0.3906)  acc5: 2.3438 (2.3438)  time: 12.4310  data: 5.2368  max mem: 19949
+[09:42:48.347432] Epoch: [0]  [100/505]  eta: 0:03:59  lr: 0.000048  loss: 6.9040 (6.9069)  acc1: 0.3906 (0.3636)  acc5: 1.5625 (1.5625)  time: 0.4681  data: 0.0006  max mem: 19949
+[09:43:35.166148] Epoch: [0]  [200/505]  eta: 0:02:41  lr: 0.000095  loss: 6.8841 (6.9001)  acc1: 0.0000 (0.3731)  acc5: 1.9531 (1.7141)  time: 0.4688  data: 0.0006  max mem: 19949
+[09:44:22.524498] Epoch: [0]  [300/505]  eta: 0:01:44  lr: 0.000143  loss: 6.8417 (6.8871)  acc1: 0.3906 (0.4101)  acc5: 2.7344 (1.9259)  time: 0.4696  data: 0.0006  max mem: 19949
+[09:45:09.521743] Epoch: [0]  [400/505]  eta: 0:00:52  lr: 0.000190  loss: 6.7761 (6.8667)  acc1: 0.3906 (0.4247)  acc5: 3.1250 (2.0895)  time: 0.4692  data: 0.0006  max mem: 19949
+[09:45:56.391555] Epoch: [0]  [500/505]  eta: 0:00:02  lr: 0.000238  loss: 6.6699 (6.8370)  acc1: 0.3906 (0.4444)  acc5: 2.7344 (2.2229)  time: 0.4673  data: 0.0004  max mem: 19949
+[09:45:58.254887] Epoch: [0]  [504/505]  eta: 0:00:00  lr: 0.000240  loss: 6.6730 (6.8357)  acc1: 0.3906 (0.4455)  acc5: 2.3438 (2.2215)  time: 0.4663  data: 0.0002  max mem: 19949
+[09:45:58.382010] Epoch: [0] Total time: 0:04:09 (0.4944 s / it)
+[09:45:58.385079] Averaged stats: lr: 0.000240  loss: 6.6730 (6.8356)  acc1: 0.3906 (0.4544)  acc5: 2.3438 (2.2660)
+[09:45:58.386315] * Train_Acc@1 0.454 Acc@5 2.266 loss 6.836
+[09:45:58.387593] Saving model at epoch: 0
+wandb: WARNING Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+[09:46:02.735845] Test:  [ 0/20]  eta: 0:01:21  loss: 6.6193 (6.6193)  acc1: 1.1719 (1.1719)  acc5: 3.5156 (3.5156)  time: 4.0849  data: 3.8921  max mem: 19949
+[09:46:05.678438] Test:  [19/20]  eta: 0:00:00  loss: 6.6135 (6.6103)  acc1: 0.7812 (0.7000)  acc5: 3.5156 (3.6000)  time: 0.3513  data: 0.2013  max mem: 19949
+[09:46:05.748469] Test: Total time: 0:00:07 (0.3549 s / it)
+[09:46:05.751861] * Acc@1 0.640 Acc@5 3.350 loss 6.615
+[09:46:05.752627] Accuracy of the network on the 10000 test images: 0.6%
+[09:46:05.752962] Max accuracy: 0.64%
+[09:46:05.753196] Saving model at epoch: 0
+[09:46:09.279102] Epoch: [1]  [  0/505]  eta: 0:27:32  lr: 0.000240  loss: 6.6533 (6.6533)  acc1: 0.3906 (0.3906)  acc5: 3.1250 (3.1250)  time: 3.2718  data: 2.1005  max mem: 19949
+[09:46:56.348657] Epoch: [1]  [100/505]  eta: 0:03:21  lr: 0.000288  loss: 6.4993 (6.5721)  acc1: 0.3906 (0.6304)  acc5: 3.1250 (3.2294)  time: 0.4695  data: 0.0005  max mem: 19949
+[09:47:43.341882] Epoch: [1]  [200/505]  eta: 0:02:27  lr: 0.000335  loss: 6.2789 (6.4754)  acc1: 0.7812 (0.6957)  acc5: 3.5156 (3.2435)  time: 0.4694  data: 0.0005  max mem: 19949

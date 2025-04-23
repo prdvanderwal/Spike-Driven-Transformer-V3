@@ -1,0 +1,559 @@
++ source /home4/p315895/venvs/lisnn/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/bash -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home4/p315895/venvs/lisnn
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ PATH=/home4/p315895/venvs/lisnn/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(lisnn) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(lisnn) '
+++ export VIRTUAL_ENV_PROMPT
+++ '[' -n /bin/bash -o -n '' ']'
+++ hash -r
++ BASE_PORT=12346
++ export MASTER_PORT=12346
++ MASTER_PORT=12346
+/var/spool/slurmd/job16706905/slurm_script: line 21: 1 * : syntax error: operand expected (error token is "* ")
+++ scontrol show hostnames a100gpu6
+++ head -n 1
++ export MASTER_ADDR=a100gpu6
++ MASTER_ADDR=a100gpu6
++ export OMP_NUM_THREADS=8
++ OMP_NUM_THREADS=8
++ echo MASTER_ADDR=a100gpu6
+MASTER_ADDR=a100gpu6
++ echo WORLD_SIZE=
+WORLD_SIZE=
+++ date +%Y%m%d_%H%M%S
++ TIMESTAMP=20250419_232242
++ SEED=32
+++ openssl rand -hex 4
++ SESSION_ID=f8f20b3a
++ TRAIN_SCRIPT=/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py
++ DATASET_NAME=ImageNet-200
++ DATASET_DIR=/tmp/dataset/ImageNet-200
++ mkdir -p /tmp/dataset
++ SECONDS=0
++ echo 'Extracting ImageNet-200.tar'
+Extracting ImageNet-200.tar
++ tar -xf /scratch/p315895/datasets/ImageNet-200.tar -C /tmp/dataset
++ echo 'Time taken to extract dataset: 22 seconds'
+Time taken to extract dataset: 22 seconds
++ COMMON_ARGS='--batch_size 256   --blr 6e-4   --warmup_epochs 5   --epochs 20   --model Efficient_Spiking_Transformer_s   --data_path /tmp/dataset/ImageNet-200   --output_dir outputs/T1   --log_dir outputs/T1   --model_mode ms   --dist_eval '
++ EXPERIMENT_NAME=ImageNet-200_20250419_232242_s32
++ case ${SLURM_ARRAY_TASK_ID} in
++ torchrun --standalone --nproc_per_node=2 /home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py --batch_size 256 --blr 6e-4 --warmup_epochs 5 --epochs 20 --model Efficient_Spiking_Transformer_s --data_path /tmp/dataset/ImageNet-200 --output_dir outputs/T1 --log_dir outputs/T1 --model_mode ms --dist_eval --name ImageNet-200_20250419_232242_s32 --wandb_tags small li ImageNet-200 --lateral_inhibition --trainable_threshold
+/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+| distributed init (rank 0): env://, gpu 0
+| distributed init (rank 1): env://, gpu 1
+[rank0]:[W419 23:23:15.200968597 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id.
+[rank1]:[W419 23:23:15.203057526 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id.
+[23:23:15.274339] job dir: /home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base
+[23:23:15.274455] Namespace(batch_size=256,
+epochs=20,
+accum_iter=1,
+finetune='',
+data_path='/tmp/dataset/ImageNet-200',
+model='Efficient_Spiking_Transformer_s',
+model_mode='ms',
+input_size=224,
+drop_path=0.1,
+clip_grad=None,
+weight_decay=0.05,
+lr=None,
+blr=0.0006,
+layer_decay=1.0,
+min_lr=1e-06,
+warmup_epochs=5,
+color_jitter=None,
+aa='rand-m9-mstd0.5-inc1',
+smoothing=0.1,
+reprob=0.25,
+remode='pixel',
+recount=1,
+resplit=False,
+mixup=0,
+cutmix=0,
+cutmix_minmax=None,
+mixup_prob=1.0,
+mixup_switch_prob=0.5,
+mixup_mode='batch',
+global_pool=True,
+time_steps=1,
+nb_classes=1000,
+output_dir='outputs/T1',
+log_dir='outputs/T1',
+device='cuda',
+seed=0,
+resume=None,
+start_epoch=0,
+eval=False,
+repeated_aug=False,
+dist_eval=True,
+num_workers=10,
+pin_mem=True,
+world_size=2,
+local_rank=-1,
+dist_on_itp=False,
+dist_url='env://',
+wandb=True,
+name='ImageNet-200_20250419_232242_s32',
+wandb_tags=['small',
+'li',
+'ImageNet-200'],
+lateral_inhibition=True,
+trainable_threshold=True,
+rank=0,
+gpu=0,
+distributed=True,
+dist_backend='nccl')
+[23:23:15.675317] Sampler_train = <torch.utils.data.distributed.DistributedSampler object at 0x7f7c1832a690>
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: WARNING If you're specifying your api key in code, ensure this code is not shared publicly.
+wandb: WARNING Consider setting the WANDB_API_KEY environment variable, or running `wandb login` from the command line.
+wandb: Appending key for api.wandb.ai to your netrc file: /home4/p315895/.netrc
+wandb: Currently logged in as: prdvanderwal to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Ignoring ID w8xidexa loaded due to resume='auto' because the run ID is set to e163hryo.
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250419_232316-e163hryo
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run li_True-blr_0.0006-b_256
+wandb: ⭐️ View project at https://wandb.ai/prdvanderwal/LIT
+wandb: 🚀 View run at https://wandb.ai/prdvanderwal/LIT/runs/e163hryo
+[23:23:17.141164] Model = Spiking_vit_MetaFormer_Spike_SepConv(
+  (downsample1_1): MS_DownSampling(
+    (encode_conv): Conv2d(3, 16, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3))
+    (encode_bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (ConvBlock1_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(32, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=32, bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(64, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample1_2): MS_DownSampling(
+    (encode_conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (ConvBlock1_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=64, bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample2): MS_DownSampling(
+    (encode_conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (ConvBlock2_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (ConvBlock2_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample3): MS_DownSampling(
+    (encode_conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (block3): ModuleList(
+    (0-5): 6 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qe_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qi_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (k_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (v_conv): Sequential(
+          (0): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (proj_conv): Sequential(
+          (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(128, 512, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (fc2_conv): Conv1d(512, 128, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      )
+    )
+  )
+  (downsample4): MS_DownSampling(
+    (encode_conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (encode_bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (block4): ModuleList(
+    (0-1): 2 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(192, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(384, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qe_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qi_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (k_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (v_conv): Sequential(
+          (0): Conv2d(192, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (proj_conv): Sequential(
+          (0): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(192, 768, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (fc2_conv): Conv1d(768, 192, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      )
+    )
+  )
+  (head): Linear(in_features=192, out_features=1000, bias=True)
+  (spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=1, Threshold=0.5000)
+)
+[23:23:17.141417] number of params (M): 5.28
+[23:23:17.141544] base lr: 6.00e-04
+[23:23:17.141637] actual lr: 1.20e-03
+[23:23:17.141717] accumulate grad iterations: 1
+[23:23:17.141796] effective batch size: 512
+[23:23:17.161878] criterion = LabelSmoothingCrossEntropy()
+[23:23:17.162048] Start training for 20 epochs
+[23:23:25.166500] Epoch: [0]  [  0/505]  eta: 1:07:21  lr: 0.000000  loss: 6.9106 (6.9106)  acc1: 0.3906 (0.3906)  acc5: 2.3438 (2.3438)  time: 8.0021  data: 3.3945  max mem: 19949
+[23:23:26.636718] Traceback (most recent call last):
+[23:23:26.637951]   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 381, in <module>
+    main(args)
+[23:23:26.638216]   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 311, in main
+    train_stats = train_one_epoch(
+                  ^^^^^^^^^^^^^^^^
+[23:23:26.638424]   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/engine_finetune.py", line 63, in train_one_epoch
+    outputs = model(samples)
+              ^^^^^^^^^^^^^^
+[23:23:26.638629]   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[23:23:26.638803]   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[23:23:26.638964]   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[23:23:26.639138]   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[23:23:26.639344] RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+making sure all `forward` function outputs participate in calculating loss. 
+If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+Parameter indices which did not receive grad for rank 0: 99 134 169 204 239 274 313 348
+ In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 381, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 311, in main
+[rank0]:     train_stats = train_one_epoch(
+[rank0]:                   ^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/engine_finetune.py", line 63, in train_one_epoch
+[rank0]:     outputs = model(samples)
+[rank0]:               ^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+[rank0]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+[rank0]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank0]:                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank0]: making sure all `forward` function outputs participate in calculating loss. 
+[rank0]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank0]: Parameter indices which did not receive grad for rank 0: 99 134 169 204 239 274 313 348
+[rank0]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 381, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py", line 311, in main
+[rank1]:     train_stats = train_one_epoch(
+[rank1]:                   ^^^^^^^^^^^^^^^^
+[rank1]:   File "/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/engine_finetune.py", line 63, in train_one_epoch
+[rank1]:     outputs = model(samples)
+[rank1]:               ^^^^^^^^^^^^^^
+[rank1]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+[rank1]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank1]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+[rank1]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank1]:                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank1]: making sure all `forward` function outputs participate in calculating loss. 
+[rank1]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank1]: Parameter indices which did not receive grad for rank 1: 99 134 169 204 239 274 313 348
+[rank1]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mli_True-blr_0.0006-b_256[0m at: [34mhttps://wandb.ai/prdvanderwal/LIT/runs/e163hryo[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250419_232316-e163hryo/logs[0m
+W0419 23:23:29.065000 4081971 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 4081985 closing signal SIGTERM
+E0419 23:23:30.233000 4081971 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 1 (pid: 4081986) of binary: /home4/p315895/venvs/lisnn/bin/python3
+Traceback (most recent call last):
+  File "/home4/p315895/venvs/lisnn/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-19_23:23:29
+  host      : a100gpu6.internal.hpc.rug.nl
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 4081986)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+###############################################################################
+Hábrók Cluster
+Job 16706905_0 for user p315895
+Finished at: Sat Apr 19 23:23:34 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 16706905_0
+Name                           : LISNN_IN200_li
+User                           : p315895
+Partition                      : gpushort
+Nodes                          : a100gpu6
+Number of Nodes                : 1
+Cores                          : 16
+Number of Tasks                : 1
+State                          : FAILED  
+Submit                         : 2025-04-19T23:22:39
+Start                          : 2025-04-19T23:22:40
+End                            : 2025-04-19T23:23:30
+Reserved walltime              : 04:00:00
+Used walltime                  : 00:00:50
+Used CPU time                  : 00:02:03 (Efficiency: 15.43%)
+% User (Computation)           : 67.71%
+% System (I/O)                 : 32.29%
+Total memory reserved          : 48G
+Maximum memory used            : 796.55M
+Requested GPUs                 : a100=2
+Allocated GPUs                 : a100=2
+Max GPU utilization            : 0%
+Max GPU memory used            : 0.00 
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

@@ -1,0 +1,1942 @@
++ source /home4/p315895/venvs/lisnn/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ '[' -n /bin/bash -o -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/home4/p315895/venvs/lisnn
+++ export VIRTUAL_ENV
+++ _OLD_VIRTUAL_PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ PATH=/home4/p315895/venvs/lisnn/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(lisnn) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(lisnn) '
+++ export VIRTUAL_ENV_PROMPT
+++ '[' -n /bin/bash -o -n '' ']'
+++ hash -r
++ BASE_PORT=12346
++ export MASTER_PORT=12346
++ MASTER_PORT=12346
+/var/spool/slurmd/job16709226/slurm_script: line 21: 1 * : syntax error: operand expected (error token is "* ")
+++ scontrol show hostnames a100gpu1
+++ head -n 1
++ export MASTER_ADDR=a100gpu1
++ MASTER_ADDR=a100gpu1
++ export OMP_NUM_THREADS=8
++ OMP_NUM_THREADS=8
++ echo MASTER_ADDR=a100gpu1
+MASTER_ADDR=a100gpu1
++ echo WORLD_SIZE=
+WORLD_SIZE=
+++ date +%Y%m%d_%H%M%S
++ TIMESTAMP=20250420_094911
++ SEED=32
+++ openssl rand -hex 4
++ SESSION_ID=41bb3e80
++ TRAIN_SCRIPT=/home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py
++ DATASET_NAME=ImageNet-200
++ DATASET_DIR=/tmp/dataset/ImageNet-200
++ mkdir -p /tmp/dataset
++ SECONDS=0
++ echo 'Extracting ImageNet-200.tar'
+Extracting ImageNet-200.tar
++ tar -xf /scratch/p315895/datasets/ImageNet-200.tar -C /tmp/dataset
++ echo 'Time taken to extract dataset: 26 seconds'
+Time taken to extract dataset: 26 seconds
++ COMMON_ARGS='--batch_size 256   --blr 6e-4   --warmup_epochs 5   --epochs 20   --model Efficient_Spiking_Transformer_s   --data_path /tmp/dataset/ImageNet-200   --output_dir outputs/T1   --log_dir outputs/T1   --model_mode ms   --dist_eval '
++ EXPERIMENT_NAME=ImageNet-200_20250420_094911_s32
++ case ${SLURM_ARRAY_TASK_ID} in
++ torchrun --standalone --nproc_per_node=2 /home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/main_finetune.py --batch_size 256 --blr 6e-4 --warmup_epochs 5 --epochs 20 --model Efficient_Spiking_Transformer_s --data_path /tmp/dataset/ImageNet-200 --output_dir outputs/T1 --log_dir outputs/T1 --model_mode ms --dist_eval --name ImageNet-200_20250420_094911_s32 --wandb_tags small li ImageNet-200 --lateral_inhibition --trainable_threshold
+/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+| distributed init (rank 1): env://, gpu 1
+[rank1]:[W420 09:49:48.574090991 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id.
+/home4/p315895/venvs/lisnn/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+| distributed init (rank 0): env://, gpu 0
+[rank0]:[W420 09:49:52.928476994 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id.
+[09:49:53.134702] job dir: /home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base
+[09:49:53.134855] Namespace(batch_size=256,
+epochs=20,
+accum_iter=1,
+finetune='',
+data_path='/tmp/dataset/ImageNet-200',
+model='Efficient_Spiking_Transformer_s',
+model_mode='ms',
+input_size=224,
+drop_path=0.1,
+clip_grad=None,
+weight_decay=0.05,
+lr=None,
+blr=0.0006,
+layer_decay=1.0,
+min_lr=1e-06,
+warmup_epochs=5,
+color_jitter=None,
+aa='rand-m9-mstd0.5-inc1',
+smoothing=0.1,
+reprob=0.25,
+remode='pixel',
+recount=1,
+resplit=False,
+mixup=0,
+cutmix=0,
+cutmix_minmax=None,
+mixup_prob=1.0,
+mixup_switch_prob=0.5,
+mixup_mode='batch',
+global_pool=True,
+time_steps=1,
+nb_classes=1000,
+output_dir='outputs/T1',
+log_dir='outputs/T1',
+device='cuda',
+seed=0,
+resume=None,
+start_epoch=0,
+eval=False,
+repeated_aug=False,
+dist_eval=True,
+num_workers=10,
+pin_mem=True,
+world_size=2,
+local_rank=-1,
+dist_on_itp=False,
+dist_url='env://',
+wandb=True,
+name='ImageNet-200_20250420_094911_s32',
+wandb_tags=['small',
+'li',
+'ImageNet-200'],
+lateral_inhibition=True,
+trainable_threshold=True,
+rank=0,
+gpu=0,
+distributed=True,
+dist_backend='nccl')
+[09:49:53.555184] Sampler_train = <torch.utils.data.distributed.DistributedSampler object at 0x7fdd0e746b90>
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: WARNING If you're specifying your api key in code, ensure this code is not shared publicly.
+wandb: WARNING Consider setting the WANDB_API_KEY environment variable, or running `wandb login` from the command line.
+wandb: Appending key for api.wandb.ai to your netrc file: /home4/p315895/.netrc
+wandb: Currently logged in as: prdvanderwal to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Ignoring ID zmzir6ef loaded due to resume='auto' because the run ID is set to vgwp8yz5.
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /home4/p315895/Spike-Driven-Transformer-V3/SDT_V3/Classification/Model_Base/wandb/run-20250420_094954-vgwp8yz5
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run li_True-blr_0.0006-b_256
+wandb: ⭐️ View project at https://wandb.ai/prdvanderwal/LIT
+wandb: 🚀 View run at https://wandb.ai/prdvanderwal/LIT/runs/vgwp8yz5
+[09:49:54.991329] Model = Spiking_vit_MetaFormer_Spike_SepConv(
+  (downsample1_1): MS_DownSampling(
+    (encode_conv): Conv2d(3, 16, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3))
+    (encode_bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (ConvBlock1_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(32, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=32, bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(16, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(64, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample1_2): MS_DownSampling(
+    (encode_conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (ConvBlock1_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=64, bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(32, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample2): MS_DownSampling(
+    (encode_conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (ConvBlock2_1): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (ConvBlock2_2): ModuleList(
+    (0): MS_ConvBlock_spike_SepConv(
+      (Conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), groups=128, bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      (conv2): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (downsample3): MS_DownSampling(
+    (encode_conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (encode_bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (block3): ModuleList(
+    (0-5): 6 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qe_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qi_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (k_conv): Sequential(
+          (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (v_conv): Sequential(
+          (0): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (proj_conv): Sequential(
+          (0): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(128, 512, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (fc2_conv): Conv1d(512, 128, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      )
+    )
+  )
+  (downsample4): MS_DownSampling(
+    (encode_conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (encode_bn): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (encode_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+  )
+  (block4): ModuleList(
+    (0-1): 2 x MS_Block_Spike_SepConv(
+      (conv): SepConv_Spike(
+        (spike1): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv1): Sequential(
+          (0): Conv2d(192, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike2): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (dwconv): Sequential(
+          (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=384, bias=False)
+          (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (spike3): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (pwconv2): Sequential(
+          (0): Conv2d(384, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (attn): MS_Attention_linear_with_LateralInhibition(
+        (head_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qe_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qe_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (qi_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (qi_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (k_conv): Sequential(
+          (0): Conv2d(192, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (k_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (v_conv): Sequential(
+          (0): Conv2d(192, 768, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (v_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (attn_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (excitatory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (inhibitory_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (combined_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (proj_conv): Sequential(
+          (0): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (drop_path): Identity()
+      (mlp): MS_MLP(
+        (fc1_conv): Conv1d(192, 768, kernel_size=(1,), stride=(1,))
+        (fc1_bn): BatchNorm1d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc1_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+        (fc2_conv): Conv1d(768, 192, kernel_size=(1,), stride=(1,))
+        (fc2_bn): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (fc2_spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=4, Threshold=0.5000)
+      )
+    )
+  )
+  (head): Linear(in_features=192, out_features=1000, bias=True)
+  (spike): MultiSpike(Max_Value=4, Min_Value=0, Norm=1, Threshold=0.5000)
+)
+[09:49:54.991672] number of params (M): 5.28
+[09:49:54.991815] base lr: 6.00e-04
+[09:49:54.991906] actual lr: 1.20e-03
+[09:49:54.991985] accumulate grad iterations: 1
+[09:49:54.992064] effective batch size: 512
+[09:49:55.013700] criterion = LabelSmoothingCrossEntropy()
+[09:49:55.013876] Start training for 20 epochs
+[09:50:03.714459] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:03.715173] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:03.715372] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:03.715556] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:03.715757] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:03.715938] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:03.716135] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:03.716309] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:03.763680] Epoch: [0]  [  0/505]  eta: 1:13:37  lr: 0.000000  loss: 6.9106 (6.9106)  acc1: 0.3906 (0.3906)  acc5: 2.3438 (2.3438)  time: 8.7474  data: 4.6249  max mem: 19949
+[09:50:04.258749] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:04.259094] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:04.259283] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:04.259458] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:04.259643] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:04.259832] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:04.260020] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:04.260194] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:04.768659] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:04.769026] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:04.769223] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:04.769413] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:04.769626] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:04.769822] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:04.770037] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:04.770231] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:05.236965] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:05.237289] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:05.237468] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:05.237671] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:05.237899] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:05.238125] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:05.238375] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:05.238590] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:05.705350] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:05.705735] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:05.705939] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:05.706131] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:05.706331] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:05.706554] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:05.706814] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:05.707042] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:06.176020] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:06.176386] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:06.176606] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:06.176870] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:06.177122] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:06.177357] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:06.177619] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:06.177866] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:06.650901] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:06.651264] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:06.651465] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:06.651661] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:06.651869] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:06.652058] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:06.652281] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:06.652528] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:07.117181] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:07.117545] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:07.117761] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:07.117973] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:07.118178] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:07.118373] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:07.118597] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:07.118803] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:07.579768] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:07.580134] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:07.580369] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:07.580623] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:07.580889] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:07.581132] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:07.581406] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:07.581643] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:08.043526] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:08.043893] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:08.044093] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:08.044297] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:08.044497] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:08.044732] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:08.044993] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:08.045230] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:08.515526] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:08.515908] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:08.516112] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:08.516304] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:08.516502] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:08.516692] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:08.516912] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:08.517100] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:08.990574] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:08.990942] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:08.991146] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:08.991338] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:08.991533] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:08.991721] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:08.991919] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:08.992103] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:09.458268] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:09.458628] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:09.458833] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:09.459082] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:09.459340] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:09.459576] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:09.459842] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:09.460081] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:09.927597] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:09.927969] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:09.928174] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:09.928393] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:09.928596] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:09.928804] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:09.929014] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:09.929212] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:10.395809] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:10.396224] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:10.396480] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:10.396735] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:10.396996] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:10.397243] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:10.397512] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:10.397728] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:10.863989] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:10.864349] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:10.864547] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:10.864762] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:10.865016] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:10.865262] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:10.865523] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:10.865768] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:11.324277] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:11.324632] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:11.324833] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:11.325025] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:11.325216] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:11.325397] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:11.325609] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:11.325846] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:11.800975] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:11.801329] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:11.801528] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:11.801727] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:11.801929] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:11.802117] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:11.802323] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:11.802511] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:12.270174] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:12.270537] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:12.270740] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:12.270954] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:12.271205] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:12.271442] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:12.271701] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:12.271939] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:12.738157] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:12.738511] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:12.738720] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:12.738935] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:12.739171] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:12.739414] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:12.739680] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:12.739927] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:13.211412] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:13.211813] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:13.212073] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:13.212321] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:13.212576] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:13.212818] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:13.213084] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:13.213328] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:13.670878] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:13.671239] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:13.671463] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:13.671717] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:13.671963] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:13.672208] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:13.672460] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:13.672712] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:14.146045] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:14.146412] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:14.146619] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:14.146822] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:14.147021] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:14.147217] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:14.147420] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:14.147616] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:14.615421] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:14.615783] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:14.615980] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:14.616179] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:14.616426] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:14.616669] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:14.616943] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:14.617175] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:15.084054] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:15.084402] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:15.084581] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:15.084795] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:15.085015] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:15.085232] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:15.085472] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:15.085683] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:15.555658] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:15.556027] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:15.556233] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:15.556423] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:15.556614] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:15.556799] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:15.557004] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:15.557178] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:16.024821] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:16.025181] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:16.025395] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:16.025665] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:16.025924] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:16.026179] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:16.026439] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:16.026677] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:16.495166] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:16.495521] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:16.495725] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:16.495920] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:16.496115] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:16.496295] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:16.496498] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:16.496683] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:16.964081] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:16.964442] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:16.964638] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:16.964840] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:16.965034] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:16.965221] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:16.965422] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:16.965599] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:17.433500] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:17.433866] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:17.434070] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:17.434267] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:17.434470] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:17.434656] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:17.435026] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:17.435225] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:17.907966] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:17.908355] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:17.908583] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:17.908803] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:17.909031] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:17.909276] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:17.909527] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:17.909762] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:18.376109] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:18.376477] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:18.376737] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:18.376988] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:18.377237] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:18.377473] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:18.377743] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:18.377959] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:18.845740] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:18.846158] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:18.846395] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:18.846628] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:18.846887] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:18.847129] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:18.847377] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:18.847611] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:19.315416] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:19.315784] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:19.315997] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:19.316214] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:19.316426] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:19.316614] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:19.316830] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:19.317027] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:19.785097] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:19.785474] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:19.785742] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:19.785994] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:19.786242] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:19.786473] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:19.786725] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:19.786943] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:20.261427] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:20.261797] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:20.261998] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:20.262188] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:20.262432] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:20.262680] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:20.262946] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:20.263181] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:20.736909] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:20.737273] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:20.737473] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:20.737722] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:20.737979] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:20.738215] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:20.738475] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:20.738719] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:21.206993] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:21.207432] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:21.207632] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:21.207860] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:21.208116] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:21.208346] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:21.208605] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:21.208838] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:21.677158] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:21.677540] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:21.677802] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:21.678052] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:21.678314] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:21.678556] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:21.678824] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:21.679047] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:22.148565] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:22.148951] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:22.149156] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:22.149356] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:22.149552] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:22.149756] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:22.149969] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:22.150148] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:22.618931] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:22.619318] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:22.619548] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:22.619786] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:22.620015] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:22.620234] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:22.620466] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:22.620678] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:23.091433] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:23.091884] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:23.092147] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:23.092390] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:23.092637] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:23.092886] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:23.093121] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:23.093325] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:23.561474] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:23.561855] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:23.562063] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:23.562264] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:23.562476] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:23.562717] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:23.562981] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:23.563214] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:24.030357] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:24.030731] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:24.030934] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:24.031129] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:24.031327] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:24.031547] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:24.031809] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:24.032039] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:24.499843] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:24.500229] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:24.500449] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:24.500667] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:24.500893] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:24.501094] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:24.501310] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:24.501536] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:24.970573] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:24.970931] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:24.971111] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:24.971315] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:24.971542] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:24.971770] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:24.972012] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:24.972229] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:25.439691] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:25.440094] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:25.440295] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:25.440506] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:25.440764] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:25.441002] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:25.441267] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:25.441504] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:25.911271] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:25.911632] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:25.911839] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:25.912061] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:25.912293] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:25.912525] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:25.912789] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:25.913018] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:26.381638] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:26.382008] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:26.382207] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:26.382418] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:26.382676] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:26.382928] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:26.383191] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:26.383424] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:26.850880] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:26.851233] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:26.851429] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:26.851646] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:26.851897] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:26.852127] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:26.852377] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:26.852604] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:27.319301] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:27.319677] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:27.319937] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:27.320196] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:27.320451] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:27.320681] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:27.320948] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:27.321158] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:27.790650] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:27.791012] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:27.791245] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:27.791472] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:27.791709] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:27.791933] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:27.792181] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:27.792387] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:28.252039] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:28.252409] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:28.252616] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:28.252813] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:28.253023] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:28.253214] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:28.253421] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:28.253614] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:28.726800] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:28.727162] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:28.727366] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:28.727556] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:28.727764] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:28.727955] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:28.728147] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:28.728369] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:29.196134] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:29.196487] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:29.196688] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:29.196904] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:29.197098] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:29.197281] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:29.197504] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:29.197756] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:29.665398] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:29.665760] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:29.665961] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:29.666203] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:29.666457] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:29.666690] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:29.666947] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:29.667176] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:30.137014] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:30.137407] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:30.137639] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:30.137861] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:30.138089] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:30.138315] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:30.138578] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:30.138823] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:30.608169] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:30.608539] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:30.608801] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:30.609051] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:30.609309] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:30.609553] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:30.609826] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:30.610058] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:31.078466] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:31.078866] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:31.079103] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:31.079326] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:31.079549] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:31.079755] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:31.079973] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:31.080187] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:31.540298] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:31.540692] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:31.540926] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:31.541144] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:31.541374] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:31.541581] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:31.541806] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:31.542018] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:32.015245] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:32.015607] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:32.015816] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:32.016058] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:32.016319] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:32.016560] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:32.016825] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:32.017069] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:32.486277] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:32.486640] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:32.486853] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:32.487066] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:32.487294] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:32.487554] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:32.487815] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:32.488054] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:32.957017] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:32.957382] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:32.957594] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:32.957800] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:32.958003] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:32.958215] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:32.958471] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:32.958691] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:33.425615] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:33.426013] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:33.426254] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:33.426482] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:33.426720] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:33.426956] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:33.427201] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:33.427431] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:33.896338] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:33.896696] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:33.896931] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:33.897179] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:33.897439] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:33.897683] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:33.897953] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:33.898183] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:34.367958] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:34.368310] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:34.368505] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:34.368708] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:34.368957] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:34.369203] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:34.369467] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:34.369701] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:34.838360] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:34.838741] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:34.838994] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:34.839238] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:34.839492] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:34.839730] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:34.839989] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:34.840211] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:35.309591] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:35.309945] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:35.310161] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:35.310377] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:35.310602] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:35.310827] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:35.311068] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:35.311278] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:35.778832] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:35.779202] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:35.779458] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:35.779726] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:35.779983] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:35.780223] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:35.780475] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:35.780700] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:36.248171] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:36.248534] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:36.248745] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:36.248956] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:36.249207] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:36.249460] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:36.249721] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:36.249948] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:36.718867] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:36.719237] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:36.719453] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:36.719660] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:36.719904] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:36.720149] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:36.720397] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:36.720630] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:37.190653] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:37.191034] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:37.191284] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:37.191520] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:37.191775] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:37.192002] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:37.192248] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:37.192470] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:37.661025] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:37.661475] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:37.661671] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:37.661888] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:37.662141] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:37.662378] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:37.662635] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:37.662877] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:38.130031] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:38.130432] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:38.130655] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:38.130877] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:38.131107] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:38.131318] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:38.131552] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:38.131766] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:38.601138] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:38.601529] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:38.601735] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:38.601932] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:38.602132] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:38.602332] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:38.602554] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:38.602797] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:39.071497] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:39.071865] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:39.072066] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:39.072282] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:39.072495] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:39.072689] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:39.072889] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:39.073104] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:39.541238] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:39.541733] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:39.542000] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:39.542247] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:39.542496] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:39.542735] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:39.542988] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:39.543230] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:40.011658] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:40.012034] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:40.012242] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:40.012456] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:40.012656] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:40.012856] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:40.013108] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:40.013335] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:40.484095] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:40.485097] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:40.485352] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:40.485600] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:40.485861] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:40.486151] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:40.486377] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:40.486564] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:40.954859] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:40.955212] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:40.955411] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:40.955596] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:40.955807] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:40.955993] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:40.956190] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:40.956375] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:41.425525] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:41.425884] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:41.426083] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:41.426322] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:41.426585] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:41.426831] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:41.427100] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:41.427333] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:41.894724] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:41.895073] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:41.895273] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:41.895484] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:41.895737] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:41.895984] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:41.896248] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:41.896491] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:42.363418] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:42.363785] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:42.364034] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:42.364238] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:42.364479] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:42.364726] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:42.365000] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:42.365231] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:42.833527] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:42.833940] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:42.834198] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:42.834452] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:42.834708] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:42.834957] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:42.835222] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:42.835455] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:43.304905] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:43.305259] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:43.305459] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:43.305677] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:43.305940] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:43.306178] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:43.306450] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:43.306683] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:43.774930] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:43.775317] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:43.775517] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:43.775745] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:43.776003] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:43.776242] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:43.776494] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:43.776728] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:44.245622] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:44.245986] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:44.246196] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:44.246393] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:44.246623] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:44.246887] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:44.247151] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:44.247388] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:44.717946] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:44.718349] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:44.718567] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:44.718771] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:44.718968] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:44.719150] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:44.719354] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:44.719533] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:45.187109] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:45.187472] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:45.187654] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:45.187837] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:45.188069] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:45.188262] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:45.188458] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:45.188635] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:45.656133] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:45.656483] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:45.656679] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:45.656878] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:45.657078] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:45.657308] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:45.657557] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:45.657799] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:46.125616] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:46.125979] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:46.126227] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:46.126530] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:46.126787] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:46.127030] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:46.127287] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:46.127518] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:46.594715] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:46.595083] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:46.595322] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:46.595569] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:46.595823] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:46.596072] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:46.596336] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:46.596573] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:47.063678] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:47.064052] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:47.064267] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:47.064467] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:47.064667] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:47.064872] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:47.065070] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:47.065282] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:47.533811] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:47.534162] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:47.534371] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:47.534597] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:47.534850] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:47.535074] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:47.535312] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:47.535529] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:48.005216] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:48.005686] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:48.005926] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:48.006179] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:48.006520] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:48.006791] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:48.007119] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:48.007363] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:48.475855] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:48.476206] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:48.476458] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:48.476718] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:48.476971] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:48.477216] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:48.477475] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:48.477710] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:48.946850] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:48.947210] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:48.947410] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:48.947610] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:48.947821] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:48.948015] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:48.948216] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:48.948424] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:49.416734] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:49.417152] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:49.417406] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:49.417650] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:49.417912] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:49.418144] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:49.418411] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:49.418621] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:49.888279] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:49.888653] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:49.888919] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:49.889173] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:49.889426] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:49.889663] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:49.889939] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:49.890172] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:50.357965] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:50.358355] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:50.358584] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:50.358817] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:50.359044] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:50.359263] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:50.359522] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:50.359764] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:50.833510] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:50.833902] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:50.834203] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:50.834467] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:50.834728] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:50.834980] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:50.835245] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:50.835453] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:50.837643] Epoch: [0]  [100/505]  eta: 0:03:43  lr: 0.000048  loss: 6.9042 (6.9070)  acc1: 0.3906 (0.3365)  acc5: 1.1719 (1.4774)  time: 0.4704  data: 0.0002  max mem: 19949
+[09:50:51.306386] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:51.306747] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:51.306950] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:51.307166] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:51.307421] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:51.307661] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:51.307988] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:51.308232] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:51.776767] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:51.777205] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:51.777478] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:51.777747] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:51.778002] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:51.778238] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:51.778497] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:51.778687] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:52.247743] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:52.248144] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:52.248386] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:52.248601] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:52.248801] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:52.249042] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:52.249295] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:52.249525] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:52.719614] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:52.719980] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:52.720222] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:52.720433] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:52.720634] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:52.720842] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:52.721095] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:52.721345] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:53.194635] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:53.194999] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:53.195240] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:53.195485] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:53.195739] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:53.196016] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:53.196310] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:53.196511] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:53.664340] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:53.664716] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:53.664964] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:53.665231] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:53.665488] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:53.665732] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:53.666000] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:53.666235] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:54.135383] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:54.135762] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:54.136016] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:54.136273] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:54.136519] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:54.136761] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:54.137024] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:54.137255] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:54.605820] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:54.606193] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:54.606445] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:54.606688] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:54.606947] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:54.607186] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:54.607437] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:54.607672] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:55.075542] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:55.075917] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:55.076117] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:55.076288] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:55.076468] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:55.076648] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:55.076854] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:55.077072] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:55.547194] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:55.547567] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:55.547785] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:55.548059] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:55.548308] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:55.548555] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:55.548817] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:55.549061] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:56.021499] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:56.021863] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:56.022062] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:56.022259] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:56.022459] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:56.022634] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:56.022840] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:56.023035] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:56.494172] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:56.494544] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:56.494784] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:56.495037] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:56.495284] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:56.495520] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:56.495780] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:56.496020] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:56.963365] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:56.963735] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:56.963936] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:56.964179] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:56.964427] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:56.964664] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:56.964928] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:56.965163] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:57.433289] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:57.433676] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:57.433911] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:57.434135] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:57.434366] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:57.434576] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:57.434818] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:57.435033] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:57.904975] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:57.905342] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:57.905549] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:57.905759] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:57.905966] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:57.906215] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:57.906479] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:57.906719] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:58.376782] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:58.377150] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:58.377358] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:58.377564] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:58.377778] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:58.377969] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:58.378183] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:58.378370] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:58.847953] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:58.848315] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:58.848528] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:58.848738] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:58.848988] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:58.849233] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:58.849488] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:58.849728] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:59.318429] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:59.318933] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:59.319174] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:59.319408] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:59.319645] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:59.319880] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:59.320120] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:59.320334] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:50:59.790953] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:50:59.791353] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:50:59.791593] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:50:59.791826] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:50:59.792062] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:50:59.792296] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:50:59.792550] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:50:59.792791] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:00.260626] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:00.260999] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:00.261206] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:00.261431] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:00.261685] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:00.261930] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:00.262203] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:00.262443] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:00.731409] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:00.731775] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:00.731990] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:00.732236] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:00.732489] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:00.732737] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:00.732999] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:00.733224] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:01.201862] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:01.202285] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:01.202544] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:01.202794] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:01.203040] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:01.203268] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:01.203512] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:01.203750] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:01.672743] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:01.673164] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:01.673365] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:01.673591] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:01.673843] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:01.674070] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:01.674331] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:01.674560] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:02.146575] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:02.147006] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:02.147269] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:02.147508] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:02.147766] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:02.148001] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:02.148248] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:02.148472] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:02.616766] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:02.617150] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:02.617363] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:02.617567] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:02.617783] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:02.617983] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:02.618189] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:02.618374] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:03.090969] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:03.091456] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:03.091673] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:03.091936] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:03.092222] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:03.092487] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:03.092782] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:03.093026] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:03.561443] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:03.561865] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:03.562113] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:03.562352] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:03.562600] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:03.562844] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:03.563094] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:03.563315] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:04.030349] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:04.030714] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:04.030939] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:04.031181] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:04.031427] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:04.031654] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:04.031925] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:04.032168] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:04.500787] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:04.501151] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:04.501375] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:04.501617] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:04.501881] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:04.502117] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:04.502367] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:04.502589] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:04.928963] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:04.929376] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:04.929618] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:04.929857] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:04.930098] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:04.930329] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:04.930578] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:04.930796] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:05.399193] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:05.399570] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:05.399796] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:05.399995] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:05.400219] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:05.400457] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:05.400725] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:05.400960] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:05.866919] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:05.867277] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:05.867478] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:05.867675] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:05.867927] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:05.868167] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:05.868423] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:05.868659] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:06.338096] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:06.338484] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:06.338746] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:06.338995] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:06.339238] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:06.339469] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:06.339734] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:06.339970] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:06.807068] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:06.807423] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:06.807659] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:06.807900] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:06.808134] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:06.808363] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:06.808606] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:06.808845] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:07.279803] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:07.280164] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:07.280361] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:07.280602] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:07.280863] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:07.281097] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:07.281349] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:07.281578] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:07.749476] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:07.749856] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:07.750057] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:07.750282] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:07.750527] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:07.750778] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:07.751045] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:07.751291] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:08.219142] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:08.219560] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:08.219829] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:08.220080] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:08.220327] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:08.220559] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:08.220825] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:08.221044] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:08.690790] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:08.691156] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:08.691374] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:08.691618] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:08.691878] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:08.692119] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:08.692381] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:08.692620] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:09.160347] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:09.160735] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:09.160949] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:09.161148] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:09.161360] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:09.161559] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:09.161774] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:09.161967] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:09.630670] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:09.631088] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:09.631319] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:09.631546] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:09.631776] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:09.631994] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:09.632225] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:09.632446] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:10.102534] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:10.102895] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:10.103093] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:10.103287] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:10.103478] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:10.103686] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:10.103939] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:10.104159] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:10.574350] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:10.574718] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:10.574930] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:10.575130] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:10.575336] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:10.575572] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:10.575847] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:10.576098] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:11.045446] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:11.045854] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:11.046112] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:11.046355] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:11.046607] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:11.046860] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:11.047120] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:11.047334] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:11.515662] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:11.516067] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:11.516343] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:11.516605] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:11.516896] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:11.517156] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:11.517430] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:11.517657] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:11.986539] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:11.986924] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:11.987147] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:11.987346] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:11.987550] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:11.987764] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:11.988029] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:11.988262] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:12.455557] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:12.456007] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:12.456252] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:12.456491] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:12.456738] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:12.456996] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:12.457239] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:12.457458] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:12.927269] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:12.927639] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:12.927861] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:12.928060] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:12.928272] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:12.928481] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:12.928746] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:12.928977] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:13.396363] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:13.396727] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:13.396979] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:13.397230] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:13.397480] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:13.397729] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:13.397991] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:13.398231] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:13.868053] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:13.868440] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:13.868657] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:13.868870] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:13.869084] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:13.869282] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:13.869524] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:13.869765] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:14.339319] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:14.339695] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:14.339912] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:14.340117] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:14.340322] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:14.340525] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:14.340746] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:14.340945] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:14.809099] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:14.809463] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:14.809667] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:14.809894] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:14.810143] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:14.810395] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:14.810644] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:14.810886] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:15.279151] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:15.279523] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:15.279745] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:15.279939] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:15.280137] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:15.280334] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:15.280554] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:15.280783] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:15.754843] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:15.755245] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:15.755504] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:15.755771] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:15.756016] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:15.756242] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:15.756504] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:15.756729] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:16.224044] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:16.224417] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:16.224628] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:16.224841] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:16.225047] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:16.225251] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:16.225503] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:16.225741] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:16.701150] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:16.701553] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:16.701792] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:16.702015] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:16.702240] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:16.702452] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:16.702687] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:16.702912] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:17.170182] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:17.170527] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:17.170737] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:17.170950] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:17.171201] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:17.171437] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:17.171695] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:17.171936] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:17.640935] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:17.641292] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:17.641494] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:17.641691] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:17.641892] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:17.642082] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:17.642307] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:17.642548] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:18.110498] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:18.111299] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:18.111686] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:18.111946] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:18.112218] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:18.112454] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:18.112730] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:18.112969] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:18.581717] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:18.582072] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:18.582290] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:18.582487] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:18.582688] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:18.582926] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:18.583182] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:18.583414] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:19.058851] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:19.059215] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:19.059471] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:19.059730] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:19.059982] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:19.060218] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:19.060481] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:19.060722] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:19.528899] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:19.529263] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:19.529467] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:19.529662] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:19.529894] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:19.530139] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:19.530391] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:19.530620] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:19.997771] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:19.998137] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:19.998345] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:19.998542] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:19.998748] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:19.998960] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:19.999213] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:19.999450] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:20.470060] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:20.470482] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:20.470756] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:20.471006] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:20.471261] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:20.471481] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:20.471725] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:20.471946] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:20.941882] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:20.942241] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:20.942442] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:20.942634] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:20.942892] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:20.943129] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:20.943388] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:20.943622] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:21.413841] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:21.414226] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:21.414435] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:21.414641] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:21.414848] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:21.415040] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:21.415284] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:21.415518] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:21.883608] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:21.883984] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:21.884192] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:21.884402] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:21.884619] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:21.884880] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:21.885141] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:21.885376] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:22.357151] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:22.357531] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:22.357750] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:22.357954] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:22.358158] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:22.358369] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:22.358627] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:22.358868] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:22.828083] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:22.828625] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:22.828878] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:22.829125] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:22.829383] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:22.829639] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:22.829912] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:22.830143] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:23.302071] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:23.302444] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:23.302660] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:23.302870] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:23.303083] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:23.303279] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:23.303485] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:23.303702] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:23.778037] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:23.778578] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:23.778855] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:23.779104] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:23.779366] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:23.779596] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:23.779834] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:23.780048] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:24.248428] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:24.248798] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:24.249001] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:24.249198] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:24.249398] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:24.249617] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:24.249875] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:24.250112] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:24.721206] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:24.721623] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:24.721894] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:24.722147] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:24.722399] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:24.722629] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:24.722887] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:24.723107] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:25.191821] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:25.192172] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:25.192350] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:25.192546] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:25.192782] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:25.193003] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:25.193243] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:25.193462] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:25.663291] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:25.663680] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:25.663901] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:25.664109] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:25.664344] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:25.664585] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:25.664852] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:25.665094] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:26.133487] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:26.133915] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:26.134171] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:26.134419] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:26.134671] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:26.134913] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:26.135165] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:26.135400] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:26.605637] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:26.606030] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:26.606248] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:26.606452] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:26.606719] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:26.606976] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:26.607241] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:26.607470] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:27.087913] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:27.088272] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:27.088494] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:27.088755] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:27.089011] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:27.089259] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:27.089517] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:27.089715] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:27.548719] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:27.549097] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:27.549347] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:27.549609] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:27.549893] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:27.550155] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:27.550440] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:27.550698] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:28.014610] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:28.014977] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:28.015178] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:28.015380] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:28.015580] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:28.015771] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:28.015974] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:28.016163] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:28.480721] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:28.481156] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:28.481413] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:28.481672] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:28.481940] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:28.482182] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:28.482436] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:28.482665] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:28.947009] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:28.947368] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:28.947573] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:28.947774] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:28.947992] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:28.948228] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:28.948482] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:28.948723] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:29.421202] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:29.421555] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:29.421761] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:29.422008] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:29.422258] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:29.422488] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:29.422768] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:29.423008] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:29.895113] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:29.895490] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:29.895743] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:29.895997] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:29.896243] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:29.896480] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:29.896730] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:29.896986] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:30.365126] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:30.365493] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:30.365716] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:30.365923] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:30.366132] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:30.366332] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:30.366541] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:30.366778] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:30.834270] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:30.834659] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:30.834894] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:30.835113] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:30.835328] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:30.835538] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:30.835772] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:30.835982] [Unused] module.block4.1.attn.combined_spike.threshold
+[09:51:31.305293] [Unused] module.block3.0.attn.combined_spike.threshold
+[09:51:31.305688] [Unused] module.block3.1.attn.combined_spike.threshold
+[09:51:31.305955] [Unused] module.block3.2.attn.combined_spike.threshold
+[09:51:31.306201] [Unused] module.block3.3.attn.combined_spike.threshold
+[09:51:31.306446] [Unused] module.block3.4.attn.combined_spike.threshold
+[09:51:31.306686] [Unused] module.block3.5.attn.combined_spike.threshold
+[09:51:31.306925] [Unused] module.block4.0.attn.combined_spike.threshold
+[09:51:31.307129] [Unused] module.block4.1.attn.combined_spike.threshold
+slurmstepd: error: *** JOB 16709226 ON a100gpu1 CANCELLED AT 2025-04-20T09:51:31 ***
+
+###############################################################################
+Hábrók Cluster
+Job 16709226_0 for user p315895
+Finished at: Sun Apr 20 09:51:40 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 16709226_0
+Name                           : LISNN_IN200_li
+User                           : p315895
+Partition                      : gpushort
+Nodes                          : a100gpu1
+Number of Nodes                : 1
+Cores                          : 16
+Number of Tasks                : 1
+State                          : CANCELLED by user  
+Submit                         : 2025-04-20T09:49:08
+Start                          : 2025-04-20T09:49:09
+End                            : 2025-04-20T09:51:35
+Reserved walltime              : 04:00:00
+Used walltime                  : 00:02:26
+Used CPU time                  : 00:14:33 (Efficiency: 37.35%)
+% User (Computation)           : 87.12%
+% System (I/O)                 : 12.88%
+Total memory reserved          : 48G
+Maximum memory used            : 8.93G
+Requested GPUs                 : a100=2
+Allocated GPUs                 : a100=2
+Max GPU utilization            : 181%
+Max GPU memory used            : 43.14G
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
